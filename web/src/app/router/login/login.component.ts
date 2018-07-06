@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  private i: number;
+  private i: number = 1;
 
   constructor(private router: Router) {
   }
@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.i = 1;
   }
 
 }
