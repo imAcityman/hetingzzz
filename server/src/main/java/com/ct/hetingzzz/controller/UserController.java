@@ -11,4 +11,8 @@ public class UserController {
     public String ruozhi(){
         return "<h1>何婷是个大弱智</h1>";
     }
+    @RequestMapping("heipi")
+    public String heipi(){
+        return "<h1>何婷是个大黑皮</h1>";
+    }
 }
