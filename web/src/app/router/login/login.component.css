@@ -1,0 +1,17 @@
+.btn-login{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 80%;
+  height: 1.0666666666666667rem;
+  line-height: 1.0666666666666667rem;
+  border: 1px solid #cccccc;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 0.16rem;
+
+}
