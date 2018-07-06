@@ -1,0 +1,36 @@
+.next{
+  text-align: center;
+  padding-top: 50px;
+  margin: auto;
+
+}
+
+.next .forecast{
+  font-size: 50px;
+  color: coral;
+}
+
+.next .date{
+  background-color: coral;
+  border-radius: 40px;
+  padding: 30px;
+  width: 150px;
+  margin: 20px auto 0 auto;
+  color: white;
+  font-size: 30px;
+}
+.header{
+  margin-top: 100px;
+  color: coral;
+  font-size: 30px;
+  text-indent: 50px;
+}
+.list{
+  padding: 50px 100px
+}
+.list li{
+  font-size: 30px;
+  padding: 5px 0;
+  color: #ff0074;
+  border-bottom: 1px dashed #ff0074;
+}

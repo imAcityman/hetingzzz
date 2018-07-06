@@ -6,6 +6,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {ModuleWithProviders} from '@angular/core';
 import {LoginComponent} from './router/login/login.component';
 import {LayoutComponent} from './router/layout/layout.component';
+import {MenstruationComponent} from './router/layout/menstruation/menstruation.component';
 // 引入挂载到路由上的组件
 // 配置一个路由数组
 const rootRouterConfig: Routes = [
@@ -13,6 +14,8 @@ const rootRouterConfig: Routes = [
   {path: 'login', component: LoginComponent},
   {
     path: 'layout', component: LayoutComponent, children: [
+      {path: '', component: MenstruationComponent},
+      {path: 'menstruation', component: MenstruationComponent}
     ]
   }
 

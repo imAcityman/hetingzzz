@@ -8,27 +8,11 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  private i: number = 1;
-
   constructor(private router: Router) {
   }
 
   login() {
-    // this.router.navigate(['layout']);
-    switch (this.i) {
-      case 1:
-        alert('点的力气不够大，再点一次');
-        break;
-      case 2:
-        alert('还是不够大，再点');
-        break;
-      case 3:
-        alert('傻逼，让你点就点啊，哈哈哈哈哈！');
-        break;
-      default:
-        alert('别点了弱智');
-    }
-    this.i++;
+    this.router.navigate(['layout']);
   }
 
   ngOnInit() {
