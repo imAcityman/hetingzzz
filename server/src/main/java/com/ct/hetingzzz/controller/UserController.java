@@ -1,18 +1,26 @@
 package com.ct.hetingzzz.controller;
 
+import com.ct.hetingzzz.service.UserService;
+import com.ct.hetingzzz.util.Response;
+import com.ct.hetingzzz.util.ResponseStatus;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 @RestController
-@RequestMapping("heting")
+@RequestMapping("user")
 public class UserController {
 
-    @RequestMapping("ruozhi")
-    public String ruozhi(){
-        return "<h1>何婷是个大弱智</h1>";
-    }
-    @RequestMapping("heipi")
-    public String heipi(){
-        return "<h1>何婷是个大黑皮</h1>";
+    @Value("${userid}")
+    private String userid;
+
+    @Resource
+    private UserService userService;
+
+    @RequestMapping("getMenstruation")
+    public Response getMenstruation(){
+        return new Response(ResponseStatus.SUCCESS,"查询成功",userService.getMenstruation(userid));
     }
 }
