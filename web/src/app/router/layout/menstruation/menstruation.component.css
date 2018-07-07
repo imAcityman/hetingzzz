@@ -1,36 +1,35 @@
 .next{
   text-align: center;
-  padding-top: 50px;
+  padding-top: 0.6666666666666666rem;
   margin: auto;
-
 }
-
 .next .forecast{
-  font-size: 50px;
+  font-size: 0.6666666666666666rem;
   color: coral;
 }
-
 .next .date{
   background-color: coral;
-  border-radius: 40px;
-  padding: 30px;
-  width: 150px;
-  margin: 20px auto 0 auto;
+  border-radius: 0.5333333333333333rem;
+  padding: 0.4rem;
+  width: 2rem;
+  margin: 0.26666666666666666rem auto 0 auto;
   color: white;
-  font-size: 30px;
+  font-size: 0.4rem;
+  height: 0.4rem;
+  line-height: 0.4rem;
 }
 .header{
-  margin-top: 100px;
+  margin-top: 1.3333333333333333rem;
   color: coral;
-  font-size: 30px;
-  text-indent: 50px;
+  font-size: 0.4rem;
+  text-indent: 0.6666666666666666rem;
 }
 .list{
-  padding: 50px 100px
+  padding: 0.6666666666666666rem 1.3333333333333333rem
 }
 .list li{
-  font-size: 30px;
-  padding: 5px 0;
+  font-size: 0.4rem;
+  padding: 0.06666666666666667rem 0;
   color: #ff0074;
-  border-bottom: 1px dashed #ff0074;
+  border-bottom: 0.013333333333333334rem dashed #ff0074;
 }

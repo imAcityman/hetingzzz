@@ -19,11 +19,12 @@ export class Interceptor implements HttpInterceptor {
       if (event instanceof HttpResponse) {
         switch (event.status) {
           case 200:
-            if (event.body['state']) {
+            if (event.body['code'] !== -1) {
               return event;
-            } else {
+            } else if (event.body['code'] === -1) {
               throw event.body['msg'];
             }
+            break;
           case 401:
             console.log('error:401');
             break;

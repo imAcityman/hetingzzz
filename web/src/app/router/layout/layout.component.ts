@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-layout',
@@ -8,11 +9,12 @@ import {Component, OnInit} from '@angular/core';
 export class LayoutComponent implements OnInit {
 
 
-  constructor() {
+  constructor(private title: Title) {
 
   }
 
   ngOnInit() {
+    this.title.setTitle('亻可女亭是头犭者');
   }
 
 }

@@ -10,7 +10,7 @@ import * as moment from 'moment';
 })
 export class MenstruationComponent implements OnInit {
 
-  menstruationList = [{'createtime': '2018'}];
+  menstruationList = [];
   expectDate: string;
 
   constructor(private request: RequestService) {
