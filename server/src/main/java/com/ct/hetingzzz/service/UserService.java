@@ -16,8 +16,19 @@ public class UserService {
     @Resource
     private JdbcTemplate jdbcTemplate;
 
-    public List<TMenstruationLog> getMenstruation(String userid){
+    public List<TMenstruationLog> getMenstruation(String userid) {
         String sql = "select * from t_menstruation_log t where t.userid = ? order by t.createtime desc ";
-        return jdbcTemplate.query(sql,new Object[]{userid},new BeanPropertyRowMapper<>(TMenstruationLog.class));
+        return jdbcTemplate.query(sql, new Object[]{userid}, new BeanPropertyRowMapper<>(TMenstruationLog.class));
+    }
+
+    public void setTodayMenstruation(String userid) {
+        String sql = "insert into t_menstruation_log (userid, menstruation_time,  createtime) " +
+                "values (?,now(),now())";
+        jdbcTemplate.update(sql, new Object[]{userid});
+    }
+
+    public boolean todayIsSet(String userid) {
+        String sql = "select count(1) from t_menstruation_log t where DATE_FORMAT(now(),'%Y-%m-%d') = DATE_FORMAT(t.menstruation_time,'%Y-%m-%d') and userid = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, userid) >= 1;
     }
 }

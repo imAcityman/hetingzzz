@@ -23,4 +23,12 @@ public class UserController {
     public Response getMenstruation(){
         return new Response(ResponseStatus.SUCCESS,"查询成功",userService.getMenstruation(userid));
     }
+    @RequestMapping("setTodayMenstruation")
+    public Response setTodayMenstruation(){
+        if(userService.todayIsSet(userid)){
+            return new Response(ResponseStatus.FAIL,"你今天不是已经设置过了吗傻逼！");
+        }
+        userService.setTodayMenstruation(userid);
+        return new Response(ResponseStatus.SUCCESS,"设置好了");
+    }
 }
