@@ -1,6 +1,7 @@
 <div class="next">
   <div class="forecast">经期预测</div>
   <div class="date">{{expectDate}}</div>
+  <a class="set" (click)="setToday()">设置今天</a>
 </div>
 <div class="header">大姨妈记录</div>
 <ul class="list" *ngIf="menstruationList.length>0">

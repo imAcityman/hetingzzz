@@ -2,18 +2,20 @@ import {Component, OnInit} from '@angular/core';
 import {RequestService} from '../../../service/request.service';
 import {HttpParams} from '@angular/common/http';
 import * as moment from 'moment';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-menstruation',
   templateUrl: './menstruation.component.html',
   styleUrls: ['./menstruation.component.css']
 })
+
 export class MenstruationComponent implements OnInit {
 
   menstruationList = [];
   expectDate: string;
 
-  constructor(private request: RequestService) {
+  constructor(private request: RequestService, private router: Router) {
   }
 
   getMenstruation() {
@@ -29,6 +31,15 @@ export class MenstruationComponent implements OnInit {
       }
     });
   }
+
+  setToday = function () {
+    this.request.get('/user/setTodayMenstruation', new HttpParams()).subscribe((data) => {
+      alert(data.msg);
+      if (data.code === 1) {
+        location.reload();
+      }
+    });
+  };
 
   ngOnInit() {
     this.getMenstruation();
