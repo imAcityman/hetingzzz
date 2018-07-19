@@ -10,6 +10,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { MenstruationComponent } from './router/layout/menstruation/menstruation.component';
 import {Interceptor} from './service/Interceptor.service';
 import { BoardComponent } from './router/layout/board/board.component';
+import { BigDateComponent } from './router/layout/big-date/big-date.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BoardComponent } from './router/layout/board/board.component';
     LayoutComponent,
     LoginComponent,
     MenstruationComponent,
-    BoardComponent
+    BoardComponent,
+    BigDateComponent
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,7 @@ export class Interceptor implements HttpInterceptor {
             if (event.body['code'] !== -1) {
               return event;
             } else if (event.body['code'] === -1) {
+              alert(event.body['msg']);
               throw event.body['msg'];
             }
             break;

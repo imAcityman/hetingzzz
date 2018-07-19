@@ -1,0 +1,13 @@
+.f{
+  text-align: center;
+}
+.title{
+  font-size: 40px;
+  color: #db5834;
+  padding: 30px 0;
+  border-bottom: 1px dotted #db5834;
+}
+.title .day{
+  margin-top: 20px;
+  color: #e6aab3;
+}
