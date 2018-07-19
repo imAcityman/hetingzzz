@@ -17,7 +17,7 @@ public class UserService {
     private JdbcTemplate jdbcTemplate;
 
     public List<TMenstruationLog> getMenstruation(String userid){
-        String sql = "select * from t_menstruation_log t where t.userid = ?";
+        String sql = "select * from t_menstruation_log t where t.userid = ? order by t.createtime desc ";
         return jdbcTemplate.query(sql,new Object[]{userid},new BeanPropertyRowMapper<>(TMenstruationLog.class));
     }
 }
