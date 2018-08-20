@@ -23,7 +23,7 @@ export class MenstruationComponent implements OnInit {
       if (data.code === 1) {
         if (data.data.length > 0) {
           this.menstruationList = data.data;
-          this.expectDate = moment(data.data[0].menstruationTime).add(28, 'day').format('MM月DD日');
+          this.expectDate = moment(data.data[0].menstruationTime).add(30, 'day').format('MM月DD日');
         } else {
           this.expectDate = '请设置您上一次大姨妈日期';
         }
