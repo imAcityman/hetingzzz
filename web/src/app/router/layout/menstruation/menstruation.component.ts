@@ -27,19 +27,18 @@ export class MenstruationComponent implements OnInit {
         } else {
           this.expectDate = '请设置您上一次大姨妈日期';
         }
-
       }
     });
   }
 
-  setToday = function () {
+  setToday() {
     this.request.get('/user/setTodayMenstruation', new HttpParams()).subscribe((data) => {
       alert(data.msg);
       if (data.code === 1) {
-        location.reload();
+        this.getMenstruation();
       }
     });
-  };
+  }
 
   ngOnInit() {
     this.getMenstruation();
