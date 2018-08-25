@@ -6,6 +6,8 @@ import 'rxjs-compat/add/operator/map';
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
+  private backend = '/hetingzzz';
+
   constructor() {
   }
 
@@ -14,6 +16,7 @@ export class Interceptor implements HttpInterceptor {
       headers: req.headers
         .set('Authorization', '11111111')
         .set('Content-Type', 'application/json;charset=UTF-8')
+      , url: this.backend + req.url
     });
     return next.handle(authReq).map((event) => {
       if (event instanceof HttpResponse) {
