@@ -1,10 +1,30 @@
-.btn-login{
-  position: fixed;
+.login {
+  position: relative;
   left: 0;
-  right: 0;
   top: 0;
-  bottom: 0;
+  padding: 2.6666666666666665rem 0;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.login .row {
+  width: 80%;
+  height: 1.2rem;
+  padding-top: 0.06666666666666667rem;
+  margin: 0.6666666666666666rem auto;
+}
+
+.login .row input {
+  width: 80%;
   margin: auto;
+  height: 1.0666666666666667rem;
+  line-height: 1.0666666666666667rem;
+  border: 1px solid #cccccc;
+  font-size: 0.4rem;
+  text-indent: 0.26666666666666666rem;
+}
+
+.btn-login {
   width: 80%;
   height: 1.0666666666666667rem;
   line-height: 1.0666666666666667rem;
@@ -13,5 +33,5 @@
   color: black;
   text-align: center;
   border-radius: 0.16rem;
-
+  margin: auto;
 }

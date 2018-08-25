@@ -1,1 +1,9 @@
-<div class="btn-login" (click)="login()">登录</div>
+<div class="login">
+  <div class="row">
+    <label>帐号：<input type="text" [(ngModel)]="user.loginid"></label>
+  </div>
+  <div class="row">
+    <label>密码：<input type="text" [ngModel]="user.password"></label>
+  </div>
+  <div class="btn-login" (click)="login()">登录</div>
+</div>

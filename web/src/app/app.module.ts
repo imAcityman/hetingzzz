@@ -11,6 +11,8 @@ import { MenstruationComponent } from './router/layout/menstruation/menstruation
 import {Interceptor} from './service/Interceptor.service';
 import { BoardComponent } from './router/layout/board/board.component';
 import { BigDateComponent } from './router/layout/big-date/big-date.component';
+import {FormsModule} from '@angular/forms';
+import {AngularWebStorageModule} from 'angular-web-storage';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { BigDateComponent } from './router/layout/big-date/big-date.component';
     BrowserModule,
     RouterModule,
     rootRouterModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    AngularWebStorageModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
