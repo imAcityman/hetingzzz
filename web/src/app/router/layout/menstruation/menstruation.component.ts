@@ -35,7 +35,7 @@ export class MenstruationComponent implements OnInit {
     this.request.get('/user/setTodayMenstruation', new HttpParams()).subscribe((data) => {
       alert(data.msg);
       if (data.code === 1) {
-        this.getMenstruation();
+        this.ngOnInit();
       }
     });
   }
