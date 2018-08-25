@@ -5,9 +5,11 @@ public class TSysUser {
 
   private long id;
   private String name;
-  private String roleId;
+  private long roleId;
   private String loginid;
   private String password;
+  private java.sql.Timestamp createtime;
+  private java.sql.Timestamp updatetime;
 
 
   public long getId() {
@@ -28,11 +30,11 @@ public class TSysUser {
   }
 
 
-  public String getRoleId() {
+  public long getRoleId() {
     return roleId;
   }
 
-  public void setRoleId(String roleId) {
+  public void setRoleId(long roleId) {
     this.roleId = roleId;
   }
 
@@ -52,6 +54,24 @@ public class TSysUser {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+
+  public java.sql.Timestamp getCreatetime() {
+    return createtime;
+  }
+
+  public void setCreatetime(java.sql.Timestamp createtime) {
+    this.createtime = createtime;
+  }
+
+
+  public java.sql.Timestamp getUpdatetime() {
+    return updatetime;
+  }
+
+  public void setUpdatetime(java.sql.Timestamp updatetime) {
+    this.updatetime = updatetime;
   }
 
 }
