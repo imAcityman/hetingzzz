@@ -4,7 +4,7 @@ import {LocalStorageService} from 'angular-web-storage';
 @Injectable({
   providedIn: 'root'
 })
-export class MyStorageServiceService {
+export class MyStorageService {
 
   constructor(private localStorage: LocalStorageService) {
   }
