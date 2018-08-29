@@ -1,15 +1,27 @@
 package com.ct.hetingzzz.domain;
 
 
+import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Objects;
+
+@Entity
+@Table(name = "t_menstruation_log", schema = "heting", catalog = "")
 public class TMenstruationLog {
 
   private long id;
   private long userid;
-  private java.sql.Date menstruationTime;
+  private Date menstruationTime;
   private String remark;
-  private java.sql.Timestamp createtime;
+  private Timestamp createtime;
 
+  public void setId(int id) {
+    this.id = id;
+  }
 
+  @Id
+  @Column(name = "id", nullable = false)
   public long getId() {
     return id;
   }
@@ -28,15 +40,19 @@ public class TMenstruationLog {
   }
 
 
-  public java.sql.Date getMenstruationTime() {
+  @Basic
+  @Column(name = "menstruationTime", nullable = false)
+  public Date getMenstruationTime() {
     return menstruationTime;
   }
 
-  public void setMenstruationTime(java.sql.Date menstruationTime) {
+  public void setMenstruationTime(Date menstruationTime) {
     this.menstruationTime = menstruationTime;
   }
 
 
+  @Basic
+  @Column(name = "remark", nullable = true, length = 255)
   public String getRemark() {
     return remark;
   }
@@ -46,12 +62,30 @@ public class TMenstruationLog {
   }
 
 
-  public java.sql.Timestamp getCreatetime() {
+  @Basic
+  @Column(name = "createtime", nullable = false)
+  public Timestamp getCreatetime() {
     return createtime;
   }
 
-  public void setCreatetime(java.sql.Timestamp createtime) {
+  public void setCreatetime(Timestamp createtime) {
     this.createtime = createtime;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    TMenstruationLog that = (TMenstruationLog) o;
+    return id == that.id &&
+            Objects.equals(menstruationTime, that.menstruationTime) &&
+            Objects.equals(remark, that.remark) &&
+            Objects.equals(createtime, that.createtime);
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(id, menstruationTime, remark, createtime);
+  }
 }
