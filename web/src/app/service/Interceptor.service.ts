@@ -2,19 +2,24 @@ import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import 'rxjs-compat/add/operator/map';
+import {Router} from '@angular/router';
+import {MyStorageService} from './my.storage.service';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
   private backend = '/hetingzzz';
 
-  constructor() {
+  constructor(private router: Router, private storage: MyStorageService) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const authorization = this.storage.get('token');
+    const userId = this.storage.get('userid');
     const authReq = req.clone({
       headers: req.headers
-        .set('Authorization', '11111111')
+        .set('Authorization', authorization)
+        .set('userid', userId)
         .set('Content-Type', 'application/json;charset=UTF-8')
       , url: this.backend + req.url
     });
@@ -30,10 +35,13 @@ export class Interceptor implements HttpInterceptor {
             }
             break;
           case 401:
-            console.log('error:401');
+            this.router.navigate(['login']);
             break;
           case 400:
-            console.log('error:400');
+            alert('服务器开小差了~');
+            break;
+          case 504:
+            alert('服务器开小差了~');
             break;
           default:
             console.log('error');

@@ -1,9 +1,15 @@
-<div class="login">
-  <div class="row">
-    <label>帐号：<input type="text" [(ngModel)]="user.loginid"></label>
+<form [formGroup]="loginForm" (submit)="login()" novalidate>
+  <div class="login">
+    <div class="row">
+      <label>帐号：<input type="text"
+                       [ngClass]="{'error':loginForm.get('loginid').dirty && loginForm.hasError('required','loginid')}"
+                       formControlName="loginid"></label>
+    </div>
+    <div class="row">
+      <label>密码：<input type="password"
+                       [ngClass]="{'error':loginForm.get('password').dirty && loginForm.hasError('required','password')}"
+                       formControlName="password"></label>
+    </div>
+    <button class="btn-login" type="submit" [disabled]="!loginForm.valid">登录</button>
   </div>
-  <div class="row">
-    <label>密码：<input type="text" [ngModel]="user.password"></label>
-  </div>
-  <div class="btn-login" (click)="login()">登录</div>
-</div>
+</form>

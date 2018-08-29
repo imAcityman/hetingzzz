@@ -11,7 +11,7 @@ import { MenstruationComponent } from './router/layout/menstruation/menstruation
 import {Interceptor} from './service/Interceptor.service';
 import { BoardComponent } from './router/layout/board/board.component';
 import { BigDateComponent } from './router/layout/big-date/big-date.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngularWebStorageModule} from 'angular-web-storage';
 
 @NgModule({
@@ -29,6 +29,7 @@ import {AngularWebStorageModule} from 'angular-web-storage';
     rootRouterModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularWebStorageModule
   ],
   providers: [{

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {MyStorageServiceService} from '../../service/my.storage.service.service';
+import {MyStorageService} from '../../service/my.storage.service';
 import {RequestService} from '../../service/request.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,27 +11,34 @@ import {RequestService} from '../../service/request.service';
 })
 export class LoginComponent implements OnInit {
 
-  user;
+  loginForm: FormGroup;
 
-  constructor(private router: Router, private storage: MyStorageServiceService, private request: RequestService) {
+  constructor(private router: Router, private storage: MyStorageService, private request: RequestService, private fb: FormBuilder) {
+  }
 
+  createForm() {
+    this.loginForm = this.fb.group({
+      loginid: [this.storage.get('loginid'), [Validators.required]],
+      password: [this.storage.get('password'), [Validators.required]]
+    });
   }
 
   login() {
-    this.request.post('/user/login', this.user).subscribe((data) => {
+    this.request.post('/auth/login', this.loginForm.value).subscribe((data) => {
       if (data.code === 1) {
-        this.storage.set('loginid', this.user.loginid);
-        this.storage.set('password', this.user.password);
+        this.storage.set('loginid', this.loginForm.value.loginid);
+        this.storage.set('password', this.loginForm.value.password);
+        this.storage.set('token', data.data.token);
+        this.storage.set('userid', data.data.userid);
         this.router.navigate(['layout']);
+      } else {
+        alert(data.msg);
       }
     });
   }
 
   ngOnInit() {
-    this.user = {
-      loginid: this.storage.get('loginid'),
-      password: this.storage.get('password')
-    };
+    this.createForm();
   }
 
 }
