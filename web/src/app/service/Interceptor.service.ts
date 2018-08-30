@@ -28,11 +28,13 @@ export class Interceptor implements HttpInterceptor {
       if (event instanceof HttpResponse) {
         switch (event.status) {
           case 200:
-            if (event.body['code'] !== -1) {
+            if (event.body['code'] === 1 || event.body['code'] === 0 ) { /***请求正常***/
               return event;
-            } else if (event.body['code'] === -1) {
+            } else if (event.body['code'] === -1) { /***请求报错***/
               alert(event.body['msg']);
               throw event.body['msg'];
+            } else if (event.body['code'] === 401) { /***登录超时***/
+              this.router.navigate(['login']);
             }
             break;
           case 401:
