@@ -4,11 +4,12 @@ import {Observable} from 'rxjs';
 import 'rxjs-compat/add/operator/map';
 import {Router} from '@angular/router';
 import {MyStorageService} from './my.storage.service';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
-  private backend = '/hetingzzz';
+  private backend = environment.apiHost;
 
   constructor(private router: Router, private storage: MyStorageService) {
   }
