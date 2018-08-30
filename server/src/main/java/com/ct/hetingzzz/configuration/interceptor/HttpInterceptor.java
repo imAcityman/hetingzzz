@@ -4,12 +4,18 @@ import com.ct.hetingzzz.configuration.JWT.JWT;
 import com.ct.hetingzzz.domain.LoginUser;
 import com.ct.hetingzzz.util.HttpUtil;
 import com.ct.hetingzzz.util.ParamUtil;
+import com.ct.hetingzzz.util.Response;
+import com.ct.hetingzzz.util.ResponseStatus;
 import org.apache.http.HttpStatus;
+import org.json.JSONObject;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import static com.ct.hetingzzz.util.CommonParams.TOKEN_NAME;
 import static com.ct.hetingzzz.util.CommonParams.USER_ID;
@@ -22,15 +28,16 @@ public class HttpInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         String token = HttpUtil.getToken();
         String userId = request.getHeader(USER_ID);
+
         //登录失效
-        if(ParamUtil.isEmpty(token,userId)){
-            response.setStatus(HttpStatus.SC_UNAUTHORIZED);
+        if (ParamUtil.isEmpty(token, userId)) {
+            unauthorized(response);
             return false;
         }
-        LoginUser loginUser = JWT.unsign(token,LoginUser.class);
+        LoginUser loginUser = JWT.unsign(token, LoginUser.class);
         //登录失效
-        if(null == loginUser){
-            response.setStatus(HttpStatus.SC_UNAUTHORIZED);
+        if (null == loginUser) {
+            unauthorized(response);
             return false;
         }
         //todo:权限验证
@@ -48,5 +55,16 @@ public class HttpInterceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object o, Exception e) throws Exception {
 
+    }
+
+    private void unauthorized(HttpServletResponse response) throws IOException {
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("code",ResponseStatus.UNAUTHORIZED);
+        jsonObject.put("msg","授权失败");
+        PrintWriter out = response.getWriter();
+        out.print(jsonObject.toString());
+        out.flush();
     }
 }
