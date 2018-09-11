@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static com.ct.hetingzzz.util.CommonParams.TOKEN_NAME;
 import static com.ct.hetingzzz.util.CommonParams.USER_ID;
 
 public class HttpInterceptor implements HandlerInterceptor {
@@ -31,14 +30,12 @@ public class HttpInterceptor implements HandlerInterceptor {
 
         //登录失效
         if (ParamUtil.isEmpty(token, userId)) {
-            unauthorized(response);
-            return false;
+            return unauthorized();
         }
         LoginUser loginUser = JWT.unsign(token, LoginUser.class);
         //登录失效
         if (null == loginUser) {
-            unauthorized(response);
-            return false;
+            return unauthorized();
         }
         //todo:权限验证
         String servletPath = request.getServletPath();
@@ -57,7 +54,8 @@ public class HttpInterceptor implements HandlerInterceptor {
 
     }
 
-    private void unauthorized(HttpServletResponse response) throws IOException {
+    private boolean unauthorized() throws IOException {
+        HttpServletResponse response = HttpUtil.getResponse();
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         JSONObject jsonObject = new JSONObject();
@@ -66,5 +64,6 @@ public class HttpInterceptor implements HandlerInterceptor {
         PrintWriter out = response.getWriter();
         out.print(jsonObject.toString());
         out.flush();
+        return false;
     }
 }
