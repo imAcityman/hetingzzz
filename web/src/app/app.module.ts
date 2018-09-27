@@ -13,6 +13,7 @@ import { BoardComponent } from './router/layout/board/board.component';
 import { BigDateComponent } from './router/layout/big-date/big-date.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngularWebStorageModule} from 'angular-web-storage';
+import { PictureWallComponent } from './router/layout/picture-wall/picture-wall.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {AngularWebStorageModule} from 'angular-web-storage';
     LoginComponent,
     MenstruationComponent,
     BoardComponent,
-    BigDateComponent
+    BigDateComponent,
+    PictureWallComponent
   ],
   imports: [
     BrowserModule,
