@@ -14,6 +14,7 @@ import { BigDateComponent } from './router/layout/big-date/big-date.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngularWebStorageModule} from 'angular-web-storage';
 import { PictureWallComponent } from './router/layout/picture-wall/picture-wall.component';
+import { LoadingComponent } from './component/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PictureWallComponent } from './router/layout/picture-wall/picture-wall.
     MenstruationComponent,
     BoardComponent,
     BigDateComponent,
-    PictureWallComponent
+    PictureWallComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

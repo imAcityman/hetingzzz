@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {MyStorageService} from '../../service/my.storage.service';
 import {RequestService} from '../../service/request.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {LoadingService} from '../../component/loading/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    LoadingService.open();
     this.request.post('/auth/login', this.loginForm.value).subscribe((data) => {
+      LoadingService.close();
       if (data.code === 1) {
         this.storage.set('loginid', this.loginForm.value.loginid);
         this.storage.set('password', this.loginForm.value.password);
