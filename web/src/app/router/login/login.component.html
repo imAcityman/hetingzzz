@@ -1,8 +1,8 @@
 <form [formGroup]="loginForm" (submit)="login()" class="form-login" novalidate>
-  <div class="title">CT-ZONE<img src="../assets/image/love.png"></div>
   <div class="login">
+    <div class="title">CT-ZONE<img src="../assets/image/love.png"></div>
     <div class="row">
-      <label>帐号</label>
+      <label style="color: white">帐号</label>
       <div class="input-box">
         <input type="text"
                [ngClass]="{'error':loginForm.get('loginid').dirty && loginForm.hasError('required',['loginid'])}"
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="row">
-      <label>密码</label>
+      <label style="color: black">密码</label>
       <div class="input-box">
         <input type="password"
                [ngClass]="{'error':loginForm.get('password').dirty && loginForm.hasError('required',['password'])}"

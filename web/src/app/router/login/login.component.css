@@ -7,18 +7,21 @@
   -webkit-flex-direction: column;
   -webkit-align-content: center;
   -webkit-justify-content: center;
-  padding-top: 4rem;
+  height: 100%;
+  background: url(login-bg.jpg) no-repeat center;
+  background-size: 100%;
 }
 
 .title{
   text-align: center;
   font-size: 50px;
+  color: white;
 }
 .title img{
   padding-left: 0.5333333333333333rem;
 }
 .login {
-
+  margin-top: -3rem;
 }
 .input-box{
   border: 1px solid #cccccc;
@@ -27,10 +30,15 @@
   border-radius: 0.13333333333333333rem;
   margin-top: 0.13333333333333333rem;
 }
+.love{
+  background: url("../../../assets/image/love.png") no-repeat center;
+  background-size: 40px;
+}
 .login .row {
   width: 80%;
   padding-top: 0.06666666666666667rem;
   margin: 0.3666666666666666rem auto;
+  opacity: 0.9;
 }
 .login .row label{
   font-weight: 400;
@@ -52,7 +60,7 @@
   text-align: center;
   border-radius: 0.16rem;
   display: block;
-  background-color: pink;
+  background-color: #ff0074;
   border: 1px #e0a4ac solid;
   margin-top: 0.26666666666666666rem;
 }
