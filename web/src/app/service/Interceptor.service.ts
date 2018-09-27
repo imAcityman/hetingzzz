@@ -46,6 +46,9 @@ export class Interceptor implements HttpInterceptor {
           case 504:
             alert('服务器开小差了~');
             break;
+          case 404:
+            alert('服务器开小差了~');
+            break;
           default:
             console.log('error');
         }

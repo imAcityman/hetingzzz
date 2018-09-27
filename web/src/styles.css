@@ -1,5 +1,8 @@
-*{
-  font-family: 微软雅黑;
+html,body{
+  height: 100%;
+}
+body{
+  font-family: Eina,Helvetica Neue,Helvetica,sans-serif;
 }
 
 ul,li{ padding:0;margin:0;list-style:none}
