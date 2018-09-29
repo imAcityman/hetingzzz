@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static com.ct.hetingzzz.util.CommonParams.USER_ID;
+
 public class HttpInterceptor implements HandlerInterceptor {
 
 
@@ -18,8 +20,9 @@ public class HttpInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         String token = HttpUtil.getToken();
+        String userId = request.getHeader(USER_ID);
         //登录失效
-        if (ParamUtil.isEmpty(token)) {
+        if (ParamUtil.isEmpty(token,userId)) {
             response.setStatus(HttpStatus.SC_UNAUTHORIZED);
             return false;
         }
@@ -31,6 +34,11 @@ public class HttpInterceptor implements HandlerInterceptor {
         }
         //todo:权限验证
         String servletPath = request.getServletPath();
+        //抓包的弱智
+        if (!userId.equals(loginUser.getUserId().toString())) {
+            response.setStatus(HttpStatus.SC_FORBIDDEN);
+            return false;
+        }
         return true;
     }
 
