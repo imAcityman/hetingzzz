@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
       if (data.code === 1) {
         this.storage.set('loginid', this.loginForm.value.loginid);
         this.storage.set('password', this.loginForm.value.password);
-        this.storage.set('token', data.data.token);
-        this.storage.set('userid', data.data.userid);
+        this.storage.setToken(data.data.token);
+        this.storage.setUserId(data.data.userid);
         this.router.navigate(['layout']);
       } else {
         alert(data.msg);

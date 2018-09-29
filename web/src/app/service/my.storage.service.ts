@@ -8,6 +8,7 @@ import {tokenName} from '@angular/compiler';
 export class MyStorageService {
 
   private static tokenName = 'authorization';
+  private static userIdName = 'userId';
   private static preRouterName = 'preRouter';
   private static afterRouterName = 'afterRouter';
 
@@ -44,6 +45,10 @@ export class MyStorageService {
     this.set(MyStorageService.tokenName, token);
   }
 
+  setUserId(userId: string) {
+    this.set(MyStorageService.userIdName, userId);
+  }
+
   setPreRouter(preRouterName: string) {
     this.set(MyStorageService.preRouterName, preRouterName);
   }
@@ -54,6 +59,10 @@ export class MyStorageService {
 
   getToken(): string {
     return this.get(MyStorageService.tokenName);
+  }
+
+  getUserId(): string {
+    return this.get(MyStorageService.userIdName);
   }
 
   getPreRouter(): string {

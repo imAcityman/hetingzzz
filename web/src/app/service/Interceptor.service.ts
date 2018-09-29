@@ -22,7 +22,7 @@ export class Interceptor implements HttpInterceptor {
     if (event instanceof TimeoutError) {
       LoadingService.close();
       alert('请求超时咯~');
-      return of('请求超时咯~');
+      return;
     }
     // 业务处理：一些通用操作
     switch (event.status) {
@@ -36,18 +36,23 @@ export class Interceptor implements HttpInterceptor {
         alert('登录超时，请重新登录');
         this.router.navigate(['login']);
         break;
+      case 403: // 抓包的傻逼
+        LoadingService.close();
+        alert('抓包的，你妈死了');
+        this.router.navigate(['login']);
+        break;
       case 404:
         LoadingService.close();
         alert('资源没找到哟~');
-        return throwError('服务器去体检了~');
+        break;
       case 500:
         LoadingService.close();
         alert('服务器开小差了~');
-        return throwError('服务器去体检了~');
+        break;
       case 504:
         LoadingService.close();
         alert('服务器去体检了~');
-        return throwError('服务器去体检了~');
+        break;
       default:
         return of(event);
     }
@@ -55,10 +60,12 @@ export class Interceptor implements HttpInterceptor {
 
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<| HttpHeaderResponse | HttpResponse<any>> {
-    const authorization = this.storage.get('authorization');
+    const token = this.storage.getToken();
+    const userId = this.storage.getUserId();
     const authReq = req.clone({
       headers: req.headers
-        .set('Authorization', authorization)
+        .set('Authorization', token)
+        .set('userid', userId)
         .set('Content-Type', 'application/json;charset=UTF-8')
       , url: this.backend + req.url
     });
@@ -68,7 +75,7 @@ export class Interceptor implements HttpInterceptor {
           return this.handleData(event);
         }
         return of(event);
-      }), timeout(30000), catchError((err: HttpErrorResponse & TimeoutError) => this.handleData(err)));
+      }), timeout(3000), catchError((err: HttpErrorResponse & TimeoutError) => this.handleData(err)));
 
   }
 

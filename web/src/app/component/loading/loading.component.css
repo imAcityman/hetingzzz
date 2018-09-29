@@ -15,15 +15,31 @@
   bottom: 0;
   top: 0;
   z-index: 10001;
-  -webkit-animation: goin 0.1s ease-in;
-  -o-animation: goin 0.1s ease-in;
-  animation: goin 0.1s ease-in;
+  -webkit-animation: goin 0.3s forwards ;
+  -o-animation: goin 0.3s forwards ;
+  animation: goin 0.3s forwards ;
+  opacity: 0;
+}
+
+@-webkit-keyframes goin {
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes goin {
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes goin {
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes goin {
-  0% {
-    opacity: 0;
-  }
   100% {
     opacity: 1;
   }
