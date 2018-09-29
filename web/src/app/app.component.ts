@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
+import {NavigationEnd, NavigationStart, Router} from '@angular/router';
+import {MyStorageService} from './service/my.storage.service';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +8,18 @@ import {NavigationEnd, Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router) {
+  constructor(private router: Router, private storage: MyStorageService) {
 
   }
 
   ngOnInit(): void {
     this.router.events
       .subscribe((event) => {
-        if (event instanceof NavigationEnd) { // 当导航成功结束时执行
-          console.log('NavigationEnd:', event);
+        if (event instanceof NavigationStart) { // 开始切路由
+          this.storage.setPreRouter(event.url);
+        }
+        if (event instanceof NavigationEnd) { // 路由切换结束
+          this.storage.setAfterRouter(event.url);
         }
       });
   }

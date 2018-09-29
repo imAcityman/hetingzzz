@@ -1,10 +1,15 @@
 import {Injectable} from '@angular/core';
 import {LocalStorageService} from 'angular-web-storage';
+import {tokenName} from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MyStorageService {
+
+  private static tokenName = 'authorization';
+  private static preRouterName = 'preRouter';
+  private static afterRouterName = 'afterRouter';
 
   constructor(private localStorage: LocalStorageService) {
   }
@@ -31,6 +36,32 @@ export class MyStorageService {
 
   clear() {
     this.localStorage.clear();
+  }
+
+
+  // 业务相关
+  setToken(token: string) {
+    this.set(MyStorageService.tokenName, token);
+  }
+
+  setPreRouter(preRouterName: string) {
+    this.set(MyStorageService.preRouterName, preRouterName);
+  }
+
+  setAfterRouter(afterRouterName: string) {
+    this.set(MyStorageService.afterRouterName, afterRouterName);
+  }
+
+  getToken(): string {
+    return this.get(MyStorageService.tokenName);
+  }
+
+  getPreRouter(): string {
+    return this.get(MyStorageService.preRouterName);
+  }
+
+  getAfterRouter(): string {
+    return this.get(MyStorageService.afterRouterName);
   }
 
 }
