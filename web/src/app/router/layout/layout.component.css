@@ -14,12 +14,12 @@
   padding: 0 0.4rem;
   border-top: 0.013333333333333334rem solid #e0a4ac;
   border-bottom: 0.013333333333333334rem solid #e0a4ac;
-  background-color: pink;
+  background-color: rgba(255,192,203,0.8);
   box-sizing: border-box;
   color: white;
 }
 .header li.selected{
-  background-color: #e6aab3;
+  background-color: rgba(230,170,179,0.8);
 }
 .content{
   padding: 0.13333333333333333rem;
