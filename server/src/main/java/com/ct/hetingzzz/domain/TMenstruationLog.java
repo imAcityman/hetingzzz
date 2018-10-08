@@ -2,8 +2,7 @@ package com.ct.hetingzzz.domain;
 
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -14,7 +13,7 @@ public class TMenstruationLog {
   private long userid;
   private Date menstruationTime;
   private String remark;
-  private Timestamp createtime;
+  private Date createtime;
 
   public void setId(int id) {
     this.id = id;
@@ -64,11 +63,11 @@ public class TMenstruationLog {
 
   @Basic
   @Column(name = "createtime", nullable = false)
-  public Timestamp getCreatetime() {
+  public Date getCreatetime() {
     return createtime;
   }
 
-  public void setCreatetime(Timestamp createtime) {
+  public void setCreatetime(Date createtime) {
     this.createtime = createtime;
   }
 
