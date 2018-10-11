@@ -1,27 +1,20 @@
 package com.ct.hetingzzz.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "t_message_boad", schema = "heting", catalog = "")
-@JsonIgnoreProperties({"deleteuserid"})
 public class TMessageBoad {
-    private int id;
+    private long id;
     private String content;
-    private long userid;
+    private long targetuserid;
     private int state;
     private long deleteuserid;
     private Date createtime;
     private Date updatetime;
-    private Integer replyid;
-    private long targetuserid;
     private TSysUser user;
-
 
     @OneToOne(targetEntity = TSysUser.class)
     @JoinColumn(name = "userid", referencedColumnName = "id")
@@ -32,14 +25,13 @@ public class TMessageBoad {
     public void setUser(TSysUser user) {
         this.user = user;
     }
-
     @Id
     @Column(name = "id", nullable = false)
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -54,13 +46,13 @@ public class TMessageBoad {
     }
 
     @Basic
-    @Column(name = "userid", nullable = false, insertable = false, updatable = false)
-    public long getUserid() {
-        return userid;
+    @Column(name = "targetuserid", nullable = false)
+    public long getTargetuserid() {
+        return targetuserid;
     }
 
-    public void setUserid(long userid) {
-        this.userid = userid;
+    public void setTargetuserid(long targetuserid) {
+        this.targetuserid = targetuserid;
     }
 
     @Basic
@@ -103,43 +95,22 @@ public class TMessageBoad {
         this.updatetime = updatetime;
     }
 
-    @Basic
-    @Column(name = "replyid", nullable = true)
-    public Integer getReplyid() {
-        return replyid;
-    }
-
-    public void setReplyid(Integer replyid) {
-        this.replyid = replyid;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TMessageBoad that = (TMessageBoad) o;
         return id == that.id &&
-                userid == that.userid &&
+                targetuserid == that.targetuserid &&
                 state == that.state &&
                 deleteuserid == that.deleteuserid &&
                 Objects.equals(content, that.content) &&
                 Objects.equals(createtime, that.createtime) &&
-                Objects.equals(updatetime, that.updatetime) &&
-                Objects.equals(replyid, that.replyid);
+                Objects.equals(updatetime, that.updatetime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, content, userid, state, deleteuserid, createtime, updatetime, replyid);
-    }
-
-    @Basic
-    @Column(name = "targetuserid", nullable = false)
-    public long getTargetuserid() {
-        return targetuserid;
-    }
-
-    public void setTargetuserid(long targetuserid) {
-        this.targetuserid = targetuserid;
+        return Objects.hash(id, content, targetuserid, state, deleteuserid, createtime, updatetime);
     }
 }

@@ -1,6 +1,7 @@
 package com.ct.hetingzzz.controller;
 
 import com.ct.hetingzzz.domain.TMessageBoad;
+import com.ct.hetingzzz.domain.TSysUser;
 import com.ct.hetingzzz.service.TBigdateService;
 import com.ct.hetingzzz.service.TMenstruationLogService;
 import com.ct.hetingzzz.service.TMessageBoadService;
@@ -63,7 +64,10 @@ public class UserController {
             return new Response(ResponseStatus.FAIL, "参数错误");
         }
         long userid = Contants.getUserId();
-        messageBoad.setUserid(userid);
+        messageBoad.setTargetuserid(userid);
+        TSysUser sysUser = new TSysUser();
+        sysUser.setId(userid);
+        messageBoad.setUser(sysUser);
         messageBoad.setCreatetime(new Date());
         messageBoadService.save(messageBoad);
         return new Response(ResponseStatus.SUCCESS, "留言成功！");

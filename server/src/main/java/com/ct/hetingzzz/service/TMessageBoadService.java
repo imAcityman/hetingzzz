@@ -2,8 +2,6 @@ package com.ct.hetingzzz.service;
 
 import com.ct.hetingzzz.domain.TMessageBoad;
 import com.ct.hetingzzz.repostory.TMessageBoadRepository;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
