@@ -13,7 +13,7 @@ import java.util.List;
 public interface TMessageBoadRepository extends JpaRepository<TMessageBoad, Long>, JpaSpecificationExecutor<TMessageBoad> {
     Page<TMessageBoad> findAll(Pageable pageable);
 
-    <S extends TMessageBoad> List<S> findAllByTargetuserid(@Param("targetuserid")long targetuserid);
+    <S extends TMessageBoad> List<S> findAllByTargetuseridOrderByCreatetimeDesc(@Param("targetuserid")long targetuserid);
 
     @Override
     <S extends TMessageBoad> S save(S s);

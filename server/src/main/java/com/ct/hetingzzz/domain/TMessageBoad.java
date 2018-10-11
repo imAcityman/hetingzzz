@@ -20,21 +20,17 @@ public class TMessageBoad {
     private Date updatetime;
     private Integer replyid;
     private long targetuserid;
+    private TSysUser user;
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+
+    @OneToOne(targetEntity = TSysUser.class)
+    @JoinColumn(name = "userid", referencedColumnName = "id")
+    public TSysUser getUser() {
+        return user;
     }
 
-    public void setDeleteuserid(Integer deleteuserid) {
-        this.deleteuserid = deleteuserid;
-    }
-
-    public void setCreatetime(Timestamp createtime) {
-        this.createtime = createtime;
-    }
-
-    public void setUpdatetime(Timestamp updatetime) {
-        this.updatetime = updatetime;
+    public void setUser(TSysUser user) {
+        this.user = user;
     }
 
     @Id
@@ -58,7 +54,7 @@ public class TMessageBoad {
     }
 
     @Basic
-    @Column(name = "userid", nullable = false)
+    @Column(name = "userid", nullable = false, insertable = false, updatable = false)
     public long getUserid() {
         return userid;
     }

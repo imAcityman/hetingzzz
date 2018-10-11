@@ -22,6 +22,6 @@ public class TMessageBoadService {
     }
 
     public List<TMessageBoad> findAll(long userid) {
-        return tMessageBoadRepository.findAllByTargetuserid(userid);
+        return tMessageBoadRepository.findAllByTargetuseridOrderByCreatetimeDesc(userid);
     }
 }

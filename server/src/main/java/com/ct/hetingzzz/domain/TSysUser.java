@@ -1,13 +1,15 @@
 package com.ct.hetingzzz.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.List;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "t_sys_user", schema = "heting", catalog = "")
+@JsonIgnoreProperties({"roleId","loginid","password","createtime","updatetime"})
 public class TSysUser {
 
     private long id;
@@ -15,8 +17,8 @@ public class TSysUser {
     private long roleId;
     private String loginid;
     private String password;
-    private Timestamp createtime;
-    private Timestamp updatetime;
+    private Date createtime;
+    private Date updatetime;
 
     public void setId(int id) {
         this.id = id;
@@ -83,22 +85,22 @@ public class TSysUser {
 
     @Basic
     @Column(name = "createtime", nullable = false)
-    public Timestamp getCreatetime() {
+    public Date getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Timestamp createtime) {
+    public void setCreatetime(Date createtime) {
         this.createtime = createtime;
     }
 
 
     @Basic
     @Column(name = "updatetime", nullable = true)
-    public Timestamp getUpdatetime() {
+    public Date getUpdatetime() {
         return updatetime;
     }
 
-    public void setUpdatetime(Timestamp updatetime) {
+    public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
     }
 
