@@ -11,7 +11,7 @@ import {MyStorageService} from '../../../service/my.storage.service';
 })
 export class BoardComponent implements OnInit {
 
-  private isWrite = false;
+  isWrite = false;
   messageList = [];
   message = {
     content: '',
