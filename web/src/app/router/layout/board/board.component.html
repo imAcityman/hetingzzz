@@ -1,1 +1,41 @@
-<p>尽情期待~~</p>
+<div class="mask-layer" [ngClass]="{'hide':!isWrite}" (click)="hideWrite()"></div>
+<div class="write" (click)="writeMessage()">留下印记</div>
+
+<div>
+  <ul class="list" *ngIf="messageList.length > 0">
+    <li *ngFor="let item of messageList">
+      <div class="head">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539254202095&di=3a079e03557584797fa3c60af1bee5cf&imgtype=0&src=http%3A%2F%2Fs15.sinaimg.cn%2Forignal%2F4d39712a786938ff9017e">
+      </div>
+      <div class="body">
+        <div class="name">
+          死黑皮
+          <!--{{ item.user.name}}-->
+        </div>
+        <div class="time">
+          <!--10月08日 12:12-->
+          {{item.createtime|date:'MM月dd日 HH:mm'}}
+        </div>
+        <p class="content">{{item.content}}</p>
+      </div>
+    </li>
+  </ul>
+  <ul class="nomessage" *ngIf="messageList.length < 0">
+    <li>
+      您的留言板空空如也~
+    </li>
+  </ul>
+</div>
+
+<div class="box" [ngClass]="{'up':isWrite}">
+  <form (submit)="submit()">
+    <div class="pd">
+      <label for="content"></label>
+      <textarea autofocus id="content" maxlength="100" name="content" [(ngModel)]="message.content" placeholder="写点什么吧 ..."></textarea>
+      <div class="btn">
+        <span class="number">{{message.content.length||0}} / 100</span>
+        <button type="submit">留言</button>
+      </div>
+    </div>
+  </form>
+</div>

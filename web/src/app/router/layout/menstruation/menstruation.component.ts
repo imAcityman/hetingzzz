@@ -4,6 +4,7 @@ import {HttpParams} from '@angular/common/http';
 import * as moment from 'moment';
 import {Router} from '@angular/router';
 import {LoadingService} from '../../../component/loading/loading.service';
+import {CommonparamService} from '../../../service/commonparam.service';
 
 @Component({
   selector: 'app-menstruation',
@@ -21,7 +22,7 @@ export class MenstruationComponent implements OnInit {
 
   getMenstruation() {
     this.request.get('/user/getMenstruation', new HttpParams()).subscribe((data) => {
-      if (data.code === 1) {
+      if (data.code === CommonparamService.SUCCESS) {
         if (data.data.length > 0) {
           this.menstruationList = data.data;
           this.expectDate = moment(data.data[0].menstruationTime).add(30, 'day').format('MM月DD日');
@@ -35,7 +36,7 @@ export class MenstruationComponent implements OnInit {
   setToday() {
     this.request.get('/user/setTodayMenstruation', new HttpParams()).subscribe((data) => {
       alert(data.msg);
-      if (data.code === 1) {
+      if (data.code === CommonparamService.SUCCESS) {
         this.ngOnInit();
       }
     });

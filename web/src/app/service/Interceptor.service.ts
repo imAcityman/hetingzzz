@@ -7,6 +7,7 @@ import {MyStorageService} from './my.storage.service';
 import {environment} from '../../environments/environment';
 import {LoadingService} from '../component/loading/loading.service';
 import {catchError, mergeMap, timeout} from 'rxjs/operators';
+import {CommonparamService} from './commonparam.service';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
@@ -25,6 +26,9 @@ export class Interceptor implements HttpInterceptor {
       return;
     }
     // 业务处理：一些通用操作
+    if (event.status !== 200) {
+      LoadingService.close();
+    }
     switch (event.status) {
       case 200:
         if (event instanceof HttpResponse) {
@@ -32,25 +36,20 @@ export class Interceptor implements HttpInterceptor {
         }
         break;
       case 401: // 未登录状态码
-        LoadingService.close();
         alert('登录超时，请重新登录');
         this.router.navigate(['login']);
         break;
       case 403: // 抓包的傻逼
-        LoadingService.close();
         alert('抓包的，你妈死了');
         this.router.navigate(['login']);
         break;
       case 404:
-        LoadingService.close();
         alert('资源没找到哟~');
         break;
       case 500:
-        LoadingService.close();
         alert('服务器开小差了~');
         break;
       case 504:
-        LoadingService.close();
         alert('服务器去体检了~');
         break;
       default:
@@ -72,11 +71,14 @@ export class Interceptor implements HttpInterceptor {
     return next.handle(authReq)
       .pipe(mergeMap((event: any) => {
         if (event instanceof HttpResponse && event.status === 200) {
+          if (event.body.code === CommonparamService.ERROR) {
+            alert(event.body.msg);
+            return throwError(event.body.msg);
+          }
           return this.handleData(event);
         }
         return of(event);
-      }), timeout(3000), catchError((err: HttpErrorResponse & TimeoutError) => this.handleData(err)));
-
+      }), timeout(30000), catchError((err: HttpErrorResponse & TimeoutError) => this.handleData(err)));
   }
 
 }
