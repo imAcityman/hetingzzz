@@ -4,10 +4,12 @@
   <li routerLink="bigDate" routerLinkActive="selected">重要日期</li>
 </ul>
 <div class="content">
-  <router-outlet></router-outlet>
+  <div class="ne">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 
-<ul class="bottom">
+<ul class="bottom" *ngIf="!hide">
   <li>我的</li>
   <li>照片墙</li>
   <li>尽情期待</li>

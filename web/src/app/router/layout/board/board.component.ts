@@ -3,6 +3,7 @@ import {RequestService} from '../../../service/request.service';
 import {CommonparamService} from '../../../service/commonparam.service';
 import {LoadingService} from '../../../component/loading/loading.service';
 import {MyStorageService} from '../../../service/my.storage.service';
+import {MessageService} from '../../../service/message.service';
 
 @Component({
   selector: 'app-board',
@@ -20,10 +21,12 @@ export class BoardComponent implements OnInit {
 
   writeMessage() {
     this.isWrite = true;
+    this.messageService.sendMessage(true);
   }
 
   hideWrite() {
     this.isWrite = false;
+    this.messageService.sendMessage(false);
   }
 
   submit() {
@@ -54,7 +57,7 @@ export class BoardComponent implements OnInit {
     });
   }
 
-  constructor(private request: RequestService, private storage: MyStorageService) {
+  constructor(private request: RequestService, private storage: MyStorageService, private messageService: MessageService) {
   }
 
   ngOnInit() {

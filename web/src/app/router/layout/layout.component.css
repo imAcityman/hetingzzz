@@ -26,12 +26,18 @@
 }
 
 .content {
-  position: relative;
+  position: fixed;
   padding: 0.13333333333333333rem;
-  margin-top: 1.0666666666666667rem;
-  height: calc(100% - 2.4rem);
+  top: 1.0666666666666667rem;
+  left: 0;
+  height: calc(100% - 1.2rem);
   width: calc(100% - 0.26666666666666666rem);
   overflow-y: auto;
+  z-index: 5;
+}
+
+.content .ne {
+  position: relative;
 }
 
 .bottom {
@@ -41,6 +47,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
+  z-index: 1;
 }
 
 .bottom li {
@@ -54,5 +61,4 @@
   background-color: pink;
   box-sizing: border-box;
   color: white;
-  z-index: 1;
 }

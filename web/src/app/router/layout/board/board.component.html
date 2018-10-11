@@ -29,7 +29,7 @@
   <form (submit)="submit()">
     <div class="pd">
       <label for="content"></label>
-      <textarea autofocus id="content" maxlength="100" name="content" [(ngModel)]="message.content" placeholder="写点什么吧 ..."></textarea>
+      <textarea id="content" maxlength="100" name="content" [(ngModel)]="message.content" placeholder="写点什么吧 ..."></textarea>
       <div class="btn">
         <span class="number">{{message.content.length||0}} / 100</span>
         <button type="submit">留言</button>
