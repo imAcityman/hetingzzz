@@ -18,8 +18,6 @@ public class TSysUser {
     private Timestamp createtime;
     private Timestamp updatetime;
 
-    private List<TMenstruationLog> MenstruationLogs;
-
     public void setId(int id) {
         this.id = id;
     }
@@ -116,16 +114,6 @@ public class TSysUser {
                 Objects.equals(password, tSysUser.password) &&
                 Objects.equals(createtime, tSysUser.createtime) &&
                 Objects.equals(updatetime, tSysUser.updatetime);
-    }
-
-//    @OneToMany
-//    @JoinTable(name = "t_menstruation_log",joinColumns = {@JoinColumn(name = "id", referencedColumnName = "userid")})
-//    public List<TMenstruationLog> getMenstruationLogs() {
-//        return MenstruationLogs;
-//    }
-
-    public void setMenstruationLogs(List<TMenstruationLog> menstruationLogs) {
-        MenstruationLogs = menstruationLogs;
     }
 
     @Override
