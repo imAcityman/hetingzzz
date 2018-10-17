@@ -47,7 +47,7 @@
       <label class="reply-people grey" for="content" *ngIf="replyName">@{{replyName}}</label>
       <textarea id="content" maxlength="200" name="content" [(ngModel)]="message.content"
                 [placeholder]="placeholder"></textarea>
-      <div class="btn">
+      <div class="btn-write">
         <span class="number">{{message.content.length||0}} / 200</span>
         <button type="submit">留言</button>
       </div>
