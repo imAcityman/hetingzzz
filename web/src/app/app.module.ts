@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngularWebStorageModule} from 'angular-web-storage';
 import { PictureWallComponent } from './router/layout/picture-wall/picture-wall.component';
 import { LoadingComponent } from './component/loading/loading.component';
+import { MineComponent } from './router/layout/mine/mine.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { LoadingComponent } from './component/loading/loading.component';
     BoardComponent,
     BigDateComponent,
     PictureWallComponent,
-    LoadingComponent
+    LoadingComponent,
+    MineComponent
   ],
   imports: [
     BrowserModule,

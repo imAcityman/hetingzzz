@@ -27,7 +27,7 @@ export class MenstruationComponent implements OnInit {
           this.menstruationList = data.data;
           this.expectDate = moment(data.data[0].menstruationTime).add(30, 'day').format('MM月DD日');
         } else {
-          this.expectDate = '请设置您上一次大姨妈日期';
+          this.expectDate = '请先设置';
         }
       }
     });

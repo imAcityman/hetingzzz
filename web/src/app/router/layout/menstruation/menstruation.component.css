@@ -38,5 +38,5 @@
   margin-top: 0.4rem;
   display: inherit;
   font-size: 0.4rem;
-  text-decoration: underline;
+  text-decoration: underline!important;
 }
