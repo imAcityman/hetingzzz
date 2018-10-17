@@ -1,7 +1,12 @@
 package com.ct.hetingzzz.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -9,12 +14,48 @@ import java.util.Objects;
 public class TMessageBoad {
     private long id;
     private String content;
-    private long targetuserid;
     private int state;
     private long deleteuserid;
     private Date createtime;
     private Date updatetime;
     private TSysUser user;
+    private TSysUser targetuser;
+    private List<TMessageBoad> replies;
+    @JsonIgnore
+    private TMessageBoad fatherMessage;
+
+    @ManyToOne(targetEntity = TMessageBoad.class)
+    @JoinColumn(name = "replyid", referencedColumnName = "id")
+    public TMessageBoad getFatherMessage() {
+        return fatherMessage;
+    }
+
+    public void setFatherMessage(TMessageBoad fatherMessage) {
+        this.fatherMessage = fatherMessage;
+    }
+
+    @OneToMany(targetEntity = TMessageBoad.class)
+    @OrderBy("createtime asc ")
+    @BatchSize(size=10)
+    @Where(clause = "state = 1")
+    @JoinColumn(name = "replyid", referencedColumnName = "id")
+    public List<TMessageBoad> getReplies() {
+        return replies;
+    }
+
+    public void setReplies(List<TMessageBoad> replies) {
+        this.replies = replies;
+    }
+
+    @OneToOne(targetEntity = TSysUser.class)
+    @JoinColumn(name = "targetuserid", referencedColumnName = "id")
+    public TSysUser getTargetuser() {
+        return targetuser;
+    }
+
+    public void setTargetuser(TSysUser targetuser) {
+        this.targetuser = targetuser;
+    }
 
     @OneToOne(targetEntity = TSysUser.class)
     @JoinColumn(name = "userid", referencedColumnName = "id")
@@ -43,16 +84,6 @@ public class TMessageBoad {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    @Basic
-    @Column(name = "targetuserid", nullable = false)
-    public long getTargetuserid() {
-        return targetuserid;
-    }
-
-    public void setTargetuserid(long targetuserid) {
-        this.targetuserid = targetuserid;
     }
 
     @Basic
@@ -101,7 +132,6 @@ public class TMessageBoad {
         if (o == null || getClass() != o.getClass()) return false;
         TMessageBoad that = (TMessageBoad) o;
         return id == that.id &&
-                targetuserid == that.targetuserid &&
                 state == that.state &&
                 deleteuserid == that.deleteuserid &&
                 Objects.equals(content, that.content) &&
@@ -111,6 +141,6 @@ public class TMessageBoad {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, content, targetuserid, state, deleteuserid, createtime, updatetime);
+        return Objects.hash(id, content, state, deleteuserid, createtime, updatetime);
     }
 }

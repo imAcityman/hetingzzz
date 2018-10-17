@@ -19,14 +19,7 @@ public class TSysUser {
     private String password;
     private Date createtime;
     private Date updatetime;
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
+    private String imagehead;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -38,7 +31,6 @@ public class TSysUser {
         this.id = id;
     }
 
-
     @Basic
     @Column(name = "name", nullable = false, length = 255)
     public String getName() {
@@ -49,9 +41,8 @@ public class TSysUser {
         this.name = name;
     }
 
-
     @Basic
-    @Column(name = "roleId", nullable = false)
+    @Column(name = "role_id", nullable = false)
     public long getRoleId() {
         return roleId;
     }
@@ -59,7 +50,6 @@ public class TSysUser {
     public void setRoleId(long roleId) {
         this.roleId = roleId;
     }
-
 
     @Basic
     @Column(name = "loginid", nullable = false, length = 100)
@@ -71,7 +61,6 @@ public class TSysUser {
         this.loginid = loginid;
     }
 
-
     @Basic
     @Column(name = "password", nullable = false, length = 255)
     public String getPassword() {
@@ -81,7 +70,6 @@ public class TSysUser {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     @Basic
     @Column(name = "createtime", nullable = false)
@@ -93,7 +81,6 @@ public class TSysUser {
         this.createtime = createtime;
     }
 
-
     @Basic
     @Column(name = "updatetime", nullable = true)
     public Date getUpdatetime() {
@@ -102,6 +89,16 @@ public class TSysUser {
 
     public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
+    }
+
+    @Basic
+    @Column(name = "imagehead", nullable = true, length = 500)
+    public String getImagehead() {
+        return imagehead;
+    }
+
+    public void setImagehead(String imagehead) {
+        this.imagehead = imagehead;
     }
 
     @Override

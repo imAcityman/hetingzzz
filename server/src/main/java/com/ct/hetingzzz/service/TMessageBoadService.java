@@ -19,7 +19,11 @@ public class TMessageBoadService {
         return tMessageBoadRepository.save(messageBoad);
     }
 
-    public List<TMessageBoad> findAll(long userid) {
-        return tMessageBoadRepository.findAllByTargetuseridOrderByCreatetimeDesc(userid);
+    public List<TMessageBoad> findAll() {
+        return tMessageBoadRepository.findAllByStateAndFatherMessageIsNullOrderByCreatetimeDesc(1);
+    }
+
+    public void deleteMessage(long id,long deleteUserid){
+        tMessageBoadRepository.update2Delete(id,deleteUserid);
     }
 }
