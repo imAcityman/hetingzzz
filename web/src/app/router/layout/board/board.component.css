@@ -7,7 +7,11 @@
   color: white;
   background-color: #ffa0a6;
   z-index: 2;
+  -webkit-box-shadow: 1px 1px 20px pink;
+  -moz-box-shadow: 1px 1px 20px pink;
+  box-shadow: 1px 1px 20px pink;
 }
+
 .box {
   -webkit-box-shadow: 0 0 0.26666666666666666rem pink;
   -moz-box-shadow: 0 0 0.26666666666666666rem pink;
@@ -25,31 +29,43 @@
   transition: all 0.3s;
   background-color: white;
 }
+
 .box.up {
   bottom: 0;
 }
+
 .box .pd {
   padding: 0.26666666666666666rem;
 }
+
 .box .pd #content {
   width: 100%;
   height: 4rem;
   outline: 0;
   border-bottom: 0.013333333333333334rem solid pink;
 }
+
+.box .pd .reply-people {
+  display: block;
+  padding: 5px 0;
+}
+
 .box .btn {
   text-align: right;
   padding-top: 0.2rem;
 }
+
 .box .btn button[type=submit] {
   padding: 0.13333333333333333rem 0.6666666666666666rem;
   background-color: pink;
   color: white;
   border-radius: 0.13333333333333333rem;
 }
+
 .box .number {
   margin-right: 0.26666666666666666rem;
 }
+
 .mask-layer {
   position: fixed;
   top: 0;
@@ -58,25 +74,30 @@
   height: 100%;
   z-index: 2;
 }
+
 .list {
   padding: 0.06666666666666667rem;
 }
-.list li{
+
+.list .item {
   padding: 0.4rem 0;
   border-bottom: 0.013333333333333334rem dashed pink;
 }
-.list li .head{
+
+.list .item .head {
   width: 20%;
   display: inline-block;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.list li .head img{
+
+.list .item .head img {
   width: 1.3333333333333333rem;
   height: 1.3333333333333333rem;
 }
-.list li .body{
+
+.list .item .body {
   width: 80%;
   vertical-align: top;
   display: inline-block;
@@ -84,19 +105,52 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.list li .body .content{
+
+.list .item .body .content {
   margin-top: 0.26666666666666666rem;
-  font-size: 0.4rem;
+  font-size: 0.42rem;
 }
-.list li .body .name{
+
+.list .item .body .name {
   color: cornflowerblue;
   font-size: 0.4rem;
 }
-.list li .body .time{
+
+.list .item .body .time {
   color: #cccccc;
   margin-top: 0.13333333333333333rem;
 }
-.nomessage li{
+
+.list .item .body .reply {
+  padding-top: 10px;
+  font-size: 26px;
+}
+
+.list .item .body .reply:after {
+  clear: both;
+  display: block;
+  content: '';
+}
+
+.list .item .body .reply .reply-body{
+  padding: 3px 10px 3px 0;
+}
+
+.list .item .body .reply .reply-name {
+  color: cornflowerblue;
+}
+
+.list .item .body .reply .reply-content {
+  -ms-word-break: break-all;
+  word-break: break-all;
+}
+
+.list .item .body .btn-group{
+  text-align: right;
+  margin-top: 10px;
+}
+
+.nomessage li {
   text-align: center;
   padding: 2.6666666666666665rem 0;
   font-size: 0.5333333333333333rem;

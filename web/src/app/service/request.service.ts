@@ -8,6 +8,9 @@ import {Observable} from 'rxjs';
 export class RequestService {
 
   static buildHttpParam(params: any): HttpParams {
+    if (!params) {
+      return null;
+    }
     let httpParams = new HttpParams();
     for (const key of Object.keys(params)) {
       httpParams = httpParams.append(key, params[key]);

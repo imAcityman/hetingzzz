@@ -1,4 +1,4 @@
-<ul class="header">
+<ul class="header" [ngClass]="{menuHide:TOP}">
   <li routerLink="menstruation" routerLinkActive="selected">大姨妈</li>
   <li routerLink="board" routerLinkActive="selected">留言板</li>
   <li routerLink="bigDate" routerLinkActive="selected">重要日期</li>
@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<ul class="bottom" *ngIf="!hide">
+<ul class="bottom" [ngClass]="{menuHide:BOTTOM}">
   <li>我的</li>
   <li>照片墙</li>
   <li>尽情期待</li>

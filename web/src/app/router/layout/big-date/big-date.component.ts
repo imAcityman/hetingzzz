@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
 import {RequestService} from '../../../service/request.service';
 import {HttpParams} from '@angular/common/http';
-import {CommonparamService} from '../../../service/commonparam.service';
+import {CommonparamService} from '../../../util/commonparam.service';
 
 @Component({
   selector: 'app-big-date',

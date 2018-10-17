@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {MessageService} from '../../service/message.service';
+import {CommonparamService} from '../../util/commonparam.service';
 
 @Component({
   selector: 'app-layout',
@@ -9,11 +10,14 @@ import {MessageService} from '../../service/message.service';
 })
 export class LayoutComponent implements OnInit {
 
-  hide = false;
+  TOP = false;
+  BOTTOM = false;
 
   constructor(private title: Title, private messageService: MessageService) {
     messageService.getMessage().subscribe((res) => {
-      this.hide = res;
+      if (res.type === CommonparamService.HIDE_MENU) {
+        this[res.body.menu_type] = res.body.flag;
+      }
     });
   }
 

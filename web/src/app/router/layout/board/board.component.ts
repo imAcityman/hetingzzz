@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RequestService} from '../../../service/request.service';
-import {CommonparamService} from '../../../service/commonparam.service';
+import {CommonparamService} from '../../../util/commonparam.service';
 import {LoadingService} from '../../../component/loading/loading.service';
 import {MyStorageService} from '../../../service/my.storage.service';
 import {MessageService} from '../../../service/message.service';
@@ -13,20 +13,36 @@ import {MessageService} from '../../../service/message.service';
 export class BoardComponent implements OnInit {
 
   isWrite = false;
-  messageList = [];
+  me;
+  messageList;
+  placeholder;
+  replyName;
   message = {
     content: '',
-    targetuserid: ''
+    targetuserid: '',
+    replyid: '',
   };
 
-  writeMessage() {
+  constructor(private request: RequestService, private storage: MyStorageService, private messageService: MessageService) {
+    this.me = this.storage.getUserId();
+  }
+
+  writeMessage(placeholder?, replyName?, replyid?, targetuserid?) {
+    if (placeholder) {
+      this.placeholder = placeholder;
+    } else {
+      this.placeholder = '';
+    }
+    this.message.replyid = replyid || '';
+    this.message.targetuserid = targetuserid || '';
+    this.replyName = replyName || '';
     this.isWrite = true;
-    this.messageService.sendMessage(true);
+    this.messageService.hideBottomMenu();
   }
 
   hideWrite() {
     this.isWrite = false;
-    this.messageService.sendMessage(false);
+    this.messageService.showBottomMenu();
   }
 
   submit() {
@@ -34,7 +50,6 @@ export class BoardComponent implements OnInit {
       alert('请输入留言内容');
       return;
     }
-    this.message.targetuserid = this.storage.getUserId();
     LoadingService.open();
     this.request.post('/user/leaveMessage', this.message).subscribe((res) => {
       LoadingService.close();
@@ -57,7 +72,22 @@ export class BoardComponent implements OnInit {
     });
   }
 
-  constructor(private request: RequestService, private storage: MyStorageService, private messageService: MessageService) {
+  replyMessage(replyid, replyName, targetuserid?) {
+    this.message.content = '';
+    this.writeMessage('', replyName, replyid, targetuserid);
+  }
+
+  deleteMessage(id) {
+    const con = confirm('确定删除这条留言？');
+    if (con) {
+      this.request.get('/user/deleteMessage', {id: id}).subscribe((res) => {
+        LoadingService.close();
+        if (res.code === CommonparamService.SUCCESS) {
+          alert(res.msg);
+          this.getMessage(true);
+        }
+      });
+    }
   }
 
   ngOnInit() {

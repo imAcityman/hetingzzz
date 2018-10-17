@@ -4,7 +4,7 @@ import {HttpParams} from '@angular/common/http';
 import * as moment from 'moment';
 import {Router} from '@angular/router';
 import {LoadingService} from '../../../component/loading/loading.service';
-import {CommonparamService} from '../../../service/commonparam.service';
+import {CommonparamService} from '../../../util/commonparam.service';
 
 @Component({
   selector: 'app-menstruation',
@@ -34,12 +34,15 @@ export class MenstruationComponent implements OnInit {
   }
 
   setToday() {
-    this.request.get('/user/setTodayMenstruation', new HttpParams()).subscribe((data) => {
-      alert(data.msg);
-      if (data.code === CommonparamService.SUCCESS) {
-        this.ngOnInit();
-      }
-    });
+    const res = confirm('确认设置今天为经期？');
+    if (res) {
+      this.request.get('/user/setTodayMenstruation', new HttpParams()).subscribe((data) => {
+        alert(data.msg);
+        if (data.code === CommonparamService.SUCCESS) {
+          this.ngOnInit();
+        }
+      });
+    }
   }
 
   ngOnInit() {

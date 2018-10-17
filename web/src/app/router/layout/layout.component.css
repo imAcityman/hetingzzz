@@ -5,6 +5,14 @@
   top: 0;
   left: 0;
   width: 100%;
+  -webkit-transition: top 0.3s;
+  -moz-transition: top 0.3s;
+  -ms-transition: top 0.3s;
+  -o-transition: top 0.3s;
+  transition: top 0.3s;
+}
+.header.menuHide {
+  top: -1.2rem;
 }
 
 .header li {
@@ -27,10 +35,10 @@
 
 .content {
   position: fixed;
-  padding: 0.13333333333333333rem;
+  padding: 0.13333333333333333rem 0.13333333333333333rem  1.0666666666666667rem 0.13333333333333333rem;
   top: 1.0666666666666667rem;
   left: 0;
-  height: calc(100% - 1.2rem);
+  height: calc(100% - 2.4rem);
   width: calc(100% - 0.26666666666666666rem);
   overflow-y: auto;
   z-index: 5;
@@ -47,7 +55,16 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 6;
+  -webkit-transition: bottom 0.3s;
+  -moz-transition: bottom 0.3s;
+  -ms-transition: bottom 0.3s;
+  -o-transition: bottom 0.3s;
+  transition: bottom 0.3s;
+}
+
+.bottom.menuHide {
+  bottom: -1.2rem;
 }
 
 .bottom li {

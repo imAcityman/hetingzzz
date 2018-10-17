@@ -7,7 +7,7 @@ import {MyStorageService} from './my.storage.service';
 import {environment} from '../../environments/environment';
 import {LoadingService} from '../component/loading/loading.service';
 import {catchError, mergeMap, timeout} from 'rxjs/operators';
-import {CommonparamService} from './commonparam.service';
+import {CommonparamService} from '../util/commonparam.service';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {

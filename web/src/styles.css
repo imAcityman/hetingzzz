@@ -34,27 +34,11 @@ button, input, optgroup, option, select, textarea {
   outline: 0
 }
 
-pre {
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -o-pre-wrap;
-  word-wrap: break-word
-}
-
-hr {
-  height: 1px;
-  margin: 10px 0;
-  border: 0;
-  clear: both
-}
-
 a {
-  color: #333;
-  text-decoration: none
+  text-decoration: none!important;
 }
 
 a:hover {
-  color: #777
 }
 
 a cite {
@@ -65,3 +49,71 @@ a cite {
 .hide{
   display: none!important;
 }
+
+@font-face {
+  font-family: 'iconfont';  /* project id 876907 */
+  src: url('//at.alicdn.com/t/font_876907_b623l6gydkh.eot');
+  src: url('//at.alicdn.com/t/font_876907_b623l6gydkh.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_876907_b623l6gydkh.woff') format('woff'),
+  url('//at.alicdn.com/t/font_876907_b623l6gydkh.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_876907_b623l6gydkh.svg#iconfont') format('svg');
+}
+
+.btn{
+  padding: 5px 15px;
+  border-radius: 5px;
+  text-align: center;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.btn-pink{
+  border: 1px solid #ffa0a6;
+  color: #ffa0a6;
+}
+
+.ht-icon{
+  display: inline-block;
+  font-size: 25px;
+  font-family: iconfont !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-right: 5px;
+}
+
+.ht-icon.icon-delete:before{
+  content: '\e600';
+}
+.ht-icon.icon-message:before{
+  content: '\e63c';
+}
+
+.red {
+  color: #e15f63 !important;
+}
+
+.green {
+  color: #44b549 !important;
+}
+
+.blue {
+  color: #02ABF2 !important;
+}
+
+.yellow {
+  color: #ffb103 !important;
+}
+
+.grey {
+  color: #8d8d8d !important;
+}
+
+.black {
+  color: #222222 !important;
+}
+
+.pink {
+  color: #ffa0a6 !important;
+}
+

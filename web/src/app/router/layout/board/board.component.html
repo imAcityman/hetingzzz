@@ -2,10 +2,10 @@
 <div class="write" (click)="writeMessage()">留下印记</div>
 
 <div>
-  <ul class="list" *ngIf="messageList.length > 0">
-    <li *ngFor="let item of messageList">
+  <ul class="list" *ngIf="messageList && messageList.length > 0">
+    <li class="item" *ngFor="let item of messageList">
       <div class="head">
-        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539254202095&di=3a079e03557584797fa3c60af1bee5cf&imgtype=0&src=http%3A%2F%2Fs15.sinaimg.cn%2Forignal%2F4d39712a786938ff9017e">
+        <img [src]="item.user.imagehead">
       </div>
       <div class="body">
         <div class="name">
@@ -15,10 +15,26 @@
           {{item.createtime|date:'MM月dd日 HH:mm'}}
         </div>
         <p class="content">{{item.content}}</p>
+        <ul class="reply" *ngIf="item.replies.length > 0">
+          <li *ngFor="let reply of item.replies">
+            <p class="reply-body" (click)="replyMessage(item.id,reply.user.name,reply.user.id)">
+              <a class="reply-name">{{reply.user.name}}:</a><a class="reply-name" *ngIf="reply.targetuser">@{{reply.targetuser.name}}</a>
+              <span class="reply-content">{{reply.content}}</span>
+            </p>
+          </li>
+        </ul>
+        <div class="btn-group">
+          <a class="btn btn-pink" href="javascript:;" (click)="replyMessage(item.id,item.user.name)">
+            <i class="ht-icon icon-message"></i>回复
+          </a>
+          <a class="btn btn-pink" href="javascript:;" *ngIf="me == item.user.id" (click)="deleteMessage(item.id)">
+            <i class="ht-icon icon-delete"></i>删除
+          </a>
+        </div>
       </div>
     </li>
   </ul>
-  <ul class="nomessage" *ngIf="messageList.length <= 0">
+  <ul class="nomessage" *ngIf="messageList && messageList.length <= 0">
     <li>
       您的留言板空空如也~
     </li>
@@ -28,10 +44,11 @@
 <div class="box" [ngClass]="{'up':isWrite}">
   <form (submit)="submit()">
     <div class="pd">
-      <label for="content"></label>
-      <textarea id="content" maxlength="100" name="content" [(ngModel)]="message.content" placeholder="写点什么吧 ..."></textarea>
+      <label class="reply-people grey" for="content" *ngIf="replyName">@{{replyName}}</label>
+      <textarea id="content" maxlength="200" name="content" [(ngModel)]="message.content"
+                [placeholder]="placeholder"></textarea>
       <div class="btn">
-        <span class="number">{{message.content.length||0}} / 100</span>
+        <span class="number">{{message.content.length||0}} / 200</span>
         <button type="submit">留言</button>
       </div>
     </div>

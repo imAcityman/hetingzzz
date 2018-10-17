@@ -40,8 +40,25 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  autoLogin() {
+    LoadingService.open();
+    this.request.post('/auth/autoLogin').subscribe((data) => {
+      if (data.code === 1) {
+        setTimeout(() => {
+          LoadingService.close();
+          this.router.navigate(['layout']);
+        }, 1000);
+      } else {
+        LoadingService.close();
+      }
+    });
+  }
+
   ngOnInit() {
     this.createForm();
+    if (this.storage.getToken()) {
+      this.autoLogin();
+    }
   }
 
 }
