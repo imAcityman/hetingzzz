@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # demo
 
-to see the demo <a href='http://ruozhi.hetingzzz.com'>http://ruozhi.hetingzzz.com</a>
+to see the demo <a href='http://ruozhi.hetingzzz.com'>http://ruozhi.hetingzzz.com</a> with development model
 
 ## Development server
 
