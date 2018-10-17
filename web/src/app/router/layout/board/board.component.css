@@ -47,7 +47,7 @@
 
 .box .pd .reply-people {
   display: block;
-  padding: 5px 0;
+  padding: 0.06666666666666667rem 0;
 }
 
 .box .btn-write {
@@ -107,7 +107,7 @@
 }
 
 .list .item .body .content {
-  margin-top: 0.26666666666666666rem;
+  margin: 0.26666666666666666rem 0;
   font-size: 0.42rem;
 }
 
@@ -122,7 +122,7 @@
 }
 
 .list .item .body .reply {
-  padding-top: 10px;
+  padding-top: 0.13333333333333333rem;
   font-size: 26px;
 }
 
@@ -133,26 +133,23 @@
 }
 
 .list .item .body .reply .reply-body{
-  padding: 3px 10px 3px 0;
+  padding: 0.04rem 0.13333333333333333rem 0.04rem 0;
 }
-
 .list .item .body .reply .reply-name {
   color: cornflowerblue;
 }
-
 .list .item .body .reply .reply-content {
   -ms-word-break: break-all;
   word-break: break-all;
 }
-
 .list .item .body .reply .remove-reply{
-  margin-left: 10px;
+  margin-left: 0.13333333333333333rem;
 }
-
 .list .item .body .btn-group{
   text-align: right;
-  margin-top: 10px;
+  margin-top: 0.13333333333333333rem;
 }
+
 
 .nomessage li {
   text-align: center;

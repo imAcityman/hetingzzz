@@ -60,11 +60,11 @@ a cite {
 }
 
 .btn{
-  padding: 5px 15px;
-  border-radius: 5px;
+  padding: 0.06666666666666667rem 0.2rem;
+  border-radius: 0.06666666666666667rem;
   text-align: center;
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 0.13333333333333333rem;
 }
 
 .btn-pink{
@@ -79,7 +79,7 @@ a cite {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin-right: 5px;
+  margin-right: 0.06666666666666667rem;
 }
 
 .ht-icon.icon-delete:before{
