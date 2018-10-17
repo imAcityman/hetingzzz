@@ -16,6 +16,6 @@ public class TBigdateService {
     private TBigdateRepository tBigdateRepository;
 
     public List<TBigdate> getBigDate(long userid){
-        return tBigdateRepository.findAllByUseridOrderById(userid);
+        return tBigdateRepository.findAll();
     }
 }
