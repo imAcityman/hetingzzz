@@ -1,5 +1,5 @@
 <div class="mask-layer" [ngClass]="{'hide':!isWrite}" (click)="hideWrite()"></div>
-<div class="write" (click)="writeMessage()">留下印记</div>
+<div class="write" (click)="writeMessage('写点什么吧 ...')">留下印记</div>
 
 <div>
   <ul class="list" *ngIf="messageList && messageList.length > 0">
@@ -17,9 +17,13 @@
         <p class="content">{{item.content}}</p>
         <ul class="reply" *ngIf="item.replies.length > 0">
           <li *ngFor="let reply of item.replies">
-            <p class="reply-body" (click)="replyMessage(item.id,reply.user.name,reply.user.id)">
-              <a class="reply-name">{{reply.user.name}}:</a><a class="reply-name" *ngIf="reply.targetuser">@{{reply.targetuser.name}}</a>
-              <span class="reply-content">{{reply.content}}</span>
+            <p class="reply-body">
+              <span (click)="replyMessage(item.id,reply.user.name,reply.user.id)">
+                <a class="reply-name">{{reply.user.name}}:</a>
+                <a class="reply-name" *ngIf="reply.targetuser">@{{reply.targetuser.name}}</a>
+                <span class="reply-content">{{reply.content}}</span>
+              </span>
+              <a class="blue remove-reply" *ngIf="me == reply.user.id" (click)="deleteMessage(reply.id)">删除</a>
             </p>
           </li>
         </ul>

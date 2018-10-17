@@ -145,6 +145,10 @@
   word-break: break-all;
 }
 
+.list .item .body .reply .remove-reply{
+  margin-left: 10px;
+}
+
 .list .item .body .btn-group{
   text-align: right;
   margin-top: 10px;
