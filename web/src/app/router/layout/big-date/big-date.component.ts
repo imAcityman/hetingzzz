@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import {RequestService} from '../../../service/request.service';
 import {HttpParams} from '@angular/common/http';
 import {CommonparamService} from '../../../util/commonparam.service';
+import {LoadingService} from '../../../component/loading/loading.service';
 
 @Component({
   selector: 'app-big-date',
@@ -21,7 +22,9 @@ export class BigDateComponent implements OnInit {
   }
 
   getBigDate() {
+    LoadingService.open();
     this.request.get('/user/getBigDate').subscribe(res => {
+      LoadingService.close();
       if (res.code === CommonparamService.SUCCESS) {
         this.dates = res.data;
       }

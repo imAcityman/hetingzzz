@@ -1,12 +1,14 @@
-<div class="next">
-  <div class="forecast">经期预测</div>
-  <div class="date">{{expectDate}}</div>
-  <a class="set" (click)="setToday()">设置今天</a>
+<div class="father-container">
+  <div class="next">
+    <div class="forecast">经期预测</div>
+    <div class="date">{{expectDate}}</div>
+    <a class="set" (click)="setToday()">设置今天</a>
+  </div>
+  <div class="header">大姨妈记录</div>
+  <ul class="list" *ngIf="menstruationList.length>0">
+    <li class="item" *ngFor="let item of menstruationList">{{item.menstruationTime| date: 'yyyy-MM-dd'}}</li>
+  </ul>
+  <ul class="list" *ngIf="menstruationList.length<=0">
+    <li class="item">暂时没有记录</li>
+  </ul>
 </div>
-<div class="header">大姨妈记录</div>
-<ul class="list" *ngIf="menstruationList.length>0">
-  <li class="item" *ngFor="let item of menstruationList">{{item.menstruationTime| date: 'yyyy-MM-dd'}}</li>
-</ul>
-<ul class="list" *ngIf="menstruationList.length<=0">
-  <li class="item">暂时没有记录</li>
-</ul>

@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: center;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -10,6 +10,7 @@
   -ms-transition: top 0.3s;
   -o-transition: top 0.3s;
   transition: top 0.3s;
+  z-index: 2;
 }
 .header.menuHide {
   top: -1.2rem;
@@ -34,28 +35,30 @@
 }
 
 .content {
-  position: fixed;
-  padding: 0.13333333333333333rem 0.13333333333333333rem  1.0666666666666667rem 0.13333333333333333rem;
-  top: 1.0666666666666667rem;
+  position: absolute;
+  padding: 1.2rem 0 1.2rem 0;
+  top: 0;
   left: 0;
   height: calc(100% - 2.4rem);
-  width: calc(100% - 0.26666666666666666rem);
+  width: 100%;
   overflow-y: auto;
-  z-index: 5;
+  z-index: 1;
 }
 
 .content .ne {
   position: relative;
+  height: 100%;
+  overflow: hidden;
 }
 
 .bottom {
   display: flex;
   justify-content: center;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 6;
+  z-index: 2;
   -webkit-transition: bottom 0.3s;
   -moz-transition: bottom 0.3s;
   -ms-transition: bottom 0.3s;

@@ -3,7 +3,6 @@ import {RequestService} from '../../../service/request.service';
 import {CommonparamService} from '../../../util/commonparam.service';
 import {LoadingService} from '../../../component/loading/loading.service';
 import {MyStorageService} from '../../../service/my.storage.service';
-import {MessageService} from '../../../service/message.service';
 
 @Component({
   selector: 'app-board',
@@ -23,7 +22,7 @@ export class BoardComponent implements OnInit {
     replyid: '',
   };
 
-  constructor(private request: RequestService, private storage: MyStorageService, private messageService: MessageService) {
+  constructor(private request: RequestService, private storage: MyStorageService) {
     this.me = this.storage.getUserId();
   }
 
@@ -37,12 +36,10 @@ export class BoardComponent implements OnInit {
     this.message.targetuserid = targetuserid || '';
     this.replyName = replyName || '';
     this.isWrite = true;
-    this.messageService.hideBottomMenu();
   }
 
   hideWrite() {
     this.isWrite = false;
-    this.messageService.showBottomMenu();
   }
 
   submit() {

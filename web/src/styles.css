@@ -118,3 +118,9 @@ a cite {
   color: #ffa0a6 !important;
 }
 
+.father-container{
+  background-color: white;
+  padding: 0.12rem;
+  height: 100%;
+  overflow: hidden;
+}

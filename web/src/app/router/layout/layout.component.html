@@ -4,8 +4,10 @@
   <li routerLink="bigDate" routerLinkActive="selected">重要日期</li>
 </ul>
 <div class="content">
-  <div class="ne">
-    <router-outlet></router-outlet>
+  <div class="ne" [@routeAnimation]="routerStateCode">
+    <div style="position: relative;height: 100%">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
 
