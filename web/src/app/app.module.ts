@@ -16,6 +16,7 @@ import {AngularWebStorageModule} from 'angular-web-storage';
 import { PictureWallComponent } from './router/layout/picture-wall/picture-wall.component';
 import { LoadingComponent } from './component/loading/loading.component';
 import { MineComponent } from './router/layout/mine/mine.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MineComponent } from './router/layout/mine/mine.component';
     MineComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     RouterModule,
     rootRouterModule,

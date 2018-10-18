@@ -1,10 +1,11 @@
 html,body{
   height: 100%;
+  overflow: hidden;
 }
 body{
   font-family: Eina,Helvetica Neue,Helvetica,sans-serif;
   -webkit-overflow-scrolling: touch;
-  overflow: hidden;
+  overflow-scrolling: touch;
 }
 
 blockquote, body, button, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul {
