@@ -10,6 +10,8 @@ import com.ct.hetingzzz.util.Contants;
 import com.ct.hetingzzz.util.ParamUtil;
 import com.ct.hetingzzz.util.Response;
 import com.ct.hetingzzz.util.ResponseStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +24,7 @@ import java.util.List;
 @RequestMapping("user")
 public class UserController {
 
+    private Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Resource
     private UserService userService;
