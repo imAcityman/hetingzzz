@@ -3,7 +3,6 @@ import {RequestService} from '../../../service/request.service';
 import {HttpParams} from '@angular/common/http';
 import * as moment from 'moment';
 import {Router} from '@angular/router';
-import {LoadingService} from '../../../component/loading/loading.service';
 import {CommonparamService} from '../../../util/commonparam.service';
 
 @Component({

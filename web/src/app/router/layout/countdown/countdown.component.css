@@ -1,0 +1,49 @@
+.container{
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+.wedding-pic{
+  width: 100%;
+}
+.container .word{
+  flex: 1;
+  width: 100%;
+  text-align: center;
+  font-size: 110px;
+  margin-top: 70px;
+  line-height: 130px;
+}
+@font-face
+{
+  font-family: myFont;
+  src: url('../../../../assets/font/rageItalic.TTF'),
+  url('../../../../assets/font/rageItalic.TTF');
+}
+@font-face
+{
+  font-family: myFont;
+  src: url('../../../../assets/font/rageItalic.TTF'),
+  url('../../../../assets/font/rageItalic.TTF');
+  font-weight: bold;
+}
+.container .word .first{
+  color: #e12204;
+  font-family: myFont;
+}
+.container .word .second{
+  letter-spacing: 10px;
+  font-size: 60px;
+  color: #ff5713;
+}
+.container .word .second .number{
+  color: #e12204;
+  font-family: myFont;
+  font-weight: bolder;
+  background: url("../../../../assets/image/love-o.png") no-repeat center;
+  background-size: 100% 100%;
+  padding: 35px;
+}

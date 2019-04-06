@@ -36,10 +36,10 @@
 
 .content {
   position: absolute;
-  padding: 1.2rem 0 1.2rem 0;
+  padding: 1.0666666666666667rem 0;
   top: 0;
   left: 0;
-  height: calc(100% - 2.4rem);
+  height: calc(100% - 2.133333333333334rem);
   width: 100%;
   overflow-y: auto;
   z-index: 1;
@@ -73,12 +73,18 @@
 .bottom li {
   width: 33.3%;
   height: 1.0666666666666667rem;
-  line-height: 1.0666666666666667rem;
-  text-align: center;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0 0.4rem;
   border-top: 0.013333333333333334rem solid #e0a4ac;
   border-bottom: 0.013333333333333334rem solid #e0a4ac;
   background-color: pink;
   box-sizing: border-box;
   color: white;
+}
+
+.menu-tip{
+  height: 38px;
 }

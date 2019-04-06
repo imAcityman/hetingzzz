@@ -17,6 +17,7 @@ import { PictureWallComponent } from './router/layout/picture-wall/picture-wall.
 import { LoadingComponent } from './component/loading/loading.component';
 import { MineComponent } from './router/layout/mine/mine.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CountdownComponent } from './router/layout/countdown/countdown.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BigDateComponent,
     PictureWallComponent,
     LoadingComponent,
-    MineComponent
+    MineComponent,
+    CountdownComponent
   ],
   imports: [
     BrowserAnimationsModule,

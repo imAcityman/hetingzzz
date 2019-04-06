@@ -10,6 +10,7 @@ import {MenstruationComponent} from './router/layout/menstruation/menstruation.c
 import {BoardComponent} from './router/layout/board/board.component';
 import {BigDateComponent} from './router/layout/big-date/big-date.component';
 import {MineComponent} from './router/layout/mine/mine.component';
+import {CountdownComponent} from './router/layout/countdown/countdown.component';
 // 引入挂载到路由上的组件
 // 配置一个路由数组
 const rootRouterConfig: Routes = [
@@ -21,7 +22,8 @@ const rootRouterConfig: Routes = [
       {path: 'menstruation', component: MenstruationComponent},
       {path: 'board', component: BoardComponent},
       {path: 'bigDate', component: BigDateComponent},
-      {path: 'mine', component: MineComponent}
+      {path: 'mine', component: MineComponent},
+      {path: 'countdown', component: CountdownComponent}
     ]
   }
 
