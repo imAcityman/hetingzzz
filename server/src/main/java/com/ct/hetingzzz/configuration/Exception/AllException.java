@@ -24,6 +24,7 @@ public class AllException {
     @ExceptionHandler(value=Exception.class)
     @ResponseBody
     public Response exception(Exception e){
+        System.out.println("##################报错了#####################");
         e.printStackTrace();
         HttpServletRequest request = HttpUtil.getRequest();
         Map map = request.getParameterMap();
