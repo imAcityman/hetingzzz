@@ -1,4 +1,4 @@
-.form-login{
+.form-login {
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
@@ -12,35 +12,40 @@
   background-size: 100%;
 }
 
-.title{
+.title {
   text-align: center;
   font-size: 50px;
   color: white;
 }
-.title img{
-  padding-left: 0.5333333333333333rem;
+
+.title img {
+  padding-left: 10px;
 }
+
 .login {
   margin-top: -3rem;
 }
-.input-box{
+
+.input-box {
   border: 1px solid #cccccc;
   background-color: white;
-  padding: 0.26666666666666666rem 0.5333333333333333rem;
-  border-radius: 0.13333333333333333rem;
-  margin-top: 0.13333333333333333rem;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
-.love{
+
+.love {
   background: url("../../../assets/image/love.png") no-repeat center;
   background-size: 40px;
 }
+
 .login .row {
   width: 80%;
-  padding-top: 0.06666666666666667rem;
-  margin: 0.3666666666666666rem auto;
+  padding-top: 10px;
+  margin: 10px auto;
   opacity: 0.9;
 }
-.login .row label{
+
+.login .row label {
   font-weight: 400;
   font-size: 0.4rem;
 }
@@ -48,30 +53,32 @@
 .login .row input {
   width: 100%;
   margin: auto;
-  font-size: 0.4rem;
+  font-size: 16px;
 }
 
 .btn-login {
   width: 100%;
-  height: 1.2666666666666666rem;
-  padding: 0.13333333333333333rem 0;
-  font-size: 40px;
+  padding: 2px 0;
+  font-size: 20px;
   color: white;
   text-align: center;
-  border-radius: 0.16rem;
+  border-radius: 5px;
   display: block;
   background-color: #ff0074;
   border: 1px #e0a4ac solid;
-  margin-top: 0.26666666666666666rem;
+  margin-top: 5px;
 }
-.btn-login:active{
+
+.btn-login:active {
   background-color: #ffa0a6;
 }
-*:disabled{
+
+*:disabled {
   color: #cccccc;
   background-color: white;
   border: 1px #cccccc solid;
 }
-.error{
-  border-color: #ff0074!important;
+
+.error {
+  border-color: #ff0074 !important;
 }

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.config.json",
+    "start": "ng serve --host=192.168.88.99 --proxy-config proxy.config.json",
     "build": "ng build --prod --aot --build-optimizer",
     "test": "ng test",
     "lint": "ng lint",
@@ -22,6 +22,8 @@
     "angular-web-storage": "^9.0.0",
     "core-js": "^2.5.4",
     "moment": "^2.22.2",
+    "ng-zorro-antd": "^9.1.2",
+    "ng-zorro-antd-mobile": "^2.0.1",
     "rxjs": "^6.5.5",
     "rxjs-compat": "^6.0.0",
     "tslib": "^1.10.0",

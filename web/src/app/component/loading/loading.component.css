@@ -6,8 +6,8 @@
 }
 
 .loading-style-4 {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   position: fixed;
   margin: auto;
   left: 0;
@@ -47,8 +47,8 @@
 
 .loading-style-4 span {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: pink;
   position: absolute;
@@ -117,7 +117,7 @@
 .loading-style-4 span:nth-child(1) {
   left: 0;
   top: 50%;
-  margin-top: -10px;
+  margin-top: -5px;
   -webkit-animation-delay: 0.13s;
   -moz-animation-delay: 0.13s;
   -ms-animation-delay: 0.13s;
@@ -126,8 +126,8 @@
 }
 
 .loading-style-4 span:nth-child(2) {
-  left: 14px;
-  top: 14px;
+  left: 7px;
+  top: 7px;
   -webkit-animation-delay: 0.26s;
   -moz-animation-delay: 0.26s;
   -ms-animation-delay: 0.26s;
@@ -138,7 +138,7 @@
 .loading-style-4 span:nth-child(3) {
   left: 50%;
   top: 0;
-  margin-left: -10px;
+  margin-left: -5px;
   -webkit-animation-delay: 0.39s;
   -moz-animation-delay: 0.39s;
   -ms-animation-delay: 0.39s;
@@ -147,8 +147,8 @@
 }
 
 .loading-style-4 span:nth-child(4) {
-  top: 14px;
-  right: 14px;
+  top: 7px;
+  right: 7px;
   -webkit-animation-delay: 0.52s;
   -moz-animation-delay: 0.52s;
   -ms-animation-delay: 0.52s;
@@ -159,7 +159,7 @@
 .loading-style-4 span:nth-child(5) {
   right: 0;
   top: 50%;
-  margin-top: -10px;
+  margin-top: -5px;
   -webkit-animation-delay: 0.65s;
   -moz-animation-delay: 0.65s;
   -ms-animation-delay: 0.65s;
@@ -168,8 +168,8 @@
 }
 
 .loading-style-4 span:nth-child(6) {
-  right: 14px;
-  bottom: 14px;
+  right: 7px;
+  bottom: 7px;
   -webkit-animation-delay: 0.78s;
   -moz-animation-delay: 0.78s;
   -ms-animation-delay: 0.78s;
@@ -180,7 +180,7 @@
 .loading-style-4 span:nth-child(7) {
   bottom: 0;
   left: 50%;
-  margin-left: -10px;
+  margin-left: -5px;
   -webkit-animation-delay: 0.91s;
   -moz-animation-delay: 0.91s;
   -ms-animation-delay: 0.91s;
@@ -189,8 +189,8 @@
 }
 
 .loading-style-4 span:nth-child(8) {
-  bottom: 14px;
-  left: 14px;
+  bottom: 7px;
+  left: 7px;
   -webkit-animation-delay: 1.04s;
   -moz-animation-delay: 1.04s;
   -ms-animation-delay: 1.04s;

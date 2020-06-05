@@ -1,42 +1,50 @@
-.next{
+:host {
+  display: block;
+}
+
+.next {
   text-align: center;
-  padding-top: 0.6666666666666666rem;
+  padding-top: 10px;
   margin: auto;
 }
-.next .forecast{
-  font-size: 0.6666666666666666rem;
+
+.next .forecast {
+  font-size: 16px;
   color: coral;
 }
-.next .date{
+
+.next .date {
   background-color: coral;
-  border-radius: 0.5333333333333333rem;
-  padding: 0.4rem;
-  width: 2rem;
-  margin: 0.26666666666666666rem auto 0 auto;
+  border-radius: 25px;
+  padding: 10px;
+  width: 100px;
+  line-height: 1;
+  margin: 10px auto 0 auto;
   color: white;
   font-size: 0.4rem;
-  height: 0.4rem;
-  line-height: 0.4rem;
 }
-.header{
-  margin-top: 1.3333333333333333rem;
+
+.header {
+  margin-top: 20px;
   color: coral;
-  font-size: 0.4rem;
-  text-indent: 0.6666666666666666rem;
+  font-size: 16px;
 }
-.list{
-  padding: 0.6666666666666666rem 1.3333333333333333rem
+
+.list {
+  padding: 10px 20px;
 }
-.list li{
-  font-size: 0.4rem;
-  padding: 0.06666666666666667rem 0;
+
+.list li {
+  font-size: 16px;
+  padding: 2px 0;
   color: #ff0074;
-  border-bottom: 0.013333333333333334rem dashed #ff0074;
+  border-bottom: 1px dashed #ff0074;
 }
-.set{
+
+.set {
   color: red;
-  margin-top: 0.4rem;
+  margin-top: 20px;
   display: inherit;
-  font-size: 0.4rem;
-  text-decoration: underline!important;
+  font-size: 16px;
+  text-decoration: underline !important;
 }

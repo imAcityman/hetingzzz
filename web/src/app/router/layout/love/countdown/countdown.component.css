@@ -20,14 +20,14 @@
 @font-face
 {
   font-family: myFont;
-  src: url('../../../../assets/font/rageItalic.TTF'),
-  url('../../../../assets/font/rageItalic.TTF');
+  src: url('../../../../../assets/font/rageItalic.TTF'),
+  url('../../../../../assets/font/rageItalic.TTF');
 }
 @font-face
 {
   font-family: myFont;
-  src: url('../../../../assets/font/rageItalic.TTF'),
-  url('../../../../assets/font/rageItalic.TTF');
+  src: url('../../../../../assets/font/rageItalic.TTF'),
+  url('../../../../../assets/font/rageItalic.TTF');
   font-weight: bold;
 }
 .container .word .first{
@@ -43,7 +43,7 @@
   color: #e12204;
   font-family: myFont;
   font-weight: bolder;
-  background: url("../../../../assets/image/love-o.png") no-repeat center;
+  background: url("../../../../../assets/image/love-o.png") no-repeat center;
   background-size: 100% 100%;
   padding: 35px;
 }

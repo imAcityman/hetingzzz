@@ -16,13 +16,14 @@ import {catchError, mergeMap, timeout} from 'rxjs/operators';
 import {ErrorObservable} from 'rxjs-compat/observable/ErrorObservable';
 import {environment} from '../../environments/environment';
 import {CommonparamService} from '../util/commonparam.service';
+import {ToastService} from 'ng-zorro-antd-mobile';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
   private backend = environment.apiHost;
 
-  constructor(private router: Router, private storage: MyStorageService) {
+  constructor(private router: Router, private storage: MyStorageService,private toast: ToastService) {
   }
 
   private handleData(
@@ -59,8 +60,8 @@ export class Interceptor implements HttpInterceptor {
   }
 
   message(msg: string) {
-    // this.message.error(msg);
-    alert(msg);
+    this.toast.fail(msg);
+    // alert(msg);
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<| HttpHeaderResponse | HttpResponse<any>> {

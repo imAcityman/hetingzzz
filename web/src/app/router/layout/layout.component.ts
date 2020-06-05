@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Title} from '@angular/platform-browser';
-import {MessageService} from '../../service/message.service';
-import {CommonparamService} from '../../util/commonparam.service';
-import {NavigationEnd, Router} from '@angular/router';
 import {animate, group, query, style, transition, trigger} from '@angular/animations';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -22,31 +19,32 @@ import {animate, group, query, style, transition, trigger} from '@angular/animat
   ])]
 })
 export class LayoutComponent implements OnInit {
+  selectedIndex = 1;
 
-  TOP = false;
-  BOTTOM = false;
-  routerState = true;
-  routerStateCode = 'active';
-
-  constructor(private title: Title, private messageService: MessageService, private router: Router) {
-    messageService.getMessage().subscribe((res) => {
-      if (res.type === CommonparamService.HIDE_MENU) {
-        this[res.body.menu_type] = res.body.flag;
-      }
-    });
-
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        // 每次路由跳转改变状态
-        this.routerState = !this.routerState;
-        this.routerStateCode = this.routerState ? 'active' : 'inactive';
-      }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    activatedRoute.paramMap.subscribe(({params}: any) => {
+      this.pageChange(params.zoneType);
     });
   }
 
-
-  ngOnInit() {
-    this.title.setTitle('亻可女亭是头犭者');
+  pageChange(zoneType: string) {
+    switch (zoneType) {
+      case 'health':
+        this.selectedIndex = 0;
+        break;
+      case 'love':
+        this.selectedIndex = 1;
+        break;
+      case 'mime':
+        this.selectedIndex = 2;
+        break;
+    }
   }
 
+  tabBarTabOnPress(pressParam: any) {
+    this.router.navigate(['zone', pressParam.key]);
+  }
+
+  ngOnInit(): void {
+  }
 }

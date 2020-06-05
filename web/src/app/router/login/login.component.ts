@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         this.storage.set('password', this.loginForm.value.password);
         this.storage.setToken(data.data.token);
         this.storage.setUserId(data.data.userid);
-        this.router.navigate(['layout']);
+        this.router.navigate(['zone', 'health']);
       } else {
         alert(data.msg);
       }
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       if (data.code === 1) {
         setTimeout(() => {
           LoadingService.close();
-          this.router.navigate(['layout']);
+          this.router.navigate(['zone', 'health']);
         }, 1000);
       } else {
         LoadingService.close();

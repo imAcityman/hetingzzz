@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {RequestService} from '../../../service/request.service';
-import {CommonparamService} from '../../../util/commonparam.service';
-import {LoadingService} from '../../../component/loading/loading.service';
-import {MyStorageService} from '../../../service/my.storage.service';
+import {RequestService} from '../../../../service/request.service';
+import {CommonparamService} from '../../../../util/commonparam.service';
+import {LoadingService} from '../../../../component/loading/loading.service';
+import {MyStorageService} from '../../../../service/my.storage.service';
 
 @Component({
   selector: 'app-board',

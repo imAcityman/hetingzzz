@@ -7,24 +7,17 @@ import {ModuleWithProviders} from '@angular/core';
 import {LoginComponent} from './router/login/login.component';
 import {LayoutComponent} from './router/layout/layout.component';
 import {MenstruationComponent} from './router/layout/menstruation/menstruation.component';
-import {BoardComponent} from './router/layout/board/board.component';
-import {BigDateComponent} from './router/layout/big-date/big-date.component';
+import {BoardComponent} from './router/layout/love/board/board.component';
+import {BigDateComponent} from './router/layout/love/big-date/big-date.component';
 import {MineComponent} from './router/layout/mine/mine.component';
-import {CountdownComponent} from './router/layout/countdown/countdown.component';
+import {CountdownComponent} from './router/layout/love/countdown/countdown.component';
 // 引入挂载到路由上的组件
 // 配置一个路由数组
 const rootRouterConfig: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {
-    path: 'layout', component: LayoutComponent, children: [
-      {path: '', redirectTo: '/layout/menstruation', pathMatch: 'full'},
-      {path: 'menstruation', component: MenstruationComponent},
-      {path: 'board', component: BoardComponent},
-      {path: 'bigDate', component: BigDateComponent},
-      {path: 'mine', component: MineComponent},
-      {path: 'countdown', component: CountdownComponent}
-    ]
+    path: 'zone/:zoneType', component: LayoutComponent
   }
 
 ];

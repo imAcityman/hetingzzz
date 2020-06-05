@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {MyStorageService} from './service/my.storage.service';
+import {NzIconService} from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,10 @@ import {MyStorageService} from './service/my.storage.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router, private storage: MyStorageService) {
-
+  constructor(private router: Router, private storage: MyStorageService, private iconService: NzIconService) {
+    this.iconService.fetchFromIconfont({
+      scriptUrl: '//at.alicdn.com/t/font_876907_pbdsfpicifh.js'
+    });
   }
 
   ngOnInit(): void {
