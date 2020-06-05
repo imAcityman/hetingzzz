@@ -1,16 +1,15 @@
 import {Injectable} from '@angular/core';
 import {LocalStorageService} from 'angular-web-storage';
-import {tokenName} from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MyStorageService {
 
-  private static tokenName = 'authorization';
-  private static userIdName = 'userId';
-  private static preRouterName = 'preRouter';
-  private static afterRouterName = 'afterRouter';
+  static tokenName = 'authorization';
+  static userIdName = 'userId';
+  static preRouterName = 'preRouter';
+  static afterRouterName = 'afterRouter';
 
   constructor(private localStorage: LocalStorageService) {
   }

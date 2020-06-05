@@ -98,6 +98,7 @@
 .list .item .head img {
   width: 1.3333333333333333rem;
   height: 1.3333333333333333rem;
+  border-radius: 50%;
 }
 
 .list .item .body {

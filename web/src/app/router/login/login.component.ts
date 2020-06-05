@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {MyStorageService} from '../../service/my.storage.service';
 import {RequestService} from '../../service/request.service';
@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private router: Router, private storage: MyStorageService, private request: RequestService, private fb: FormBuilder) {
+  constructor(private router: Router, private storage: MyStorageService, private request: RequestService, private fb: FormBuilder,
+              private cdr: ChangeDetectorRef) {
   }
 
   createForm() {
