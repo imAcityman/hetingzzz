@@ -1,17 +1,19 @@
 <TabBar
-  [barTintColor]="'white'"
+  [barTintColor]="'#e2afb8'"
+  [tintColor]="'#ff5f5f'"
+  [unselectedTintColor]="'white'"
   [activeTab]="selectedIndex"
   [tabBarPosition]="'bottom'"
   (onPress)="tabBarTabOnPress($event)"
 >
   <TabBarItem [title]="'健康'" [key]="'health'" [badge]="" [icon]="icon1" [selectedIcon]="icon11">
     <ng-template #icon1>
-      <i nz-icon [nzIconfont]="'icon-health1'"></i>
+      <i nz-icon [nzIconfont]="'icon-health1'" class="not-select"></i>
     </ng-template>
     <ng-template #icon11>
       <i nz-icon [nzIconfont]="'icon-health1'" class="icon-select"></i>
     </ng-template>
-    <div style="background-color: white; height: 100%; text-align: center">
+    <div class="tab-body">
       <app-menstruation *ngIf="selectedIndex === 0"></app-menstruation>
     </div>
   </TabBarItem>
@@ -22,7 +24,7 @@
     <ng-template #icon22>
       <i nz-icon [nzIconfont]="'icon-heart__easyiconnet'" class="icon-select"></i>
     </ng-template>
-    <div style="background-color: white; height: 100%; text-align: center">
+    <div class="tab-body">
       <app-love *ngIf="selectedIndex === 1"></app-love>
     </div>
   </TabBarItem>
@@ -33,10 +35,8 @@
     <ng-template #icon33>
       <i nz-icon [nzIconfont]="'icon-my'" class="icon-select"></i>
     </ng-template>
-    <div style="background-color: white; height: 100%; text-align: center">
+    <div class="tab-body">
       <app-mine *ngIf="selectedIndex === 2"></app-mine>
     </div>
   </TabBarItem>
 </TabBar>
-<ng-template #content>
-</ng-template>

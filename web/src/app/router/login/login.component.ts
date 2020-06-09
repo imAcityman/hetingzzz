@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
       } else {
         alert(data.msg);
       }
+    }, () => {
+      LoadingService.close();
     });
   }
 

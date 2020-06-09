@@ -42,7 +42,7 @@ export class LayoutComponent implements OnInit {
   }
 
   tabBarTabOnPress(pressParam: any) {
-    this.router.navigate(['zone', pressParam.key]);
+    this.router.navigate(['zone', pressParam.key, pressParam.key === 'love' ? 'bigDate' : '']);
   }
 
   ngOnInit(): void {

@@ -41,7 +41,7 @@
 .login .row {
   width: 80%;
   padding-top: 10px;
-  margin: 10px auto;
+  margin: auto;
   opacity: 0.9;
 }
 
@@ -57,6 +57,7 @@
 }
 
 .btn-login {
+  margin-top: 15px;
   width: 100%;
   padding: 2px 0;
   font-size: 20px;
@@ -66,7 +67,6 @@
   display: block;
   background-color: #ff0074;
   border: 1px #e0a4ac solid;
-  margin-top: 5px;
 }
 
 .btn-login:active {

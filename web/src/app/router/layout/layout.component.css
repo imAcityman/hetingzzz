@@ -3,7 +3,16 @@
 }
 
 .icon-select {
-  color: rgb(16, 142, 233)
+  color: #ff5f5f
+}
+
+.not-select {
+  color: white
+}
+
+.tab-body {
+  background-color: white;
+  height: 100%;
 }
 
 ::ng-deep .am-tabs-content-wrap {

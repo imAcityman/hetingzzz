@@ -1,9 +1,10 @@
 .write {
   position: absolute;
-  right: 0.26666666666666666rem;
-  top: 0.3rem;
-  padding: 0.33333333333333333rem;
-  border-radius: 0.5rem;
+  font-size: 12px;
+  right: 10px;
+  top: 10px;
+  padding: 5px;
+  border-radius: 3px;
   color: white;
   background-color: #ffa0a6;
   z-index: 2;
@@ -11,10 +12,12 @@
   -webkit-box-shadow: 1px 1px 20px pink;
   -moz-box-shadow: 1px 1px 20px pink;
 }
-.outer{
+
+.outer {
   height: 100%;
   overflow: auto;
 }
+
 .box {
   -webkit-box-shadow: 0 0 0.26666666666666666rem pink;
   -moz-box-shadow: 0 0 0.26666666666666666rem pink;
@@ -96,8 +99,8 @@
 }
 
 .list .item .head img {
-  width: 1.3333333333333333rem;
-  height: 1.3333333333333333rem;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 
@@ -111,23 +114,23 @@
 }
 
 .list .item .body .content {
-  margin: 0.26666666666666666rem 0;
-  font-size: 0.42rem;
+  margin: 5px 0;
+  font-size: 13px;
 }
 
 .list .item .body .name {
   color: cornflowerblue;
-  font-size: 0.4rem;
+  font-size: 14px;
 }
 
 .list .item .body .time {
   color: #cccccc;
-  margin-top: 0.13333333333333333rem;
+  margin-top: 2px;
 }
 
 .list .item .body .reply {
   padding-top: 0.13333333333333333rem;
-  font-size: 26px;
+  font-size: 13px;
 }
 
 .list .item .body .reply:after {

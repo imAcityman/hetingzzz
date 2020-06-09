@@ -1,9 +1,10 @@
-html,body{
+html, body {
   height: 100%;
   overflow: hidden;
 }
-body{
-  font-family: Eina,Helvetica Neue,Helvetica,sans-serif;
+
+body {
+  font-family: Eina, Helvetica Neue, Helvetica, sans-serif;
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
 }
@@ -15,9 +16,13 @@ blockquote, body, button, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, input, 
   border: none;
 }
 
-ul,li{ padding:0;margin:0;list-style:none}
+ul, li {
+  padding: 0;
+  margin: 0;
+  list-style: none
+}
 
-input{
+input {
   outline: 0;
   -webkit-appearance: none;
   border: none;
@@ -36,7 +41,7 @@ button, input, optgroup, option, select, textarea {
 }
 
 a {
-  text-decoration: none!important;
+  text-decoration: none !important;
 }
 
 a:hover {
@@ -47,8 +52,8 @@ a cite {
   *cursor: pointer
 }
 
-.hide{
-  display: none!important;
+.hide {
+  display: none !important;
 }
 
 @font-face {
@@ -60,33 +65,35 @@ a cite {
   url('//at.alicdn.com/t/font_876907_b623l6gydkh.svg#iconfont') format('svg');
 }
 
-.btn{
-  padding: 0.06666666666666667rem 0.2rem;
-  border-radius: 0.06666666666666667rem;
+.btn {
+  padding: 2px 5px;
+  border-radius: 3px;
   text-align: center;
   display: inline-block;
-  margin: 0 0.13333333333333333rem;
+  margin: 0 2px;
+  font-size: 12px;
 }
 
-.btn-pink{
+.btn-pink {
   border: 1px solid #ffa0a6;
   color: #ffa0a6;
 }
 
-.ht-icon{
+.ht-icon {
   display: inline-block;
-  font-size: 25px;
+  font-size: 13px;
   font-family: iconfont !important;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin-right: 0.06666666666666667rem;
+  margin-right: 2px;
 }
 
-.ht-icon.icon-delete:before{
+.ht-icon.icon-delete:before {
   content: '\e600';
 }
-.ht-icon.icon-message:before{
+
+.ht-icon.icon-message:before {
   content: '\e63c';
 }
 

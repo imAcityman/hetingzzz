@@ -1,139 +1,51 @@
 <Tabs
-  [page]="3"
+  [page]="4"
   [useOnPan]="true"
   [swipeable]="true"
-  [activeTab]="index"
-  [tabBarActiveTextColor]="'#1890ff'"
+  [activeTab]="selectedIndex"
+  [tabBarActiveTextColor]="'rgb(226, 175, 184)'"
+  [tabBarUnderlineStyle]="{'border-color':'rgb(226, 175, 184)'}"
+  (onChange)="tabBarTabOnPress($event)"
 >
   <TabPane [title]="titleTemplate">
     <ng-template #titleTemplate>
-      <Badge [text]="3">
-        <div>11</div>
+      <Badge [text]="0">
+        <div class="title">重要的日子</div>
       </Badge>
     </ng-template>
     <div>
-     <div><div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div>
-     <div>1111111</div></div>
+      <app-big-date *ngIf="selectedIndex === 0"></app-big-date>
+    </div>
+  </TabPane>
+  <TabPane [title]="titleTemplate3">
+    <ng-template #titleTemplate3>
+      <Badge [text]="0">
+        <div class="title">留言板</div>
+      </Badge>
+    </ng-template>
+    <div>
+      <app-board *ngIf="selectedIndex === 1"></app-board>
     </div>
   </TabPane>
   <TabPane
     [ngStyle]="{ height: '400px' }" [title]="titleTemplate1">
     <ng-template #titleTemplate1>
-      <Badge [text]="'今日(20)'">
-        <div>Second Tab</div>
+      <Badge [text]="''">
+        <div class="title">照片墙</div>
       </Badge>
     </ng-template>
-    <div style="display: flex; align-items: center;justify-content: center;height: 150px;background-color: #fff">
-      Content of second tab
+    <div>
+
     </div>
   </TabPane>
   <TabPane [title]="titleTemplate2">
     <ng-template #titleTemplate2>
-      <Badge [dot]="true">
-        <div>Third Tab</div>
+      <Badge [dot]="false">
+        <div class="title">Wedding</div>
       </Badge>
     </ng-template>
-    <div style="display: flex; align-items: center;justify-content: center;height: 150px;background-color: #fff">
-      Content of third tab
+    <div>
+      <app-countdown *ngIf="selectedIndex === 3"></app-countdown>
     </div>
   </TabPane>
 </Tabs>
-<WhiteSpace></WhiteSpace>
