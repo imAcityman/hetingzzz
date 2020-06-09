@@ -18,8 +18,12 @@ const rootRouterConfig: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {
-    path: 'zone/:zoneType', component: LayoutComponent, children: [
-      {path: ':tabType', component: LoveComponent}
+    path: 'zone', children: [
+      {
+        path: ':zoneType', component: LayoutComponent, children: [
+          {path: ':tabType', component: LoveComponent}
+        ]
+      }
     ]
   }
 

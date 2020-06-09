@@ -7,13 +7,12 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./love.component.css']
 })
 export class LoveComponent implements OnInit {
-  selectedIndex = 0;
+  selectedIndex;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    activatedRoute.paramMap.subscribe(({params}: any) => {
-      console.log(params);
-      this.pageChange(params.tabType);
-
+    console.log(activatedRoute);
+    activatedRoute.children[0].params.subscribe((param: any) => {
+      this.pageChange(param.tabType);
     });
   }
 
@@ -32,7 +31,7 @@ export class LoveComponent implements OnInit {
         this.selectedIndex = 2;
         break;
       case 'countdown':
-        this.selectedIndex = 2;
+        this.selectedIndex = 3;
         break;
     }
   }
@@ -57,7 +56,7 @@ export class LoveComponent implements OnInit {
   }
 
   tabBarTabOnPress({index}) {
-    console.log(['zone', 'love', this.getPageName(index)])
+    console.log(['zone', 'love', this.getPageName(index)]);
     this.router.navigate(['zone', 'love', this.getPageName(index)]);
   }
 }
