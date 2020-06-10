@@ -1,3 +1,6 @@
+@import "assets/styles/dialog-style";
+@import "assets/styles/constant";
+//@import "theme";
 html, body {
   height: 100%;
   overflow: hidden;
@@ -125,4 +128,21 @@ a cite {
 
 a:active {
   color: transparent;
+}
+.ant-btn:focus, .ant-btn:hover, .ant-btn:active{
+  color: #4f4f4f;
+  background-color: #fff;
+  border-color: #d9d9d9;
+
+}
+.ant-btn-primary {
+  color: #fff;
+  background-color: @pink;
+  border-color: @pink;
+}
+
+.ant-btn-primary:focus, .ant-btn-primary:hover {
+  color: #fff;
+  background-color: @pink;
+  border-color: @pink;
 }

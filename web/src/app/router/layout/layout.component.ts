@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.css'],
+  styleUrls: ['./layout.component.less'],
   animations: [trigger('routeAnimation', [
     transition('* => *', [
       query(':leave', style({position: 'absolute', width: '100%', height: '100%'}), {optional: true}),

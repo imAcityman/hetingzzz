@@ -15,7 +15,7 @@ import {MyStorageService} from './my.storage.service';
 import {catchError, mergeMap, timeout} from 'rxjs/operators';
 import {ErrorObservable} from 'rxjs-compat/observable/ErrorObservable';
 import {environment} from '../../environments/environment';
-import {CommonparamService} from '../util/commonparam.service';
+import {CommonParams} from '../util/common-params';
 import {ToastService} from 'ng-zorro-antd-mobile';
 
 @Injectable()

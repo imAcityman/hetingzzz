@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RequestService} from '../../../../service/request.service';
-import {CommonparamService} from '../../../../util/commonparam.service';
+import {CommonParams} from '../../../../util/common-params';
 import {LoadingService} from '../../../../component/loading/loading.service';
 import {MyStorageService} from '../../../../service/my.storage.service';
 
@@ -50,7 +50,7 @@ export class BoardComponent implements OnInit {
     LoadingService.open();
     this.request.post('/user/leaveMessage', this.message).subscribe((res) => {
       LoadingService.close();
-      if (res.code === CommonparamService.SUCCESS) {
+      if (res.code === CommonParams.SUCCESS) {
         this.message.content = '';
         this.hideWrite();
         this.ngOnInit();
@@ -63,7 +63,7 @@ export class BoardComponent implements OnInit {
     LoadingService.open();
     this.request.get('/user/getBoadMessage').subscribe((res) => {
       LoadingService.close();
-      if (res.code === CommonparamService.SUCCESS) {
+      if (res.code === CommonParams.SUCCESS) {
         flag ? this.messageList = res.data : this.messageList.push.apply(this.messageList, res.data);
       }
     });
@@ -79,7 +79,7 @@ export class BoardComponent implements OnInit {
     if (con) {
       this.request.get('/user/deleteMessage', {id: id}).subscribe((res) => {
         LoadingService.close();
-        if (res.code === CommonparamService.SUCCESS) {
+        if (res.code === CommonParams.SUCCESS) {
           alert(res.msg);
           this.getMessage(true);
         }

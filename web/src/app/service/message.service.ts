@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, ReplaySubject} from 'rxjs';
 import {Messagebody} from '../util/messagebody';
-import {CommonparamService} from '../util/commonparam.service';
+import {CommonParams} from '../util/common-params';
 
 @Injectable({
   providedIn: 'root'
@@ -24,22 +24,22 @@ export class MessageService {
   }
 
   public showBottomMenu() {
-    const message = new Messagebody(CommonparamService.HIDE_MENU, {menu_type: CommonparamService.BOTTOM_MENU, flag: false});
+    const message = new Messagebody(CommonParams.HIDE_MENU, {menu_type: CommonParams.BOTTOM_MENU, flag: false});
     this._sendMessage.next(message);
   }
 
   public hideBottomMenu() {
-    const message = new Messagebody(CommonparamService.HIDE_MENU, {menu_type: CommonparamService.BOTTOM_MENU, flag: true});
+    const message = new Messagebody(CommonParams.HIDE_MENU, {menu_type: CommonParams.BOTTOM_MENU, flag: true});
     this._sendMessage.next(message);
   }
 
   public showTopMenu() {
-    const message = new Messagebody(CommonparamService.HIDE_MENU, {menu_type: CommonparamService.TOP_MENU, flag: false});
+    const message = new Messagebody(CommonParams.HIDE_MENU, {menu_type: CommonParams.TOP_MENU, flag: false});
     this._sendMessage.next(message);
   }
 
   public hideTopMenu() {
-    const message = new Messagebody(CommonparamService.HIDE_MENU, {menu_type: CommonparamService.TOP_MENU, flag: true});
+    const message = new Messagebody(CommonParams.HIDE_MENU, {menu_type: CommonParams.TOP_MENU, flag: true});
     this._sendMessage.next(message);
   }
 }

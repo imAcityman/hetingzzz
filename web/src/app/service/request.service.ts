@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Response} from '../util/response';
 
 declare var Object: any;
 
@@ -23,11 +24,11 @@ export class RequestService {
   constructor(private http: HttpClient) {
   }
 
-  get(url: string, params?: any): Observable<any> {
-    return this.http.get(url, {params: params});
+  get(url: string, params?: any): Observable<Response> {
+    return this.http.get<Response>(url, {params: params}).map(d => new Response(d));
   }
 
-  post(url: string, params?: any): Observable<any> {
-    return this.http.post(url, null, {params: RequestService.buildHttpParam(params)});
+  post(url: string, params?: any): Observable<Response> {
+    return this.http.post<Response>(url, null, {params: RequestService.buildHttpParam(params)}).map(d => new Response(d));
   }
 }

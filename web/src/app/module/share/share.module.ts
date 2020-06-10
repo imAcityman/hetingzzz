@@ -1,16 +1,24 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {NzIconModule} from 'ng-zorro-antd';
+import {NzButtonModule, NzFormModule, NzIconModule, NzInputModule, NzModalModule} from 'ng-zorro-antd';
 
 
 @NgModule({
   exports: [
-    NzIconModule
+    NzIconModule,
+    NzModalModule,
+    NzFormModule,
+    NzInputModule,
+    NzButtonModule
   ],
   declarations: [],
   imports: [
     CommonModule,
-    NzIconModule
+    NzIconModule,
+    NzModalModule,
+    NzFormModule,
+    NzInputModule,
+    NzButtonModule
   ]
 })
 export class ShareModule {

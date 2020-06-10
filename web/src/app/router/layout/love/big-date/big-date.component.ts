@@ -1,32 +1,157 @@
 import {Component, OnInit} from '@angular/core';
 import {RequestService} from '../../../../service/request.service';
-import {CommonparamService} from '../../../../util/commonparam.service';
 import {LoadingService} from '../../../../component/loading/loading.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Constants} from '../../../../util/constants';
+import * as moment from 'moment';
+import {DataService} from '../../../../util/data.service';
+import {ModalService, ToastService} from 'ng-zorro-antd-mobile';
 
 @Component({
   selector: 'app-big-date',
   templateUrl: './big-date.component.html',
-  styleUrls: ['./big-date.component.css']
+  styleUrls: ['./big-date.component.less']
 })
 export class BigDateComponent implements OnInit {
 
   dates: Array<any>;
+  isVisible1 = false;
+  isVisible2 = false;
+  validateForm!: FormGroup;
+  isGoodOptions = Constants.isGoodOptions;
+  currentDate;
+  showData = {
+    date: '',
+    title: '',
+    isGood: '好事'
+  };
 
-  constructor(private request: RequestService) {
+  constructor(private request: RequestService, private fb: FormBuilder, private dataService: DataService,
+              private toast: ToastService, private modal: ModalService) {
   }
 
   ngOnInit() {
+    this.validateForm = this.fb.group({
+      date: [null, [Validators.required]],
+      title: [null, [Validators.required]],
+      isGood: [null, [Validators.required]]
+    });
+    this.validateForm.valueChanges.subscribe(data => {
+      if (data.isGood.length <= 0) {
+        this.validateForm.get('isGood').setValue([this.isGoodOptions[0]]);
+        return;
+      }
+      this.showData = {
+        date: moment(data.date).format('YYYY-MM-DD'),
+        title: data.title,
+        isGood: data.isGood[0].value === 2 ? '坏事' : '好事'
+      };
+    });
+    this.resetForm();
     this.getBigDate();
+  }
+
+  resetForm() {
+    this.validateForm.patchValue({
+      date: new Date(),
+      title: '',
+      isGood: [this.isGoodOptions[0]]
+    });
   }
 
   getBigDate() {
     LoadingService.open();
-    this.request.get('/user/getBigDate').subscribe(res => {
+    this.request.get('/bigdate/getBigDate').subscribe(res => {
       LoadingService.close();
-      if (res.code === CommonparamService.SUCCESS) {
+      if (res.isSuccess) {
         this.dates = res.data;
       }
     });
   }
 
+  addNew() {
+    this.resetForm();
+    this.isVisible1 = !this.isVisible1;
+  }
+
+  showUpdate(item) {
+    this.currentDate = item;
+    this.validateForm.patchValue({
+      date: moment(item.datetime).toDate(),
+      title: item.title,
+      isGood: [this.isGoodOptions[item.isGood - 1]]
+    });
+    this.isVisible2 = !this.isVisible2;
+  }
+
+  delete(dateId) {
+    this.modal.alert('', '确认删除这一条?', [
+      {
+        text: '取消', onPress: () => {
+        }
+      },
+      {
+        text: '确定', onPress: () => {
+          LoadingService.open();
+          this.request.post('/bigdate/delete', {dateId}).subscribe(res => {
+            this.toast.success('删除成功');
+            this.isVisible2 = false;
+            this.getBigDate();
+          }, () => {
+            LoadingService.close();
+          });
+        }
+      }
+    ]);
+  }
+
+  submit(type) {
+    this.dataService.marFormAsDirty(this.validateForm);
+    if (this.validateForm.valid) {
+      const value = this.validateForm.value;
+      const param = {
+        id: this.currentDate?.id,
+        datetime: this.showData.date,
+        title: value.title,
+        isGood: value.isGood[0].value
+      };
+      this.modal.alert('', `${type === 1 ? '确认新增？' : '确认修改？'}`, [
+        {
+          text: '取消', onPress: () => {
+          }
+        },
+        {
+          text: '确定', onPress: () => {
+            LoadingService.open();
+            if (type === 1) {
+              this.create(param);
+            } else {
+              this.update(param);
+            }
+          }
+        }]);
+    }
+  }
+
+  create(param) {
+    this.request.post('/bigdate/add', param).subscribe(res => {
+      this.isVisible1 = false;
+      this.validateForm.reset();
+      this.resetForm();
+      this.getBigDate();
+    }, () => {
+      LoadingService.close();
+    });
+  }
+
+  update(param) {
+    this.request.post('/bigdate/update', param).subscribe(res => {
+      this.isVisible2 = false;
+      this.validateForm.reset();
+      this.resetForm();
+      this.getBigDate();
+    }, () => {
+      LoadingService.close();
+    });
+  }
 }

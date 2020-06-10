@@ -1,3 +1,5 @@
+@import "../../../../../assets/styles/constant";
+
 :host {
   display: block;
   padding: 10px;
@@ -6,7 +8,7 @@
 }
 
 .good {
-  color: #ff9898;
+  color: @pink;
 }
 
 .bad {
@@ -19,17 +21,35 @@
 }
 
 ::ng-deep .am-steps-item .error-tail .am-steps-item-tail:after {
-  background-color: #f7b6b9;
+  background-color: @pink;
 }
 
 .add-new {
   position: fixed;
   right: 0;
   bottom: 50px;
-  background-color: pink;
+  background-color: @pink;
   color: white;
   padding: 3px 5px 3px 10px;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
-  box-shadow: 0 0 3px #f9a8a8;
+  box-shadow: 0 0 3px @pink;
+  display: flex;
+  align-items: center;
+
+  [nz-icon] {
+    font-size: 12px;
+  }
+}
+
+.hz-ant-input {
+  font-feature-settings: 'tnum';
+  position: relative;
+  font-size: 14px;
+  line-height: 1.5715;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  transition: all .3s;
+  padding: 3px 11px;
 }
