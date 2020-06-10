@@ -1,15 +1,35 @@
-.f {
-  text-align: center;
+:host {
+  display: block;
+  padding: 10px;
+  height: 100%;
+  position: relative;
 }
 
-.title {
-  font-size: 16px;
-  color: #db5834;
-  padding: 5px 0;
-  border-bottom: 1px dotted #db5834;
+.good {
+  color: #ff9898;
 }
 
-.title .day {
-  margin-top: 5px;
-  color: #e6aab3;
+.bad {
+  font-size: 22px;
+  color: #ab2828;
+}
+
+::ng-deep .am-steps-vertical.am-steps-small .am-steps-item-title {
+  font-weight: normal;
+}
+
+::ng-deep .am-steps-item .error-tail .am-steps-item-tail:after {
+  background-color: #f7b6b9;
+}
+
+.add-new {
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  background-color: pink;
+  color: white;
+  padding: 3px 5px 3px 10px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  box-shadow: 0 0 3px #f9a8a8;
 }

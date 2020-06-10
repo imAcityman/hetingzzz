@@ -14,7 +14,7 @@
       <i nz-icon [nzIconfont]="'icon-health1'" class="icon-select"></i>
     </ng-template>
     <div class="tab-body">
-      <app-menstruation *ngIf="selectedIndex === 0"></app-menstruation>
+      <app-menstruation *ngIf="selectedIndex === 0 || menstruationInit"></app-menstruation>
     </div>
   </TabBarItem>
   <TabBarItem [title]="'love'" [key]="'love'" [badge]="" [icon]="icon2" [selectedIcon]="icon22">
@@ -25,7 +25,7 @@
       <i nz-icon [nzIconfont]="'icon-heart__easyiconnet'" class="icon-select"></i>
     </ng-template>
     <div class="tab-body">
-      <app-love *ngIf="selectedIndex === 1"></app-love>
+      <app-love *ngIf="selectedIndex === 1 || loveInit"></app-love>
     </div>
   </TabBarItem>
   <TabBarItem [title]="'我'" [key]="'mime'" [icon]="icon3" [selectedIcon]="icon33">
@@ -36,7 +36,7 @@
       <i nz-icon [nzIconfont]="'icon-my'" class="icon-select"></i>
     </ng-template>
     <div class="tab-body">
-      <app-mine *ngIf="selectedIndex === 2"></app-mine>
+      <app-mine *ngIf="selectedIndex === 2 || mimeInit"></app-mine>
     </div>
   </TabBarItem>
 </TabBar>

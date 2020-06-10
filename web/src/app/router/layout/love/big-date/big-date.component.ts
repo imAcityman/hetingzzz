@@ -28,4 +28,5 @@ export class BigDateComponent implements OnInit {
       }
     });
   }
+
 }

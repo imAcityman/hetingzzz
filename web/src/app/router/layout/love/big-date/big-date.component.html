@@ -1,6 +1,13 @@
-<div class="f father-container">
-  <div class="title" *ngFor="let day of dates">
-    {{day.title}}
-    <div class="day">{{day.datetime}}</div>
-  </div>
+<Steps [size]="'small'">
+  <Step *ngFor="let item of dates" [status]="'error'" [icon]="item.isGood === 1 ? good : bad" [title]="item.title"
+        [description]="item.datetime"></Step>
+</Steps>
+<ng-template #good>
+  <i nz-icon [nzIconfont]="'icon-Heart'" class="good"></i>
+</ng-template>
+<ng-template #bad>
+  <i nz-icon [nzIconfont]="'icon-Heartbroken'" class="bad"></i>
+</ng-template>
+<div class="add-new">
+  <i nz-icon nzType="plus" nzTheme="outline"></i>&nbsp;新日子
 </div>

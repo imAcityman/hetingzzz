@@ -12,11 +12,8 @@ export class CountdownComponent implements OnInit {
   now = moment();
   day;
 
-  constructor() {
-  }
-
   ngOnInit() {
-    this.day = this.targetDay.diff(this.now, 'day');
+    this.day = this.now.diff(this.targetDay, 'day');
   }
 
 }

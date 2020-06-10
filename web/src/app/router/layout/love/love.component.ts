@@ -8,9 +8,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class LoveComponent implements OnInit {
   selectedIndex;
+  bigDateInit = false;
+  boardInit = false;
+  pictureWallInit = false;
+  weddingInit = false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    console.log(activatedRoute);
     activatedRoute.children[0].params.subscribe((param: any) => {
       this.pageChange(param.tabType);
     });
@@ -23,15 +26,19 @@ export class LoveComponent implements OnInit {
     switch (tabType) {
       case 'bigDate':
         this.selectedIndex = 0;
+        this.bigDateInit = true;
         break;
       case 'board':
         this.selectedIndex = 1;
+        this.boardInit = true;
         break;
       case 'photo':
         this.selectedIndex = 2;
+        this.pictureWallInit = true;
         break;
       case 'countdown':
         this.selectedIndex = 3;
+        this.weddingInit = true;
         break;
     }
   }
@@ -56,7 +63,6 @@ export class LoveComponent implements OnInit {
   }
 
   tabBarTabOnPress({index}) {
-    console.log(['zone', 'love', this.getPageName(index)]);
     this.router.navigate(['zone', 'love', this.getPageName(index)]);
   }
 }

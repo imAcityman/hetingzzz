@@ -21,13 +21,14 @@
   line-height: 1;
   margin: 10px auto 0 auto;
   color: white;
-  font-size: 0.4rem;
+  font-size: 16px;
 }
 
 .header {
   margin-top: 20px;
   color: coral;
   font-size: 16px;
+  padding: 0 10px;
 }
 
 .list {

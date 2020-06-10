@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PictureWallComponent implements OnInit {
 
-  constructor() { }
+  images: Array<string> = [];
+
+  constructor() {
+    for (let i = 1; i <= 10; i++) {
+      this.images.push(`../../../../../assets/image/coundown/img${i}.jpg`);
+    }
+  }
 
   ngOnInit() {
   }

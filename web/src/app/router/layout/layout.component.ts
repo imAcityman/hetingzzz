@@ -20,6 +20,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class LayoutComponent implements OnInit {
   selectedIndex = 1;
+  menstruationInit = false;
+  loveInit = false;
+  mimeInit = false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     activatedRoute.paramMap.subscribe(({params}: any) => {
@@ -31,12 +34,15 @@ export class LayoutComponent implements OnInit {
     switch (zoneType) {
       case 'health':
         this.selectedIndex = 0;
+        this.menstruationInit = true;
         break;
       case 'love':
         this.selectedIndex = 1;
+        this.loveInit = true;
         break;
       case 'mime':
         this.selectedIndex = 2;
+        this.mimeInit = true;
         break;
     }
   }

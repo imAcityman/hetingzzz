@@ -1,4 +1,4 @@
-.container{
+.container {
   display: flex;
   display: -webkit-flex;
   justify-content: flex-start;
@@ -6,40 +6,47 @@
   flex-direction: column;
   height: 100%;
 }
-.wedding-pic{
+
+.wedding-pic {
   width: 100%;
+  max-height: 80%;
 }
-.container .word{
-  flex: 1;
+
+.container .word {
   width: 100%;
   text-align: center;
   font-size: 110px;
   line-height: 130px;
-  overflow: hidden;
+  margin-top: 50px;
 }
-@font-face
-{
+
+@font-face {
   font-family: myFont;
   src: url('../../../../../assets/font/rageItalic.TTF'),
   url('../../../../../assets/font/rageItalic.TTF');
 }
-@font-face
-{
+
+@font-face {
   font-family: myFont;
   src: url('../../../../../assets/font/rageItalic.TTF'),
   url('../../../../../assets/font/rageItalic.TTF');
   font-weight: bold;
 }
-.container .word .first{
+
+.container .word .first {
   color: #e12204;
   font-family: myFont;
+  line-height: 1;
+  font-size: 50px;
 }
-.container .word .second{
+
+.container .word .second {
   letter-spacing: 10px;
   font-size: 30px;
   color: #ff5713;
 }
-.container .word .second .number{
+
+.container .word .second .number {
   color: #e12204;
   font-family: myFont;
   font-weight: bolder;
