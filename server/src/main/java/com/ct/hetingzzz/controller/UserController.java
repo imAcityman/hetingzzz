@@ -27,8 +27,6 @@ public class UserController {
     private UserService userService;
     @Resource
     private TMenstruationLogService tMenstruationLogService;
-    @Resource
-    private TMessageBoadService messageBoadService;
 
     @RequestMapping("getMenstruation")
     public Response getMenstruation() {
@@ -44,43 +42,6 @@ public class UserController {
             return new Response(ResponseStatus.SUCCESS, "设置好了");
         }
         return new Response(ResponseStatus.FAIL, "你今天不是已经设置过了吗傻逼！");
-    }
-
-    @RequestMapping("getBoadMessage")
-    public Response getBoadMessage() {
-        return new Response(ResponseStatus.SUCCESS, "查询成功", messageBoadService.findAll());
-    }
-
-    @RequestMapping("deleteMessage")
-    public Response deleteMessage(long id) {
-        long userid = Contants.getUserId();
-        messageBoadService.deleteMessage(id,userid);
-        return new Response(ResponseStatus.SUCCESS, "删除成功");
-    }
-
-    @RequestMapping("leaveMessage")
-    public Response leaveMessage(TMessageBoad messageBoad, Long replyid, Long targetuserid) {
-        if (ParamUtil.isEmpty(messageBoad.getContent())) {
-            return new Response(ResponseStatus.FAIL, "参数错误");
-        }
-        if (ParamUtil.isNotEmpty(replyid)) {
-            TMessageBoad father = new TMessageBoad();
-            father.setId(replyid);
-            messageBoad.setFatherMessage(father);
-        }
-        if (ParamUtil.isNotEmpty(targetuserid)) {
-            TSysUser targetUser = new TSysUser();
-            targetUser.setId(targetuserid);
-            messageBoad.setTargetuser(targetUser);
-        }
-        long userid = Contants.getUserId();
-        TSysUser sysUser = new TSysUser();
-        sysUser.setId(userid);
-        messageBoad.setUser(sysUser);
-        messageBoad.setCreatetime(new Date());
-        messageBoad.setState(1);
-        messageBoadService.save(messageBoad);
-        return new Response(ResponseStatus.SUCCESS, "留言成功！");
     }
 
 }

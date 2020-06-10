@@ -9,12 +9,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
-
 public interface TMessageBoadRepository extends JpaRepository<TMessageBoad, Long>, JpaSpecificationExecutor<TMessageBoad> {
-    Page<TMessageBoad> findAll(Pageable pageable);
-
-    <S extends TMessageBoad> List<S> findAllByStateAndFatherMessageIsNullOrderByCreatetimeDesc(@Param("state") int state);
+    Page<TMessageBoad> findAllByStateAndFatherMessageIsNullOrderByCreatetimeDesc(@Param("state") int state, Pageable pageable);
 
     @Override
     <S extends TMessageBoad> S save(S s);
@@ -24,5 +20,5 @@ public interface TMessageBoadRepository extends JpaRepository<TMessageBoad, Long
 
     @Modifying
     @Query("update TMessageBoad set state = 0,deleteuserid=:deleteUserid where id=:id")
-    void update2Delete(@Param("id") long id,@Param("deleteUserid") long deleteUserid);
+    void update2Delete(@Param("id") long id, @Param("deleteUserid") long deleteUserid);
 }
