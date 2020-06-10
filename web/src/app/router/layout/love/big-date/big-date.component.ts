@@ -37,7 +37,7 @@ export class BigDateComponent implements OnInit {
       isGood: [null, [Validators.required]]
     });
     this.validateForm.valueChanges.subscribe(data => {
-      if (data.isGood.length <= 0) {
+      if (!data.isGood || data.isGood.length <= 0) {
         this.validateForm.get('isGood').setValue([this.isGoodOptions[0]]);
         return;
       }
@@ -52,8 +52,9 @@ export class BigDateComponent implements OnInit {
   }
 
   resetForm() {
+    this.dataService.marFormReset(this.validateForm);
     this.validateForm.patchValue({
-      date: new Date(),
+      date: moment(new Date()).toDate(),
       title: '',
       isGood: [this.isGoodOptions[0]]
     });
@@ -124,6 +125,7 @@ export class BigDateComponent implements OnInit {
           text: '确定', onPress: () => {
             LoadingService.open();
             if (type === 1) {
+              delete param.id;
               this.create(param);
             } else {
               this.update(param);
@@ -136,7 +138,6 @@ export class BigDateComponent implements OnInit {
   create(param) {
     this.request.post('/bigdate/add', param).subscribe(res => {
       this.isVisible1 = false;
-      this.validateForm.reset();
       this.resetForm();
       this.getBigDate();
     }, () => {
@@ -147,7 +148,6 @@ export class BigDateComponent implements OnInit {
   update(param) {
     this.request.post('/bigdate/update', param).subscribe(res => {
       this.isVisible2 = false;
-      this.validateForm.reset();
       this.resetForm();
       this.getBigDate();
     }, () => {

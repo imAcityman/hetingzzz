@@ -17,5 +17,13 @@ export class DataService {
       }
     }
   }
+
+  marFormReset(validateForm: FormGroup) {
+    for (const i in validateForm.controls) {
+      if (validateForm.controls.hasOwnProperty(i)) {
+        validateForm.controls[i].reset();
+      }
+    }
+  }
 }
 

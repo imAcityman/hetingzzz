@@ -29,6 +29,6 @@ export class RequestService {
   }
 
   post(url: string, params?: any): Observable<Response> {
-    return this.http.post<Response>(url, null, {params: RequestService.buildHttpParam(params)}).map(d => new Response(d));
+    return this.http.post<Response>(url, null, {params}).map(d => new Response(d));
   }
 }
