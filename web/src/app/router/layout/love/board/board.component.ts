@@ -12,6 +12,7 @@ import {MyStorageService} from '../../../../service/my.storage.service';
 export class BoardComponent implements OnInit {
 
   isWrite = false;
+  loading = false;
   me;
   messageList;
   placeholder;
@@ -20,6 +21,15 @@ export class BoardComponent implements OnInit {
     content: '',
     targetuserid: '',
     replyid: '',
+  };
+  hasMoreData = true;
+  refresh = {
+    currentState: 'activate',
+    drag: false
+  };
+  pageInfo = {
+    pageSize: 20,
+    page: 1
   };
 
   constructor(private request: RequestService, private storage: MyStorageService) {
@@ -48,7 +58,7 @@ export class BoardComponent implements OnInit {
       return;
     }
     LoadingService.open();
-    this.request.post('/user/leaveMessage', this.message).subscribe((res) => {
+    this.request.post('/board/leaveMessage', this.message).subscribe((res) => {
       LoadingService.close();
       if (res.code === CommonParams.SUCCESS) {
         this.message.content = '';
@@ -61,12 +71,34 @@ export class BoardComponent implements OnInit {
 
   getMessage(flag: boolean) {
     LoadingService.open();
-    this.request.get('/user/getBoadMessage').subscribe((res) => {
+    this.loading = true;
+    if (flag) {
+      this.pageInfo.page = 1;
+    }
+    this.request.get('/board/getBoadMessage', this.pageInfo).subscribe((res) => {
       LoadingService.close();
-      if (res.code === CommonParams.SUCCESS) {
-        flag ? this.messageList = res.data : this.messageList.push.apply(this.messageList, res.data);
+      this.pageInfo.page++;
+      this.loading = false;
+      this.hasMoreData = res.data.length >= this.pageInfo.pageSize;
+      this.refresh.currentState = !this.hasMoreData ? 'deactivate' : 'activate';
+      if (res.isSuccess) {
+        this.messageList = flag ? res.data : [...this.messageList, ...res.data];
       }
+    }, () => {
+      LoadingService.close();
+      this.loading = false;
     });
+  }
+
+  pageLoad($event) {
+    if (this.loading) {
+      return;
+    }
+    if ($event === 'endReachedRefresh' && this.hasMoreData) {
+      this.getMessage(false);
+    } else if ($event === 'down') {
+      this.getMessage(true);
+    }
   }
 
   replyMessage(replyid, replyName, targetuserid?) {
@@ -77,7 +109,7 @@ export class BoardComponent implements OnInit {
   deleteMessage(id) {
     const con = confirm('确定删除这条留言？');
     if (con) {
-      this.request.get('/user/deleteMessage', {id: id}).subscribe((res) => {
+      this.request.get('/board/deleteMessage', {id: id}).subscribe((res) => {
         LoadingService.close();
         if (res.code === CommonParams.SUCCESS) {
           alert(res.msg);
