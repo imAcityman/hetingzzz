@@ -9,11 +9,12 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "t_bigdate", schema = "heting", catalog = "")
-@JsonIgnoreProperties({"id","createtime","userid"})
+@JsonIgnoreProperties({"createtime","userid"})
 public class TBigdate {
     private long id;
     private String title;
     private Date datetime;
+    private Integer isGood;
     private Timestamp createtime;
     private long userid;
 
@@ -48,7 +49,17 @@ public class TBigdate {
     }
 
     @Basic
-    @Column(name = "createtime", nullable = false)
+    @Column(name = "is_good", nullable = false)
+    public Integer getIsGood() {
+        return isGood;
+    }
+
+    public void setIsGood(Integer isGood) {
+        this.isGood = isGood;
+    }
+
+    @Basic
+    @Column(name = "createtime", nullable = true)
     public Timestamp getCreatetime() {
         return createtime;
     }

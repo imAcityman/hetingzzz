@@ -2,7 +2,6 @@ package com.ct.hetingzzz.controller;
 
 import com.ct.hetingzzz.domain.TMessageBoad;
 import com.ct.hetingzzz.domain.TSysUser;
-import com.ct.hetingzzz.service.TBigdateService;
 import com.ct.hetingzzz.service.TMenstruationLogService;
 import com.ct.hetingzzz.service.TMessageBoadService;
 import com.ct.hetingzzz.service.UserService;
@@ -17,8 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 
 @RestController
 @RequestMapping("user")
@@ -28,8 +25,6 @@ public class UserController {
 
     @Resource
     private UserService userService;
-    @Resource
-    private TBigdateService tBigdateService;
     @Resource
     private TMenstruationLogService tMenstruationLogService;
     @Resource
@@ -49,12 +44,6 @@ public class UserController {
             return new Response(ResponseStatus.SUCCESS, "设置好了");
         }
         return new Response(ResponseStatus.FAIL, "你今天不是已经设置过了吗傻逼！");
-    }
-
-    @RequestMapping("getBigDate")
-    public Response getBigDate() {
-        long userid = Contants.getUserId();
-        return new Response(ResponseStatus.SUCCESS, "查询成功", tBigdateService.getBigDate(userid));
     }
 
     @RequestMapping("getBoadMessage")
