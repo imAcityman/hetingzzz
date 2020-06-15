@@ -1,0 +1,18 @@
+<Tabs
+  [page]="4"
+  [useOnPan]="true"
+  [swipeable]="true"
+  [activeTab]="selectedIndex"
+  [tabBarActiveTextColor]="'rgb(226, 175, 184)'"
+  [tabBarUnderlineStyle]="{'border-color':'rgb(226, 175, 184)'}"
+  (onChange)="tabBarTabOnPress($event)"
+>
+  <TabPane [title]="titleTemplate">
+    <ng-template #titleTemplate>
+      <Badge [dot]="true" [text]="' '">
+        <div class="title">油价</div>
+      </Badge>
+    </ng-template>
+    <app-oil *ngIf="selectedIndex === 0 || oilInit"></app-oil>
+  </TabPane>
+</Tabs>

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {LocalStorageService} from 'angular-web-storage';
+import {Constants} from '../util/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +71,14 @@ export class MyStorageService {
 
   getAfterRouter(): string {
     return this.get(MyStorageService.afterRouterName);
+  }
+
+  set oilUpdateTime(updateTime: number) {
+    this.set(Constants.OIL_UPDATE_DATE, updateTime || 0);
+  }
+
+  get oilUpdateTime() {
+    return this.get(Constants.OIL_UPDATE_DATE);
   }
 
 }

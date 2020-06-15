@@ -1,0 +1,34 @@
+<Card [full]="true">
+  <CardHeader
+    [title]="oilInfo.date + ' 更新油价'"
+    [extra]="extra"
+    [thumbStyle]="{
+    width: '32px',
+    height: '32px'
+  }"
+  >
+    <ng-template #extra>
+      <!--      <span>this is extra</span>-->
+    </ng-template>
+  </CardHeader>
+  <CardBody>
+
+    <Flex>
+      <FlexItem>城市</FlexItem>
+      <FlexItem>0柴油</FlexItem>
+      <FlexItem>89汽油</FlexItem>
+      <FlexItem>92汽油</FlexItem>
+      <FlexItem>95汽油</FlexItem>
+      <FlexItem>98汽油</FlexItem>
+    </Flex>
+    <Flex *ngFor="let item of oilInfo.details" [class.jiangsu]="item.city === '江苏'">
+      <FlexItem>{{item.city}}</FlexItem>
+      <FlexItem>{{item.cy0}}</FlexItem>
+      <FlexItem>{{item.qy89}}</FlexItem>
+      <FlexItem>{{item.qy92}}</FlexItem>
+      <FlexItem>{{item.qy95}}</FlexItem>
+      <FlexItem>{{item.qy98}}</FlexItem>
+    </Flex>
+  </CardBody>
+</Card>
+

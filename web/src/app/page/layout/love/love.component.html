@@ -13,9 +13,7 @@
         <div class="title">重要的日子</div>
       </Badge>
     </ng-template>
-<!--    <div>-->
-      <app-big-date *ngIf="selectedIndex === 0 || bigDateInit"></app-big-date>
-<!--    </div>-->
+    <app-big-date *ngIf="selectedIndex === 0 || bigDateInit"></app-big-date>
   </TabPane>
   <TabPane [title]="titleTemplate3">
     <ng-template #titleTemplate3>
@@ -23,9 +21,7 @@
         <div class="title">留言板</div>
       </Badge>
     </ng-template>
-<!--    <div>-->
-      <app-board *ngIf="selectedIndex === 1 || boardInit"></app-board>
-<!--    </div>-->
+    <app-board *ngIf="selectedIndex === 1 || boardInit"></app-board>
   </TabPane>
   <TabPane
     [ngStyle]="{ height: '400px' }" [title]="titleTemplate1">
@@ -34,9 +30,7 @@
         <div class="title">照片墙</div>
       </Badge>
     </ng-template>
-<!--    <div>-->
-      <app-picture-wall *ngIf="selectedIndex === 2 || pictureWallInit"></app-picture-wall>
-<!--    </div>-->
+    <app-picture-wall *ngIf="selectedIndex === 2 || pictureWallInit"></app-picture-wall>
   </TabPane>
   <TabPane [title]="titleTemplate2">
     <ng-template #titleTemplate2>
@@ -44,8 +38,6 @@
         <div class="title">Wedding</div>
       </Badge>
     </ng-template>
-<!--    <div>-->
-      <app-countdown *ngIf="selectedIndex === 3 || weddingInit"></app-countdown>
-<!--    </div>-->
+    <app-countdown *ngIf="selectedIndex === 3 || weddingInit"></app-countdown>
   </TabPane>
 </Tabs>

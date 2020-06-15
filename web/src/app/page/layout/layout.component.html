@@ -28,6 +28,17 @@
       <app-love *ngIf="selectedIndex === 1 || loveInit"></app-love>
     </div>
   </TabBarItem>
+  <TabBarItem [title]="'生活'" [key]="'life'" [icon]="icon3" [selectedIcon]="icon33">
+    <ng-template #icon3>
+      <i nz-icon [nzIconfont]="'icon-my'"></i>
+    </ng-template>
+    <ng-template #icon33>
+      <i nz-icon [nzIconfont]="'icon-shenghuoshui'" class="icon-select"></i>
+    </ng-template>
+    <div class="tab-body">
+      <app-life *ngIf="selectedIndex === 2 || lifeInit"></app-life>
+    </div>
+  </TabBarItem>
   <TabBarItem [title]="'我'" [key]="'mime'" [icon]="icon3" [selectedIcon]="icon33">
     <ng-template #icon3>
       <i nz-icon [nzIconfont]="'icon-my'"></i>
@@ -36,7 +47,7 @@
       <i nz-icon [nzIconfont]="'icon-my'" class="icon-select"></i>
     </ng-template>
     <div class="tab-body">
-      <app-mine *ngIf="selectedIndex === 2 || mimeInit"></app-mine>
+      <app-mine *ngIf="selectedIndex === 3 || mimeInit"></app-mine>
     </div>
   </TabBarItem>
 </TabBar>

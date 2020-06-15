@@ -8,6 +8,14 @@ public class Pagination {
     private int pageSize;
     private int page;
 
+    public Pagination() {
+    }
+
+    public Pagination(int page, int pageSize) {
+        this.pageSize = pageSize;
+        this.page = page;
+    }
+
     public int getPageSize() {
         return pageSize;
     }
