@@ -1,7 +1,6 @@
 package com.ct.hetingzzz.domain;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,7 +8,7 @@ import java.util.Objects;
 @Table(name = "t_gasoline", schema = "heting", catalog = "")
 public class TGasoline {
     private int id;
-    private Date date;
+    private Long date;
     private String remark;
     private List<TGasolineDetail> details;
 
@@ -35,11 +34,11 @@ public class TGasoline {
 
     @Basic
     @Column(name = "date")
-    public Date getDate() {
+    public Long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Long date) {
         this.date = date;
     }
 

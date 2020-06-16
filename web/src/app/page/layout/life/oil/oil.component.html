@@ -1,12 +1,15 @@
 <Card [full]="true">
   <CardHeader
-    [title]="oilInfo.date + ' 更新油价'"
+    [title]="title"
     [extra]="extra"
     [thumbStyle]="{
     width: '32px',
     height: '32px'
   }"
   >
+    <ng-template #title>
+      <span class="date">{{(oilInfo.date * 1000|date:'yyyy-MM-dd')}}&nbsp;更新油价</span>
+    </ng-template>
     <ng-template #extra>
       <!--      <span>this is extra</span>-->
     </ng-template>
@@ -15,19 +18,29 @@
 
     <Flex>
       <FlexItem>城市</FlexItem>
-      <FlexItem>0柴油</FlexItem>
-      <FlexItem>89汽油</FlexItem>
       <FlexItem>92汽油</FlexItem>
       <FlexItem>95汽油</FlexItem>
       <FlexItem>98汽油</FlexItem>
+      <FlexItem>89汽油</FlexItem>
+      <FlexItem>0柴油</FlexItem>
     </Flex>
-    <Flex *ngFor="let item of oilInfo.details" [class.jiangsu]="item.city === '江苏'">
+    <Flex class="line" *ngFor="let item of oilInfo.details" [class.jiangsu]="item.city === '江苏'">
       <FlexItem>{{item.city}}</FlexItem>
-      <FlexItem>{{item.cy0}}</FlexItem>
-      <FlexItem>{{item.qy89}}</FlexItem>
-      <FlexItem>{{item.qy92}}</FlexItem>
-      <FlexItem>{{item.qy95}}</FlexItem>
-      <FlexItem>{{item.qy98}}</FlexItem>
+      <FlexItem class="number">
+        <app-oil-price [latest]="item.qy92" [last]="item.qy92"></app-oil-price>
+      </FlexItem>
+      <FlexItem class="number">
+        <app-oil-price [latest]="item.qy95" [last]="item.qy95"></app-oil-price>
+      </FlexItem>
+      <FlexItem class="number">
+        <app-oil-price [latest]="item.qy98" [last]="item.qy98"></app-oil-price>
+      </FlexItem>
+      <FlexItem class="number">
+        <app-oil-price [latest]="item.qy89" [last]="item.qy89"></app-oil-price>
+      </FlexItem>
+      <FlexItem class="number">
+        <app-oil-price [latest]="item.cy0" [last]="item.cy0"></app-oil-price>
+      </FlexItem>
     </Flex>
   </CardBody>
 </Card>

@@ -7,7 +7,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-oil',
   templateUrl: './oil.component.html',
-  styleUrls: ['./oil.component.css']
+  styleUrls: ['./oil.component.less']
 })
 export class OilComponent implements OnInit {
   loading = false;
@@ -38,7 +38,6 @@ export class OilComponent implements OnInit {
           }
         }
         res.data.details = [...[js], ...res.data.details];
-        res.data.date = moment(res.data.date).format('YYYY-MM-DD');
         this.oilInfo = res.data;
         console.log(this.oilInfo);
       }

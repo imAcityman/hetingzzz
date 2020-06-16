@@ -12,7 +12,7 @@
   [footerIndicator]="{activate: '更多消息', release: '', finish:'', deactivate:'已经没有更多数据了'}"
 >
   <ul class="list">
-    <li class="item" *ngFor="let item of messageList">
+    <li class="item" *ngFor="let item of messageList;trackBy: trackById">
       <div class="head">
         <img [src]="item.user.imagehead">
       </div>

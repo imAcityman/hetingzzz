@@ -123,4 +123,7 @@ export class BoardComponent implements OnInit {
     this.getMessage(true);
   }
 
+  trackById(obj: any) {
+    return obj.id;
+  }
 }

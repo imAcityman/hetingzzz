@@ -28,6 +28,7 @@ import {LoveComponent} from './page/layout/love/love.component';
 import {InputIosPopupDirective} from './directive/input-ios-popup.directive';
 import { LifeComponent } from './page/layout/life/life.component';
 import { OilComponent } from './page/layout/life/oil/oil.component';
+import { OilPriceComponent } from './page/layout/life/oil/oil-price/oil-price.component';
 
 registerLocaleData(zh);
 
@@ -46,7 +47,8 @@ registerLocaleData(zh);
     LoveComponent,
     InputIosPopupDirective,
     LifeComponent,
-    OilComponent
+    OilComponent,
+    OilPriceComponent
   ],
   imports: [
     BrowserAnimationsModule,

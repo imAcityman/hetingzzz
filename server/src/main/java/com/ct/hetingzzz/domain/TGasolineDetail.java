@@ -1,7 +1,7 @@
 package com.ct.hetingzzz.domain;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
@@ -10,12 +10,12 @@ public class TGasolineDetail {
     private int id;
     private int gasId;
     private String city;
-    private String qy89;
-    private String qy92;
-    private String qy95;
-    private String qy98;
-    private String cy0;
-    private Timestamp createTime;
+    private BigDecimal qy89;
+    private BigDecimal qy92;
+    private BigDecimal qy95;
+    private BigDecimal qy98;
+    private BigDecimal cy0;
+    private Long createTime;
 
     @Id
     @Column(name = "id")
@@ -49,61 +49,61 @@ public class TGasolineDetail {
 
     @Basic
     @Column(name = "qy_89")
-    public String getQy89() {
+    public BigDecimal getQy89() {
         return qy89;
     }
 
-    public void setQy89(String qy89) {
+    public void setQy89(BigDecimal qy89) {
         this.qy89 = qy89;
     }
 
     @Basic
     @Column(name = "qy_92")
-    public String getQy92() {
+    public BigDecimal getQy92() {
         return qy92;
     }
 
-    public void setQy92(String qy92) {
+    public void setQy92(BigDecimal qy92) {
         this.qy92 = qy92;
     }
 
     @Basic
     @Column(name = "qy_95")
-    public String getQy95() {
+    public BigDecimal getQy95() {
         return qy95;
     }
 
-    public void setQy95(String qy95) {
+    public void setQy95(BigDecimal qy95) {
         this.qy95 = qy95;
     }
 
     @Basic
     @Column(name = "qy_98")
-    public String getQy98() {
+    public BigDecimal getQy98() {
         return qy98;
     }
 
-    public void setQy98(String qy98) {
+    public void setQy98(BigDecimal qy98) {
         this.qy98 = qy98;
     }
 
     @Basic
     @Column(name = "cy_0")
-    public String getCy0() {
+    public BigDecimal getCy0() {
         return cy0;
     }
 
-    public void setCy0(String cy0) {
+    public void setCy0(BigDecimal cy0) {
         this.cy0 = cy0;
     }
 
     @Basic
     @Column(name = "create_time")
-    public Timestamp getCreateTime() {
+    public Long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(Long createTime) {
         this.createTime = createTime;
     }
 

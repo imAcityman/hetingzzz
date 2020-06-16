@@ -5,8 +5,8 @@ import org.springframework.data.domain.Pageable;
 
 public class Pagination {
 
-    private int pageSize;
-    private int page;
+    private int pageSize = 10;
+    private int page = 1;
 
     public Pagination() {
     }
@@ -33,6 +33,6 @@ public class Pagination {
     }
 
     public Pageable toPage() {
-        return PageRequest.of(this.page, this.pageSize);
+        return PageRequest.of(this.page - 1, this.pageSize);
     }
 }
