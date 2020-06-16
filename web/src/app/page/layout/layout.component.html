@@ -1,5 +1,5 @@
 <TabBar
-  [barTintColor]="'#e2afb8'"
+  [barTintColor]="'#ffb5c2'"
   [tintColor]="'#ff5f5f'"
   [unselectedTintColor]="'white'"
   [activeTab]="selectedIndex"
@@ -30,7 +30,7 @@
   </TabBarItem>
   <TabBarItem [title]="'生活'" [key]="'life'" [icon]="icon3" [selectedIcon]="icon33">
     <ng-template #icon3>
-      <i nz-icon [nzIconfont]="'icon-my'"></i>
+      <i nz-icon [nzIconfont]="'icon-shenghuoshui'"></i>
     </ng-template>
     <ng-template #icon33>
       <i nz-icon [nzIconfont]="'icon-shenghuoshui'" class="icon-select"></i>
@@ -39,11 +39,11 @@
       <app-life *ngIf="selectedIndex === 2 || lifeInit"></app-life>
     </div>
   </TabBarItem>
-  <TabBarItem [title]="'我'" [key]="'mime'" [icon]="icon3" [selectedIcon]="icon33">
-    <ng-template #icon3>
+  <TabBarItem [title]="'我的'" [key]="'mime'" [icon]="icon4" [selectedIcon]="icon44">
+    <ng-template #icon4>
       <i nz-icon [nzIconfont]="'icon-my'"></i>
     </ng-template>
-    <ng-template #icon33>
+    <ng-template #icon44>
       <i nz-icon [nzIconfont]="'icon-my'" class="icon-select"></i>
     </ng-template>
     <div class="tab-body">

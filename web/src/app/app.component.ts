@@ -11,7 +11,7 @@ import {NzIconService} from 'ng-zorro-antd';
 export class AppComponent implements OnInit {
   constructor(private router: Router, private storage: MyStorageService, private iconService: NzIconService) {
     this.iconService.fetchFromIconfont({
-      scriptUrl: '//at.alicdn.com/t/font_876907_iogp1bbsvl.js'
+      scriptUrl: '//at.alicdn.com/t/font_876907_cwiqzsmt2ml.js'
     });
   }
 

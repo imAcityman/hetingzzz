@@ -34,7 +34,7 @@ public class BoardController {
     }
 
     @RequestMapping("leaveMessage")
-    public Response leaveMessage(TMessageBoad messageBoad, Long replyid, Long targetuserid) {
+    public Response leaveMessage(TMessageBoad messageBoad, Long replyid, Integer targetuserid) {
         if (ParamUtil.isEmpty(messageBoad.getContent())) {
             return new Response(ResponseStatus.FAIL, "参数错误");
         }
@@ -48,7 +48,7 @@ public class BoardController {
             targetUser.setId(targetuserid);
             messageBoad.setTargetuser(targetUser);
         }
-        long userid = Contants.getUserId();
+        Integer userid = Contants.getUserId();
         TSysUser sysUser = new TSysUser();
         sysUser.setId(userid);
         messageBoad.setUser(sysUser);

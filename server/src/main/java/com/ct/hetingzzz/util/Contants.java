@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 
 public class Contants {
 
-    public static long getUserId(){
+    public static Integer getUserId(){
         HttpServletRequest request = HttpUtil.getRequest();
-        return Long.valueOf(request.getHeader("userid"));
+        return Integer.valueOf(request.getHeader("userid"));
     }
 }

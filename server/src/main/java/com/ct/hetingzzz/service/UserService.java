@@ -30,6 +30,10 @@ public class UserService {
         return userRepository.findByLoginid(loginid);
     }
 
+    public TSysUser getUserById(Integer id) {
+        return userRepository.findById(id).get();
+    }
+
     public boolean setMenstruation(long userid) {
         if(todayIsSet(userid)){
             return false;

@@ -29,6 +29,7 @@ import {InputIosPopupDirective} from './directive/input-ios-popup.directive';
 import { LifeComponent } from './page/layout/life/life.component';
 import { OilComponent } from './page/layout/life/oil/oil.component';
 import { OilPriceComponent } from './page/layout/life/oil/oil-price/oil-price.component';
+import { NavBarComponent } from './component/nav-bar/nav-bar.component';
 
 registerLocaleData(zh);
 
@@ -48,7 +49,8 @@ registerLocaleData(zh);
     InputIosPopupDirective,
     LifeComponent,
     OilComponent,
-    OilPriceComponent
+    OilPriceComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserAnimationsModule,

@@ -1,13 +1,5 @@
 import {Injectable} from '@angular/core';
-import {
-  HttpErrorResponse,
-  HttpEvent,
-  HttpHandler,
-  HttpHeaderResponse,
-  HttpInterceptor,
-  HttpRequest,
-  HttpResponse
-} from '@angular/common/http';
+import {HttpErrorResponse, HttpHandler, HttpHeaderResponse, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable, of, TimeoutError} from 'rxjs';
 import 'rxjs-compat/add/operator/map';
 import {Router} from '@angular/router';
@@ -15,7 +7,6 @@ import {MyStorageService} from './my.storage.service';
 import {catchError, mergeMap, timeout} from 'rxjs/operators';
 import {ErrorObservable} from 'rxjs-compat/observable/ErrorObservable';
 import {environment} from '../../environments/environment';
-import {CommonParams} from '../util/common-params';
 import {ToastService} from 'ng-zorro-antd-mobile';
 
 @Injectable()
@@ -23,7 +14,7 @@ export class Interceptor implements HttpInterceptor {
 
   private backend = environment.apiHost;
 
-  constructor(private router: Router, private storage: MyStorageService,private toast: ToastService) {
+  constructor(private router: Router, private storage: MyStorageService, private toast: ToastService) {
   }
 
   private handleData(

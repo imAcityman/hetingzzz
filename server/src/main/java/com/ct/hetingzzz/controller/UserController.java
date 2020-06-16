@@ -1,12 +1,8 @@
 package com.ct.hetingzzz.controller;
 
-import com.ct.hetingzzz.domain.TMessageBoad;
-import com.ct.hetingzzz.domain.TSysUser;
 import com.ct.hetingzzz.service.TMenstruationLogService;
-import com.ct.hetingzzz.service.TMessageBoadService;
 import com.ct.hetingzzz.service.UserService;
 import com.ct.hetingzzz.util.Contants;
-import com.ct.hetingzzz.util.ParamUtil;
 import com.ct.hetingzzz.util.Response;
 import com.ct.hetingzzz.util.ResponseStatus;
 import org.slf4j.Logger;
@@ -15,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.Date;
 
 @RestController
 @RequestMapping("user")

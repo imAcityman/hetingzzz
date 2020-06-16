@@ -1,38 +1,37 @@
 package com.ct.hetingzzz.domain;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 @Table(name = "t_sys_user", schema = "heting", catalog = "")
 @JsonIgnoreProperties({"roleId","loginid","password","createtime","updatetime"})
 public class TSysUser {
-
-    private long id;
+    private int id;
     private String name;
-    private long roleId;
+    private int roleId;
+    private String avatar;
     private String loginid;
     private String password;
-    private Date createtime;
-    private Date updatetime;
-    private String imagehead;
+    private Integer sex;
+    private Timestamp createtime;
+    private Timestamp updatetime;
 
     @Id
-    @Column(name = "id", nullable = false)
-    public long getId() {
+    @Column(name = "id")
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     @Basic
-    @Column(name = "name", nullable = false, length = 255)
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -42,17 +41,27 @@ public class TSysUser {
     }
 
     @Basic
-    @Column(name = "role_id", nullable = false)
-    public long getRoleId() {
+    @Column(name = "role_id")
+    public int getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(long roleId) {
+    public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
 
     @Basic
-    @Column(name = "loginid", nullable = false, length = 100)
+    @Column(name = "avatar")
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    @Basic
+    @Column(name = "loginid")
     public String getLoginid() {
         return loginid;
     }
@@ -62,7 +71,7 @@ public class TSysUser {
     }
 
     @Basic
-    @Column(name = "password", nullable = false, length = 255)
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -72,33 +81,33 @@ public class TSysUser {
     }
 
     @Basic
-    @Column(name = "createtime", nullable = false)
-    public Date getCreatetime() {
+    @Column(name = "sex")
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    @Basic
+    @Column(name = "createtime")
+    public Timestamp getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(Timestamp createtime) {
         this.createtime = createtime;
     }
 
     @Basic
-    @Column(name = "updatetime", nullable = true)
-    public Date getUpdatetime() {
+    @Column(name = "updatetime")
+    public Timestamp getUpdatetime() {
         return updatetime;
     }
 
-    public void setUpdatetime(Date updatetime) {
+    public void setUpdatetime(Timestamp updatetime) {
         this.updatetime = updatetime;
-    }
-
-    @Basic
-    @Column(name = "imagehead", nullable = true, length = 500)
-    public String getImagehead() {
-        return imagehead;
-    }
-
-    public void setImagehead(String imagehead) {
-        this.imagehead = imagehead;
     }
 
     @Override
@@ -109,15 +118,16 @@ public class TSysUser {
         return id == tSysUser.id &&
                 roleId == tSysUser.roleId &&
                 Objects.equals(name, tSysUser.name) &&
+                Objects.equals(avatar, tSysUser.avatar) &&
                 Objects.equals(loginid, tSysUser.loginid) &&
                 Objects.equals(password, tSysUser.password) &&
+                Objects.equals(sex, tSysUser.sex) &&
                 Objects.equals(createtime, tSysUser.createtime) &&
                 Objects.equals(updatetime, tSysUser.updatetime);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, name, roleId, loginid, password, createtime, updatetime);
+        return Objects.hash(id, name, roleId, avatar, loginid, password, sex, createtime, updatetime);
     }
 }
