@@ -14,6 +14,7 @@ public class TGasoline {
 
     @OneToMany(targetEntity = TGasolineDetail.class)
     @JoinColumn(name = "gas_id", referencedColumnName = "id")
+    @OrderBy("id asc")
     public List<TGasolineDetail> getDetails() {
         return details;
     }

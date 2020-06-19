@@ -17,6 +17,6 @@ public class LifeService {
     private TGasolineRepository gasolineRepository;
 
     public List<TGasoline> getLatestInfo() {
-        return gasolineRepository.findAllByOrderByIdDesc(new Pagination(1, 1).toPage()).getContent();
+        return gasolineRepository.findAllByOrderByIdDesc(new Pagination(1, 2).toPage()).getContent();
     }
 }

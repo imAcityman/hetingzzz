@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {MyStorageService} from './service/my.storage.service';
 import {NzIconService} from 'ng-zorro-antd';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
     this.iconService.fetchFromIconfont({
       scriptUrl: '//at.alicdn.com/t/font_876907_cwiqzsmt2ml.js'
     });
+    moment.locale();
   }
 
   ngOnInit(): void {
