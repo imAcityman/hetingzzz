@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {LoadingService} from '../../../../component/loading/loading.service';
 import {RequestService} from '../../../../service/request.service';
 import {MyStorageService} from '../../../../service/my.storage.service';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-oil',
@@ -71,7 +70,6 @@ export class OilComponent implements OnInit {
       (newOil.details as Array<any>).splice(jsIndex, 1);
       (oldOil.details as Array<any>).splice(jsIndex, 1);
       newOil.details = [...[newJs], ...newOil.details];
-      console.log(newOil);
       this.oilInfo = newOil;
     }
   }
