@@ -7,19 +7,17 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./layout.component.less']
 })
 export class LayoutComponent implements OnInit {
-  selectedIndex = 1;
+  selectedIndex = 0;
   menstruationInit = false;
   loveInit = false;
   lifeInit = false;
   mimeInit = false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    activatedRoute.paramMap.subscribe(({params}: any) => {
-      this.pageChange(params.zoneType);
-    });
   }
 
   ngOnInit(): void {
+    this.pageChange('health');
   }
 
   pageChange(zoneType: string) {
@@ -43,21 +41,8 @@ export class LayoutComponent implements OnInit {
     }
   }
 
-  getPageTab(key) {
-    let tabName = '';
-    switch (key) {
-      case 'love':
-        tabName = 'bigDate';
-        break;
-      case 'life':
-        tabName = 'oil';
-        break;
-    }
-    return tabName;
-  }
-
   tabBarTabOnPress(pressParam: any) {
-    this.router.navigate(['zone', pressParam.key, this.getPageTab(pressParam.key)]);
+    this.pageChange(pressParam.key);
   }
 
 }
