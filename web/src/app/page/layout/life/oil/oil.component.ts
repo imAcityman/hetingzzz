@@ -42,7 +42,7 @@ export class OilComponent implements OnInit {
       if (data.length <= 1) {
         data.push(Object.assign({}, data[0]));
       }
-      const updateTime = moment(data[0].date * 1000).toDate().getTime();
+      const updateTime = data[0].date * 1000;
       this.updateTime = updateTime;
       this.myStorageService.oilUpdateTime = updateTime;
       // 将江苏信息排头
