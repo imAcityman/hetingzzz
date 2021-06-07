@@ -1,53 +1,24 @@
-<TabBar
-  [barTintColor]="'#ffb5c2'"
-  [tintColor]="'#ff5f5f'"
-  [unselectedTintColor]="'white'"
-  [activeTab]="selectedIndex"
-  [tabBarPosition]="'bottom'"
-  (onPress)="tabBarTabOnPress($event)"
->
-  <TabBarItem [title]="'健康'" [key]="'health'" [badge]="" [icon]="icon1" [selectedIcon]="icon11">
-    <ng-template #icon1>
-      <i nz-icon [nzIconfont]="'icon-health1'" class="not-select"></i>
-    </ng-template>
-    <ng-template #icon11>
-      <i nz-icon [nzIconfont]="'icon-health1'" class="icon-select"></i>
-    </ng-template>
-    <div class="tab-body">
-      <app-menstruation *ngIf="selectedIndex === 0 || menstruationInit"></app-menstruation>
-    </div>
-  </TabBarItem>
-  <TabBarItem [title]="'love'" [key]="'love'" [badge]="" [icon]="icon2" [selectedIcon]="icon22">
-    <ng-template #icon2>
-      <i nz-icon [nzIconfont]="'icon-heart__easyiconnet'"></i>
-    </ng-template>
-    <ng-template #icon22>
-      <i nz-icon [nzIconfont]="'icon-heart__easyiconnet'" class="icon-select"></i>
-    </ng-template>
-    <div class="tab-body">
-      <app-love *ngIf="selectedIndex === 1 || loveInit"></app-love>
-    </div>
-  </TabBarItem>
-  <TabBarItem [title]="'生活'" [key]="'life'" [icon]="icon3" [selectedIcon]="icon33">
-    <ng-template #icon3>
-      <i nz-icon [nzIconfont]="'icon-shenghuoshui'"></i>
-    </ng-template>
-    <ng-template #icon33>
-      <i nz-icon [nzIconfont]="'icon-shenghuoshui'" class="icon-select"></i>
-    </ng-template>
-    <div class="tab-body">
-      <app-life *ngIf="selectedIndex === 2 || lifeInit"></app-life>
-    </div>
-  </TabBarItem>
-  <TabBarItem [title]="'我的'" [key]="'mime'" [icon]="icon4" [selectedIcon]="icon44">
-    <ng-template #icon4>
-      <i nz-icon [nzIconfont]="'icon-my'"></i>
-    </ng-template>
-    <ng-template #icon44>
-      <i nz-icon [nzIconfont]="'icon-my'" class="icon-select"></i>
-    </ng-template>
-    <div class="tab-body">
-      <app-mine *ngIf="selectedIndex === 3 || mimeInit"></app-mine>
-    </div>
-  </TabBarItem>
-</TabBar>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="schedule">
+      <ion-icon name="calendar"></ion-icon>
+      <ion-label>Schedule</ion-label>
+      <ion-badge>6</ion-badge>
+    </ion-tab-button>
+
+    <ion-tab-button tab="speakers">
+      <ion-icon name="person-circle"></ion-icon>
+      <ion-label>Speakers</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="map">
+      <ion-icon name="map"></ion-icon>
+      <ion-label>Map</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="about">
+      <ion-icon name="information-circle"></ion-icon>
+      <ion-label>About</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

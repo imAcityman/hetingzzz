@@ -30,6 +30,8 @@ import { LifeComponent } from './page/layout/life/life.component';
 import { OilComponent } from './page/layout/life/oil/oil.component';
 import { OilPriceComponent } from './page/layout/life/oil/oil-price/oil-price.component';
 import { NavBarComponent } from './component/nav-bar/nav-bar.component';
+import { IonicModule } from '@ionic/angular';
+import { Tabs } from './page/tabs.page/tabs.page.module';
 
 registerLocaleData(zh);
 
@@ -62,7 +64,9 @@ registerLocaleData(zh);
     ReactiveFormsModule,
     AngularWebStorageModule,
     NgZorroAntdMobileModule,
-    ShareModule
+    ShareModule,
+    IonicModule.forRoot(),
+    Tabs.PageModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
