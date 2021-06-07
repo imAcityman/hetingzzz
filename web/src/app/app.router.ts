@@ -18,4 +18,4 @@ const rootRouterConfig: Routes = [
 ];
 
 // 对外暴漏出去
-export const rootRouterModule: ModuleWithProviders = RouterModule.forRoot(rootRouterConfig, {useHash: true});
+export const rootRouterModule: ModuleWithProviders = RouterModule.forRoot(rootRouterConfig, { useHash: true, relativeLinkResolution: 'legacy' });
