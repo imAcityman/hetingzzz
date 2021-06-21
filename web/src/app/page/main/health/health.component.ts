@@ -1,17 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {RequestService} from '../../../service/request.service';
-import {HttpParams} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {CommonParams} from '../../../config/common-params';
+import {HttpParams} from '@angular/common/http';
 import * as dayjs from 'dayjs';
 
 @Component({
-  selector: 'app-menstruation',
-  templateUrl: './menstruation.component.html',
-  styleUrls: ['./menstruation.component.css']
+  selector: 'app-health',
+  templateUrl: './health.component.html',
+  styleUrls: ['./health.component.less']
 })
-
-export class MenstruationComponent implements OnInit {
+export class HealthComponent implements OnInit {
 
   menstruationList = [];
   expectDate: string;

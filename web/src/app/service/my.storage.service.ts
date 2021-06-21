@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {LocalStorageService} from 'angular-web-storage';
-import {Constants} from '../util/constants';
+import {CommonParams} from '../config/common-params';
 
 @Injectable({
   providedIn: 'root'
@@ -74,11 +74,11 @@ export class MyStorageService {
   }
 
   set oilUpdateTime(updateTime: number) {
-    this.set(Constants.OIL_UPDATE_DATE, updateTime || 0);
+    this.set(CommonParams.OIL_UPDATE_DATE, updateTime || 0);
   }
 
   get oilUpdateTime() {
-    return this.get(Constants.OIL_UPDATE_DATE);
+    return this.get(CommonParams.OIL_UPDATE_DATE);
   }
 
 }

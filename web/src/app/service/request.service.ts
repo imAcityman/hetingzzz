@@ -43,7 +43,8 @@ export class RequestService {
     return this.http.get<Response>(url, {
       params: RequestService.buildHttpParam(params), headers: new HttpHeaders({
         'Content-Type': 'application/json;charset=UTF-8'
-      })
+      }),
+      withCredentials: true
     }).pipe(map(d => new Response(d)));
   }
 
@@ -61,7 +62,8 @@ export class RequestService {
     return this.http.post<Response>(url, body, {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded'
-      })
+      }),
+      withCredentials: true
     }).pipe(map(d => new Response(d)));
   }
 }

@@ -2,13 +2,16 @@
 
 :host {
   display: block;
-  padding: 10px;
   height: 100%;
   position: relative;
 }
 
+.container {
+  padding: 10px;
+}
+
 .good {
-  color: @pink;
+  color: @primary-color-pink;
 }
 
 .bad {
@@ -21,19 +24,18 @@
 }
 
 ::ng-deep .am-steps-item .error-tail .am-steps-item-tail:after {
-  background-color: @pink;
+  background-color: @primary-color-pink;
 }
 
 .add-new {
-  position: fixed;
   right: 0;
   bottom: 50px;
-  background-color: @pink;
+  background-color: @primary-color-pink;
   color: white;
   padding: 3px 5px 3px 10px;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
-  box-shadow: 0 0 3px @pink;
+  box-shadow: 0 0 3px @primary-color-pink;
   display: flex;
   align-items: center;
 

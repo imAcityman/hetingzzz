@@ -3,7 +3,6 @@ import {MyStorageService} from '../../../service/my.storage.service';
 import {Router} from '@angular/router';
 import {PersonInfo} from '../../../model/PersonInfo';
 import {RequestService} from '../../../service/request.service';
-import {Constants} from '../../../util/constants';
 
 @Component({
   selector: 'app-mine',

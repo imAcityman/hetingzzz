@@ -1,4 +1,4 @@
-import {CommonParams} from './common-params';
+import {CommonParams} from '../config/common-params';
 
 export class Response {
   private _code: number;
@@ -36,6 +36,6 @@ export class Response {
   }
 
   get isSuccess() {
-    return this._code === CommonParams.SUCCESS;
+    return this._code === CommonParams.REQUEST_SUCCESS;
   }
 }

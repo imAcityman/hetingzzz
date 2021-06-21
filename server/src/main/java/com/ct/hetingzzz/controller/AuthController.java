@@ -9,7 +9,9 @@ import com.ct.hetingzzz.util.ParamUtil;
 import com.ct.hetingzzz.util.Response;
 import com.ct.hetingzzz.util.ResponseStatus;
 import com.ct.hetingzzz.util.SecretUtil;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -26,7 +28,7 @@ public class AuthController {
     @Resource
     private JWTUtil jwtUtil;
 
-    @RequestMapping("login")
+    @PostMapping("login")
     public Response login(String loginid, String password) {
         if (ParamUtil.isEmpty(loginid, password)) {
             return new Response(ResponseStatus.FAIL, "参数错误");
@@ -47,7 +49,7 @@ public class AuthController {
         }
     }
 
-    @RequestMapping("autoLogin")
+    @PostMapping("autoLogin")
     public Response autoLogin() {
         LoginUser user = jwtUtil.getCurrentUser();
         if (null != user) {

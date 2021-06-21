@@ -1,17 +1,21 @@
-<Steps [size]="'small'">
-  <Step (click)="showUpdate(item)" *ngFor="let item of dates" status="error" [icon]="item.isGood === 1 ? good : bad"
-        [title]="item.title"
-        [description]="item.datetime"></Step>
-</Steps>
-<ng-template #good>
-  <i nz-icon [nzIconfont]="'icon-Heart'" class="good"></i>
-</ng-template>
-<ng-template #bad>
-  <i nz-icon [nzIconfont]="'icon-Heartbroken'" class="bad"></i>
-</ng-template>
-<div class="add-new" (click)="addNew()">
-  <i nz-icon nzType="plus" nzTheme="outline"></i>&nbsp;新日子
-</div>
+<ion-content>
+  <div class="add-new" (click)="addNew()" slot="fixed">
+    <i nz-icon nzType="plus" nzTheme="outline"></i>&nbsp;新日子
+  </div>
+  <div class="container">
+    <Steps [size]="'small'">
+      <Step (click)="showUpdate(item)" *ngFor="let item of dates" status="error" [icon]="item.isGood === 1 ? good : bad"
+            [title]="item.title"
+            [description]="item.datetime"></Step>
+    </Steps>
+    <ng-template #good>
+      <i nz-icon [nzIconfont]="'icon-Heart'" class="good"></i>
+    </ng-template>
+    <ng-template #bad>
+      <i nz-icon [nzIconfont]="'icon-Heartbroken'" class="bad"></i>
+    </ng-template>
+  </div>
+</ion-content>
 <nz-modal [(nzVisible)]="isVisible1" (nzOnCancel)="isVisible1 = false" nzTitle="添加新日子" (nzOnOk)="submit(1)">
   <form nz-form [formGroup]="validateForm">
     <nz-form-item>

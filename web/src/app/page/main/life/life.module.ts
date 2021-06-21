@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LifeRoutingModule } from './life-routing.module';
 import { LifeComponent } from './life.component';
+import {ShareModule} from '../../../module/share/share.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { LifeComponent } from './life.component';
   ],
   imports: [
     CommonModule,
-    LifeRoutingModule
+    LifeRoutingModule,
+    ShareModule
   ]
 })
 export class LifeModule { }

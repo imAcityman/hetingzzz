@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {RequestService} from '../../../../service/request.service';
 import {LoadingService} from '../../../../component/loading/loading.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Constants} from '../../../../util/constants';
 import {DataService} from '../../../../util/data.service';
 import {ModalService, ToastService} from 'ng-zorro-antd-mobile';
 import * as dayjs from 'dayjs';
+import {CommonParams} from '../../../../config/common-params';
 
 @Component({
   selector: 'app-big-date',
@@ -18,7 +18,7 @@ export class BigDateComponent implements OnInit {
   isVisible1 = false;
   isVisible2 = false;
   validateForm!: FormGroup;
-  isGoodOptions = Constants.isGoodOptions;
+  isGoodOptions = CommonParams.isGoodOptions;
   currentDate;
   showData = {
     date: '',
@@ -61,9 +61,7 @@ export class BigDateComponent implements OnInit {
   }
 
   getBigDate() {
-    LoadingService.open();
     this.request.get('/bigdate/getBigDate').subscribe(res => {
-      LoadingService.close();
       if (res.isSuccess) {
         this.dates = res.data;
       }
@@ -93,13 +91,11 @@ export class BigDateComponent implements OnInit {
       },
       {
         text: '确定', onPress: () => {
-          LoadingService.open();
           this.request.post('/bigdate/delete', {dateId}).subscribe(res => {
             this.toast.success('删除成功');
             this.isVisible2 = false;
             this.getBigDate();
           }, () => {
-            LoadingService.close();
           });
         }
       }
@@ -123,7 +119,6 @@ export class BigDateComponent implements OnInit {
         },
         {
           text: '确定', onPress: () => {
-            LoadingService.open();
             if (type === 1) {
               delete param.id;
               this.create(param);
@@ -141,7 +136,6 @@ export class BigDateComponent implements OnInit {
       this.resetForm();
       this.getBigDate();
     }, () => {
-      LoadingService.close();
     });
   }
 
@@ -151,7 +145,6 @@ export class BigDateComponent implements OnInit {
       this.resetForm();
       this.getBigDate();
     }, () => {
-      LoadingService.close();
     });
   }
 }

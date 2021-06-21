@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {RequestService} from '../../../../service/request.service';
-import {CommonParams} from '../../../../util/common-params';
+import {CommonParams} from '../../../../config/common-params';
 import {LoadingService} from '../../../../component/loading/loading.service';
 import {MyStorageService} from '../../../../service/my.storage.service';
+import {QueryPage} from '../../../../model/query-page';
+import {ConstantService} from '../../../../service/constant.service';
 
 @Component({
   selector: 'app-board',
@@ -11,10 +13,11 @@ import {MyStorageService} from '../../../../service/my.storage.service';
 })
 export class BoardComponent implements OnInit {
 
+  queryPage = new QueryPage<any>(1, 20);
+  refresherText = CommonParams.REFRESHER_TEXT;
   isWrite = false;
   loading = false;
   me;
-  messageList;
   placeholder;
   replyName;
   message = {
@@ -22,17 +25,8 @@ export class BoardComponent implements OnInit {
     targetuserid: '',
     replyid: '',
   };
-  hasMoreData = true;
-  refresh = {
-    currentState: 'activate',
-    drag: false
-  };
-  pageInfo = {
-    pageSize: 20,
-    page: 1
-  };
 
-  constructor(private request: RequestService, private storage: MyStorageService) {
+  constructor(private request: RequestService, private storage: MyStorageService, private constantService: ConstantService) {
     this.me = this.storage.getUserId();
   }
 
@@ -57,10 +51,10 @@ export class BoardComponent implements OnInit {
       alert('请输入留言内容');
       return;
     }
-    LoadingService.open();
+
     this.request.post('/board/leaveMessage', this.message).subscribe((res) => {
-      LoadingService.close();
-      if (res.code === CommonParams.SUCCESS) {
+
+      if (res.isSuccess) {
         this.message.content = '';
         this.hideWrite();
         this.ngOnInit();
@@ -69,36 +63,25 @@ export class BoardComponent implements OnInit {
     });
   }
 
-  getMessage(flag: boolean) {
-    LoadingService.open();
-    this.loading = true;
-    if (flag) {
-      this.pageInfo.page = 1;
-    }
-    this.request.get('/board/getBoadMessage', this.pageInfo).subscribe((res) => {
-      LoadingService.close();
-      this.pageInfo.page++;
-      this.loading = false;
-      this.hasMoreData = res.data.length >= this.pageInfo.pageSize;
-      this.refresh.currentState = !this.hasMoreData ? 'deactivate' : 'activate';
-      if (res.isSuccess) {
-        this.messageList = flag ? res.data : [...this.messageList, ...res.data];
+  search(page?: number) {
+    return new Promise<void>(async (resolve, reject) => {
+      this.queryPage.loading = true;
+      this.queryPage.setPage(page);
+      let loadingModal;
+      if (page <= 1) {
+        loadingModal = await this.constantService.loading();
       }
-    }, () => {
-      LoadingService.close();
-      this.loading = false;
+      this.request.get('/board/getBoadMessage', this.queryPage.params).subscribe(res => {
+        this.queryPage.setResponse(res, page !== 1);
+        this.queryPage.loading = false;
+        loadingModal?.dismiss().then();
+        resolve();
+      }, error => {
+        this.queryPage.loading = false;
+        loadingModal?.dismiss().then();
+        resolve();
+      });
     });
-  }
-
-  pageLoad($event) {
-    if (this.loading) {
-      return;
-    }
-    if ($event === 'endReachedRefresh' && this.hasMoreData) {
-      this.getMessage(false);
-    } else if ($event === 'down') {
-      this.getMessage(true);
-    }
   }
 
   replyMessage(replyid, replyName, targetuserid?) {
@@ -110,20 +93,33 @@ export class BoardComponent implements OnInit {
     const con = confirm('确定删除这条留言？');
     if (con) {
       this.request.get('/board/deleteMessage', {id: id}).subscribe((res) => {
-        LoadingService.close();
-        if (res.code === CommonParams.SUCCESS) {
+        if (res.isSuccess) {
           alert(res.msg);
-          this.getMessage(true);
+          this.search(1).then();
         }
       });
     }
   }
 
   ngOnInit() {
-    this.getMessage(true);
+    this.search(1).then();
   }
 
   trackById(obj: any) {
     return obj.id;
+  }
+
+  doRefresh(event): void {
+    this.queryPage.hasData = true;
+    this.search(1).then(() => {
+      event.target.complete();
+    });
+  }
+
+  loadData(event): void {
+    console.log(1);
+    this.search().then(() => {
+      event.target.complete();
+    });
   }
 }

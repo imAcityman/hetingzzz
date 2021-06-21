@@ -5,7 +5,7 @@
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './page/login/login.component';
 import {LayoutComponent} from './page/layout/layout.component';
-import {NgModule} from "@angular/core";
+import {NgModule} from '@angular/core';
 // 引入挂载到路由上的组件
 // 配置一个路由数组
 const router: Routes = [

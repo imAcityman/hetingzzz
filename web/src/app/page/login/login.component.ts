@@ -1,9 +1,9 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {MyStorageService} from '../../service/my.storage.service';
 import {RequestService} from '../../service/request.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {LoadingService} from '../../component/loading/loading.service';
+import {ConstantService} from '../../service/constant.service';
 
 @Component({
   selector: 'app-login',
@@ -15,50 +15,48 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private router: Router, private storage: MyStorageService, private request: RequestService, private fb: FormBuilder,
-              private cdr: ChangeDetectorRef) {
-  }
-
-  createForm() {
+              private constantService: ConstantService) {
     this.loginForm = this.fb.group({
-      loginid: [this.storage.get('loginid'), [Validators.required]],
-      password: [this.storage.get('password'), [Validators.required]]
+      loginid: [this.storage.get('loginid') || null, [Validators.required]],
+      password: [this.storage.get('password') || null, [Validators.required]]
     });
   }
 
-  login() {
+  async login(): Promise<void> {
+    const loadingModal = await this.constantService.loading();
     this.request.post('/auth/login', this.loginForm.value).subscribe((data) => {
-      LoadingService.close();
-      if (data.code === 1) {
+      loadingModal?.dismiss().then();
+      if (data.isSuccess) {
         this.storage.set('loginid', this.loginForm.value.loginid);
         this.storage.set('password', this.loginForm.value.password);
         this.storage.setToken(data.data.token);
         this.storage.setUserId(data.data.userid);
-        this.router.navigate(['zone']);
+        this.router.navigate(['main']);
       } else {
-        alert(data.msg);
+        this.constantService.messageError(data.msg).then();
       }
     }, () => {
+      loadingModal?.dismiss().then();
     });
   }
 
-  autoLogin() {
-    LoadingService.open();
+  async autoLogin() {
+    const loadingModal = await this.constantService.loading('自动登录');
     this.request.post('/auth/autoLogin').subscribe((data) => {
-      if (data.code === 1) {
+      if (data.isSuccess) {
         setTimeout(() => {
-          LoadingService.close();
-          this.router.navigate(['zone']);
+          this.router.navigate(['main']).then();
         }, 1000);
       } else {
-        LoadingService.close();
+        this.constantService.messageError(data.msg);
       }
+      loadingModal?.dismiss().then();
     });
   }
 
   ngOnInit() {
-    this.createForm();
     if (this.storage.getToken()) {
-      this.autoLogin();
+      this.autoLogin().then();
     }
   }
 

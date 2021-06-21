@@ -1,0 +1,17 @@
+<app-nav-bar>经期预测</app-nav-bar>
+<ion-content>
+  <!--  <app-nav-bar [color]="true">-->
+  <!--    经期预测-->
+  <!--  </app-nav-bar>-->
+  <div class="next">
+    <div class="date">{{expectDate}}</div>
+    <a class="set" (click)="setToday()">设置今天</a>
+  </div>
+  <div class="header">大姨妈记录</div>
+  <ul class="list" *ngIf="menstruationList.length>0">
+    <li class="item" *ngFor="let item of menstruationList">{{item.menstruationTime| formatDate: 'YYYY-MM-DD'}}</li>
+  </ul>
+  <ul class="list" *ngIf="menstruationList.length<=0">
+    <li class="item">暂时没有记录</li>
+  </ul>
+</ion-content>

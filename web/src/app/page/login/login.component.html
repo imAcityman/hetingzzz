@@ -1,6 +1,6 @@
-<form [formGroup]="loginForm" (submit)="login()" class="form-login" novalidate>
+<form [formGroup]="loginForm" (submit)="login()" class="form-login">
   <div class="login">
-    <div class="title">CT-ZONE<img src="../assets/image/love.png"></div>
+    <div class="title">CT-ZONE<img src="../../../assets/image/love.png" alt=""></div>
     <div class="row">
       <label style="color: white">帐号</label>
       <div class="input-box">
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="row">
-      <button nz-button nzSize="large" class="btn-login" type="submit" [disabled]="!loginForm.valid">登录</button>
+      <button nz-button nzSize="large" nzType="primary" class="btn-login" type="submit" [disabled]="loginForm.invalid">登录</button>
     </div>
   </div>
 </form>

@@ -42,7 +42,6 @@
   width: 80%;
   padding-top: 10px;
   margin: auto;
-  opacity: 0.9;
 }
 
 .login .row label {
@@ -59,26 +58,4 @@
 .btn-login {
   margin-top: 15px;
   width: 100%;
-  padding: 2px 0;
-  font-size: 20px;
-  color: white;
-  text-align: center;
-  border-radius: 5px;
-  display: block;
-  background-color: #ff0074;
-  border: 1px #e0a4ac solid;
-}
-
-.btn-login:active {
-  background-color: #ffa0a6;
-}
-
-*:disabled {
-  color: #cccccc;
-  background-color: white;
-  border: 1px #cccccc solid;
-}
-
-.error {
-  border-color: #ff0074 !important;
 }

@@ -21,16 +21,16 @@ export class OilComponent implements OnInit {
   }
 
   getOil() {
-    LoadingService.open();
+
     this.loading = true;
     this.request.get('/life/getOilInfo').subscribe((res) => {
-      LoadingService.close();
+
       this.loading = false;
       if (res.isSuccess && res.data) {
         this.buildData(res.data);
       }
     }, () => {
-      LoadingService.close();
+
       this.loading = false;
     });
   }

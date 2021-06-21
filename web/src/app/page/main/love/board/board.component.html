@@ -1,0 +1,75 @@
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      [pullingIcon]="null"
+      [pullingText]="refresherText"
+      refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="write" slot="fixed" (click)="writeMessage('写点什么吧 ...')">留下印记</div>
+  <div class="container">
+
+    <ul class="list">
+      <li class="item" *ngFor="let item of queryPage?.data;trackBy: trackById">
+        <div class="head">
+          <img [src]="item.user.avatar">
+        </div>
+        <div class="body">
+          <div class="name">
+            {{ item.user.name}}
+          </div>
+          <div class="time">
+            {{item.createtime|dateFromNow}}
+          </div>
+          <p class="content">{{item.content}}</p>
+          <ul class="reply" *ngIf="item.replies.length > 0">
+            <li *ngFor="let reply of item.replies">
+              <p class="reply-body">
+              <span (click)="replyMessage(item.id,reply.user.name,reply.user.id)">
+                <a class="reply-name">{{reply.user.name}}:</a>
+                <a class="reply-name" *ngIf="reply.targetuser">@{{reply.targetuser.name}}</a>
+                <span class="reply-content">{{reply.content}}</span>
+              </span>
+                <a class="blue remove-reply" *ngIf="me == reply.user.id" (click)="deleteMessage(reply.id)">删除</a>
+              </p>
+            </li>
+          </ul>
+          <div class="btn-group">
+            <a class="btn btn-pink" href="javascript:;" (click)="replyMessage(item.id,item.user.name)">
+              <i class="ht-icon icon-message"></i>回复
+            </a>
+            <a class="btn btn-pink" href="javascript:;" *ngIf="me == item.user.id" (click)="deleteMessage(item.id)">
+              <i class="ht-icon icon-delete"></i>删除
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="nomessage" *ngIf="!queryPage.loading  && !queryPage?.data?.length">
+      <li>
+        您的留言板空空如也~
+      </li>
+    </ul>
+
+
+    <div class="box" [ngClass]="{'up':isWrite}">
+      <form (submit)="submit()">
+        <div class="pd">
+          <label class="reply-people grey" for="content" *ngIf="replyName">@{{replyName}}</label>
+          <textarea id="content" maxlength="200" name="content" [(ngModel)]="message.content"
+                    [placeholder]="placeholder"></textarea>
+          <div class="btn-write">
+            <span class="number">{{message.content.length || 0}} / 200</span>
+            <button type="submit">留言</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" [disabled]="!queryPage.hasData">
+    <ion-infinite-scroll-content
+      loadingSpinner="dots">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -21,6 +21,7 @@ import {NzAffixModule} from 'ng-zorro-antd/affix';
 import {NzTabsModule} from 'ng-zorro-antd/tabs';
 import {NzDrawerModule} from 'ng-zorro-antd/drawer';
 import {PlatformModule} from '@angular/cdk/platform';
+import {NgZorroAntdMobileModule} from 'ng-zorro-antd-mobile';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import {PlatformModule} from '@angular/cdk/platform';
     NzTagModule,
     NzCheckboxModule,
     HttpClientModule,
+    NgZorroAntdMobileModule
   ],
   declarations: [],
   imports: [

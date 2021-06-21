@@ -5,15 +5,15 @@ import {Router} from '@angular/router';
 import {MyStorageService} from './my.storage.service';
 import {catchError, mergeMap, timeout} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
-import {ToastService} from 'ng-zorro-antd-mobile';
 import {ErrorObservable} from 'rxjs-compat/observable/ErrorObservable';
+import {ConstantService} from './constant.service';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
   private backend = environment.apiHost;
 
-  constructor(private router: Router, private storage: MyStorageService, private toast: ToastService) {
+  constructor(private router: Router, private storage: MyStorageService, private constantService: ConstantService) {
   }
 
   private handleData(
@@ -50,7 +50,7 @@ export class Interceptor implements HttpInterceptor {
   }
 
   message(msg: string) {
-    this.toast.fail(msg);
+    this.constantService.messageError(msg).then();
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<| HttpHeaderResponse | HttpResponse<any>> {

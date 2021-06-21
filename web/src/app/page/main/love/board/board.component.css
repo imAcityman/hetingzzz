@@ -8,8 +8,11 @@
   transform: none !important;
 }
 
+.container {
+  padding: 10px;
+}
+
 .write {
-  position: fixed;
   top: 15px;
   right: -95%;
   padding: 5px 8px;
