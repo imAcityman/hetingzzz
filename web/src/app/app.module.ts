@@ -4,8 +4,8 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {LayoutComponent} from './page/layout/layout.component';
 import {LoginComponent} from './page/login/login.component';
-import {rootRouterModule} from './app.router';
-import {RouterModule} from '@angular/router';
+import {AppRouterModule} from './app.router.module';
+import {RouteReuseStrategy, RouterModule} from '@angular/router';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MenstruationComponent} from './page/layout/menstruation/menstruation.component';
 import {Interceptor} from './service/Interceptor.service';
@@ -21,17 +21,16 @@ import {CountdownComponent} from './page/layout/love/countdown/countdown.compone
 import {NgZorroAntdMobileModule} from 'ng-zorro-antd-mobile';
 import {NZ_I18N} from 'ng-zorro-antd/i18n';
 import {zh_CN} from 'ng-zorro-antd/i18n';
-import {registerLocaleData} from '@angular/common';
+import {CommonModule, registerLocaleData} from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import {ShareModule} from './module/share/share.module';
 import {LoveComponent} from './page/layout/love/love.component';
 import {InputIosPopupDirective} from './directive/input-ios-popup.directive';
-import { LifeComponent } from './page/layout/life/life.component';
-import { OilComponent } from './page/layout/life/oil/oil.component';
-import { OilPriceComponent } from './page/layout/life/oil/oil-price/oil-price.component';
-import { NavBarComponent } from './component/nav-bar/nav-bar.component';
-import { IonicModule } from '@ionic/angular';
-import { Tabs } from './page/tabs.page/tabs.page.module';
+import {LifeComponent} from './page/layout/life/life.component';
+import {OilComponent} from './page/layout/life/oil/oil.component';
+import {OilPriceComponent} from './page/layout/life/oil/oil-price/oil-price.component';
+import {NavBarComponent} from './component/nav-bar/nav-bar.component';
+import {IonicRouteStrategy} from '@ionic/angular';
 
 registerLocaleData(zh);
 
@@ -55,24 +54,21 @@ registerLocaleData(zh);
     NavBarComponent
   ],
   imports: [
+    CommonModule,
     BrowserAnimationsModule,
     BrowserModule,
     RouterModule,
-    rootRouterModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
     AngularWebStorageModule,
     NgZorroAntdMobileModule,
     ShareModule,
-    IonicModule.forRoot(),
-    Tabs.PageModule
+    AppRouterModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: Interceptor,
-    multi: true,
-  }, {provide: NZ_I18N, useValue: zh_CN}],
+  providers: [
+    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true,
+    }, {provide: NZ_I18N, useValue: zh_CN}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,13 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpHandler, HttpHeaderResponse, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable, of, TimeoutError} from 'rxjs';
-import 'rxjs-compat/add/operator/map';
 import {Router} from '@angular/router';
 import {MyStorageService} from './my.storage.service';
 import {catchError, mergeMap, timeout} from 'rxjs/operators';
-import {ErrorObservable} from 'rxjs-compat/observable/ErrorObservable';
 import {environment} from '../../environments/environment';
 import {ToastService} from 'ng-zorro-antd-mobile';
+import {ErrorObservable} from 'rxjs-compat/observable/ErrorObservable';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
@@ -52,7 +51,6 @@ export class Interceptor implements HttpInterceptor {
 
   message(msg: string) {
     this.toast.fail(msg);
-    // alert(msg);
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<| HttpHeaderResponse | HttpResponse<any>> {
@@ -65,7 +63,6 @@ export class Interceptor implements HttpInterceptor {
         .set(MyStorageService.userIdName, userId.toString())
       , url: this.backend + req.url
     });
-    // @ts-ignore
     return next.handle(authReq)
       .pipe(mergeMap((event: any) => {
         if (event instanceof HttpResponse && event.status === 200) {

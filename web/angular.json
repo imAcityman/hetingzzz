@@ -80,7 +80,11 @@
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "allowedCommonJsDependencies": [
+              "rxjs-compat",
+              "qs"
+            ]
           },
           "configurations": {
             "production": {

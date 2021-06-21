@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-countdown',
@@ -8,8 +8,8 @@ import * as moment from 'moment';
 })
 export class CountdownComponent implements OnInit {
 
-  targetDay = moment('2019-09-05');
-  now = moment();
+  targetDay = dayjs('2019-09-05');
+  now = dayjs();
   day;
 
   ngOnInit() {

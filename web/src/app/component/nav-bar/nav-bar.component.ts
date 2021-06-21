@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, TemplateRef} from '@angular/core';
-import {InputBoolean} from 'ng-zorro-antd';
+import {InputBoolean} from "ng-zorro-antd/core/util";
 
 @Component({
   selector: 'app-nav-bar',

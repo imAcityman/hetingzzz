@@ -3,9 +3,9 @@ import {RequestService} from '../../../../service/request.service';
 import {LoadingService} from '../../../../component/loading/loading.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Constants} from '../../../../util/constants';
-import * as moment from 'moment';
 import {DataService} from '../../../../util/data.service';
 import {ModalService, ToastService} from 'ng-zorro-antd-mobile';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-big-date',
@@ -42,7 +42,7 @@ export class BigDateComponent implements OnInit {
         return;
       }
       this.showData = {
-        date: moment(data.date).format('YYYY-MM-DD'),
+        date: dayjs(data.date).format('YYYY-MM-DD'),
         title: data.title,
         isGood: data.isGood[0].value === 2 ? '坏事' : '好事'
       };
@@ -54,7 +54,7 @@ export class BigDateComponent implements OnInit {
   resetForm() {
     this.dataService.marFormReset(this.validateForm);
     this.validateForm.patchValue({
-      date: moment(new Date()).toDate(),
+      date: dayjs(new Date()).toDate(),
       title: '',
       isGood: [this.isGoodOptions[0]]
     });
@@ -78,7 +78,7 @@ export class BigDateComponent implements OnInit {
   showUpdate(item) {
     this.currentDate = item;
     this.validateForm.patchValue({
-      date: moment(item.datetime).toDate(),
+      date: dayjs(item.datetime).toDate(),
       title: item.title,
       isGood: [this.isGoodOptions[item.isGood - 1]]
     });

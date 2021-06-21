@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {RequestService} from '../../../service/request.service';
 import {HttpParams} from '@angular/common/http';
-import * as moment from 'moment';
 import {Router} from '@angular/router';
 import {CommonParams} from '../../../util/common-params';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-menstruation',
@@ -24,7 +24,7 @@ export class MenstruationComponent implements OnInit {
       if (data.code === CommonParams.SUCCESS) {
         if (data.data.length > 0) {
           this.menstruationList = data.data;
-          this.expectDate = moment(data.data[0].menstruationTime).add(30, 'day').format('MM月DD日');
+          this.expectDate = dayjs(data.data[0].menstruationTime).add(30, 'day').format('MM月DD日');
         } else {
           this.expectDate = '请先设置';
         }
