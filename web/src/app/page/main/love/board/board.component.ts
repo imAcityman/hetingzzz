@@ -67,18 +67,12 @@ export class BoardComponent implements OnInit {
     return new Promise<void>(async (resolve, reject) => {
       this.queryPage.loading = true;
       this.queryPage.setPage(page);
-      let loadingModal;
-      if (page <= 1) {
-        loadingModal = await this.constantService.loading();
-      }
       this.request.get('/board/getBoadMessage', this.queryPage.params).subscribe(res => {
         this.queryPage.setResponse(res, page !== 1);
         this.queryPage.loading = false;
-        loadingModal?.dismiss().then();
         resolve();
       }, error => {
         this.queryPage.loading = false;
-        loadingModal?.dismiss().then();
         resolve();
       });
     });
