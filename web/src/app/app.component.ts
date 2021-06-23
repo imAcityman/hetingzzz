@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {MyStorageService} from './service/my.storage.service';
-import {NzIconService} from "ng-zorro-antd/icon";
+import {NzIconService} from 'ng-zorro-antd/icon';
 import * as dayjs from 'dayjs';
 
 @Component({
