@@ -129,12 +129,14 @@ a cite {
 a:active {
   color: transparent;
 }
-.ant-btn:focus, .ant-btn:hover, .ant-btn:active{
+
+.ant-btn:focus, .ant-btn:hover, .ant-btn:active {
   color: #4f4f4f;
   background-color: #fff;
   border-color: #d9d9d9;
 
 }
+
 .ant-btn-primary {
   color: #fff;
   background-color: @primary-color-pink;
@@ -146,3 +148,26 @@ a:active {
   background-color: @primary-color-pink;
   border-color: @primary-color-pink;
 }
+
+.modal-half-bottom {
+  --max-height: 50%;
+  align-items: flex-end;
+}
+
+.font(@i) when(@i <= 28){
+  .fs-@{i} {
+    font-size: @i + 0px ;
+  }
+  .font((@i + 2));
+}
+
+.font(12);
+
+.fontImp(@i) when(@i <= 28){
+  .fs-imp-@{i} {
+    font-size: @i + 0px !important;
+  }
+  .fontImp((@i + 2));
+}
+
+.fontImp(12);

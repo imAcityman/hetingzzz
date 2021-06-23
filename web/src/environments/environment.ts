@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiHost: '//zone.hetingzzz.com/api'
+  apiHost: '//api.hetingzzz.com/hetingzzz'
 };
 
 /*

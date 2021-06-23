@@ -13,6 +13,7 @@ import {ConstantService} from '../../../../service/constant.service';
 })
 export class BoardComponent implements OnInit {
 
+  init = false;
   queryPage = new QueryPage<any>(1, 20);
   refresherText = CommonParams.REFRESHER_TEXT;
   isWrite = false;
@@ -65,15 +66,22 @@ export class BoardComponent implements OnInit {
 
   search(page?: number) {
     return new Promise<void>(async (resolve, reject) => {
+      let loadingModal;
+      if (!this.init) {
+        loadingModal = await this.constantService.loading();
+      }
       this.queryPage.loading = true;
       this.queryPage.setPage(page);
       this.request.get('/board/getBoadMessage', this.queryPage.params).subscribe(res => {
         this.queryPage.setResponse(res, page !== 1);
         this.queryPage.loading = false;
         resolve();
+        loadingModal?.dismiss().then();
+        this.init = true;
       }, error => {
         this.queryPage.loading = false;
         resolve();
+        loadingModal?.dismiss().then();
       });
     });
   }

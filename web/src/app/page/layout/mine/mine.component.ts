@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MyStorageService} from '../../../service/my.storage.service';
 import {Router} from '@angular/router';
-import {PersonInfo} from '../../../model/PersonInfo';
+import {ModelPersonInfo} from '../../../model/model-person-info';
 import {RequestService} from '../../../service/request.service';
 
 @Component({
@@ -10,7 +10,7 @@ import {RequestService} from '../../../service/request.service';
   styleUrls: ['./mine.component.less']
 })
 export class MineComponent implements OnInit {
-  personInfo: PersonInfo = {
+  personInfo: ModelPersonInfo = {
     avatar: 'https://up.enterdesk.com/edpic/5b/04/a3/5b04a3b2a9eafbff1cf823260632dd10.jpg',
     id: 0,
     name: '未知',

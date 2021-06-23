@@ -1,4 +1,11 @@
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      [pullingIcon]="null"
+      [pullingText]="refresherText"
+      refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
   <div class="add-new" (click)="addNew()" slot="fixed">
     <i nz-icon nzType="plus" nzTheme="outline"></i>&nbsp;新日子
   </div>
@@ -16,52 +23,3 @@
     </ng-template>
   </div>
 </ion-content>
-<nz-modal [(nzVisible)]="isVisible1" (nzOnCancel)="isVisible1 = false" nzTitle="添加新日子" (nzOnOk)="submit(1)">
-  <form nz-form [formGroup]="validateForm">
-    <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="date">日期</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
-        <div DatePicker class="hz-ant-input" formControlName="date">{{showData.date}}</div>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="title" nzRequired>事情</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入发生的事情">
-        <input nz-input type="text" formControlName="title"/>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="isGood" nzRequired>事情性质</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择事情性质">
-        <div Picker [data]="isGoodOptions" class="hz-ant-input" formControlName="isGood">{{showData.isGood}}</div>
-      </nz-form-control>
-    </nz-form-item>
-  </form>
-</nz-modal>
-<nz-modal [(nzVisible)]="isVisible2" (nzOnCancel)="isVisible2 = false" nzTitle="修改" (nzOnOk)="submit(2)">
-  <form nz-form [formGroup]="validateForm">
-    <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="date">日期</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择日期">
-        <div DatePicker class="hz-ant-input" formControlName="date">{{showData.date}}</div>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="title" nzRequired>事情</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入发生的事情">
-        <input nz-input type="text" formControlName="title"/>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="isGood" nzRequired>事情性质</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请选择事情性质">
-        <div Picker [data]="isGoodOptions" class="hz-ant-input" formControlName="isGood">{{showData.isGood}}</div>
-      </nz-form-control>
-    </nz-form-item>
-  </form>
-  <div *nzModalFooter>
-    <button nz-button nzType="default" (click)="isVisible2 = false">取消</button>
-    <button nz-button nzType="primary" (click)="submit(2)">修改</button>
-    <button nz-button nzType="danger" (click)="delete(currentDate.id)">删除</button>
-  </div>
-</nz-modal>

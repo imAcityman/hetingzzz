@@ -4,6 +4,7 @@ import {MyStorageService} from '../../service/my.storage.service';
 import {RequestService} from '../../service/request.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConstantService} from '../../service/constant.service';
+import {NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private router: Router, private storage: MyStorageService, private request: RequestService, private fb: FormBuilder,
+  constructor(private navController: NavController, private storage: MyStorageService, private request: RequestService, private fb: FormBuilder,
               private constantService: ConstantService) {
     this.loginForm = this.fb.group({
       loginid: [this.storage.get('loginid') || null, [Validators.required]],
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
         this.storage.set('password', this.loginForm.value.password);
         this.storage.setToken(data.data.token);
         this.storage.setUserId(data.data.userid);
-        this.router.navigate(['main']);
+        this.navController.navigateRoot('/main');
       } else {
         this.constantService.messageError(data.msg).then();
       }
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.request.post('/auth/autoLogin').subscribe((data) => {
       if (data.isSuccess) {
         setTimeout(() => {
-          this.router.navigate(['main']).then();
+          this.navController.navigateRoot('/main').then();
         }, 1000);
       } else {
         this.constantService.messageError(data.msg);

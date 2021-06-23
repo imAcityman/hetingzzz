@@ -1,0 +1,26 @@
+<form nz-form [formGroup]="validateForm">
+  <ion-item>
+    <ion-label class="fs-imp-14">日期</ion-label>
+    <ion-datetime class="fs-14" slot="end" formControlName="datetime" mode="ios" [displayFormat]="'YYYY-MM-DD'"
+                  [monthShortNames]="[1,2,3,4,5,6,7,8,9,10,11,12]" doneText="确定"
+                  cancelText="取消" placeholder="选择日期"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label class="fs-imp-14">事情</ion-label>
+    <ion-textarea class="fs-14" rows="1" slot="end" formControlName="title" placeholder="发生了什么事？"
+                  style="text-align: right"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label class="fs-imp-14">事情性质</ion-label>
+    <ion-select formControlName="isGood" class="fs-14" slot="end" placeholder="好事还是坏事呢？" interface="popover">
+      <ion-select-option [value]="item.id"
+                         *ngFor="let item of commonParams.isGoodOptions">{{item.value}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <div class="btn-group">
+    <button nz-button nzSize="large" nzType="primary" nzShape="round" style="width:100%;display: block" *ngIf="!bigDate" (click)="submit(1)">保存</button>
+    <button nz-button nzSize="large" nzType="primary" nzShape="round" style="width:100%;display: block" *ngIf="bigDate" (click)="submit(2)">修改</button>
+    <button nz-button nzSize="large" nzType="default" nzShape="round" style="width:100%;display: block" (click)="cancel()">取消</button>
+    <button nz-button nzSize="large" nzType="danger" nzShape="round" style="width:100%;display: block" (click)="delete()">取消</button>
+  </div>
+</form>

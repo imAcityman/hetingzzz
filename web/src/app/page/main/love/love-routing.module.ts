@@ -6,6 +6,7 @@ import {BoardComponent} from './board/board.component';
 
 const routes: Routes = [{
   path: '', component: LoveComponent, children: [
+    {path: '', redirectTo: 'big-date', pathMatch: 'full'},
     {path: 'big-date', component: BigDateComponent},
     {path: 'board', component: BoardComponent},
   ]
