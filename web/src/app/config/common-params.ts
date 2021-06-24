@@ -1,6 +1,6 @@
 export class CommonParams {
   public static readonly REFRESHER_TEXT = '<span class="refresher-text">下拉刷新</span>';
-  public static readonly ICONFONT_URL = '//at.alicdn.com/t/font_2231555_ykg1h30b3e.js';
+  public static readonly ICONFONT_URL = '//at.alicdn.com/t/font_876907_cwiqzsmt2ml.js';
   public static readonly MAP_API_KEY = '6p7An3YszP2HhpQjo2Ui4etheab9yWNU';
   public static readonly tokenName = 'x-token';
   public static readonly loginTimeName = 'loginTime';
