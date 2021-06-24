@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {MyStorageService} from '../../../service/my.storage.service';
-import {Router} from '@angular/router';
 import {ModelPersonInfo} from '../../../model/model-person-info';
+import {MyStorageService} from '../../../service/my.storage.service';
 import {RequestService} from '../../../service/request.service';
+import {NavController} from '@ionic/angular';
+import {ConstantService} from '../../../service/constant.service';
 
 @Component({
   selector: 'app-mine',
@@ -17,13 +18,17 @@ export class MineComponent implements OnInit {
     sex: 2,
   };
 
-  constructor(private storage: MyStorageService, private router: Router, private request: RequestService) {
+  constructor(private storage: MyStorageService, private navController: NavController, private request: RequestService, private constantService: ConstantService) {
 
   }
 
   logout() {
-    this.storage.delete(MyStorageService.tokenName);
-    this.router.navigate(['login']);
+    this.constantService.confirm({
+      msg: '确认退出？', okHandler: () => {
+        this.storage.delete(MyStorageService.tokenName);
+        this.navController.navigateRoot(['login']).then();
+      }
+    });
   }
 
   getMyInfo() {

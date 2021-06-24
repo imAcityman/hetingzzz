@@ -1,0 +1,13 @@
+<ion-content>
+  <form class="box" [formGroup]="validateForm" (submit)="submit()">
+    <div class="pd">
+      <label class="reply-people grey" for="content" *ngIf="replay?.replyName">@{{replay?.replyName}}</label>
+      <textarea id="content" maxlength="200" name="content" formControlName="content"
+                [placeholder]="placeholder"></textarea>
+      <div class="btn-write">
+        <span class="number">{{validateForm.get('content').value?.length || 0}} / 200</span>
+        <button type="submit">留言</button>
+      </div>
+    </div>
+  </form>
+</ion-content>

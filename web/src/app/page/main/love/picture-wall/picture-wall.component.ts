@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PictureWallComponent implements OnInit {
 
+  slideOptsNotice = {
+    speed: 400,
+    loop: false,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false
+    }
+  };
   images: Array<string> = [];
 
   constructor() {

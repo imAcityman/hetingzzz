@@ -2,16 +2,25 @@
 
 :host {
   display: block;
-  height: 100%;
-  position: relative;
 }
 
 .container {
-  padding: 10px;
+  padding: 20px 10px;
+
+  .title {
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+
+  .description {
+    font-size: 12px;
+    color: #999999;
+  }
 }
 
 .good {
   color: @primary-color-pink;
+  font-size: 20px;
 }
 
 .bad {
@@ -32,7 +41,7 @@
   bottom: 50px;
   background-color: @primary-color-pink;
   color: white;
-  padding: 3px 5px 3px 10px;
+  padding: 6px 5px 6px 10px;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
   box-shadow: 0 0 3px @primary-color-pink;

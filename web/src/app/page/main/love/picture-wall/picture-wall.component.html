@@ -1,0 +1,7 @@
+<ion-content>
+  <ion-slides [pager]="false" [options]="slideOptsNotice">
+    <ion-slide *ngFor="let item of images">
+      <img class="pic" [src]="item" alt="">
+    </ion-slide>
+  </ion-slides>
+</ion-content>

@@ -1,4 +1,4 @@
-<div class="number-latest">
+<div class="number-latest" [ngClass]="{green: latest<last, red: latest>last}">
   {{latest}}
   <i *ngIf="latest>last" class="up" nz-icon nzType="arrow-up" nzTheme="outline"></i>
   <i *ngIf="latest<last" class="down" nz-icon nzType="arrow-down" nzTheme="outline"></i>

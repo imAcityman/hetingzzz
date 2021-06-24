@@ -1,24 +1,28 @@
-<form [formGroup]="loginForm" (submit)="login()" class="form-login">
-  <div class="login">
-    <div class="title">CT-ZONE<img src="../../../assets/image/love.png" alt=""></div>
-    <div class="row">
-      <label style="color: white">帐号</label>
-      <div class="input-box">
-        <input type="text"
-               [ngClass]="{'error':loginForm.get('loginid').dirty && loginForm.hasError('required',['loginid'])}"
-               formControlName="loginid"/>
+<ion-content>
+  <form [formGroup]="loginForm" (submit)="login()" class="form-login">
+    <div class="login">
+      <div class="title">CT-ZONE<img src="../../../assets/image/love.png" alt=""></div>
+      <div class="row">
+        <label style="color: white">帐号</label>
+        <div class="input-box">
+          <input type="text"
+                 [ngClass]="{'error':loginForm.get('loginid').dirty && loginForm.hasError('required',['loginid'])}"
+                 formControlName="loginid"/>
+        </div>
+      </div>
+      <div class="row">
+        <label style="color: black">密码</label>
+        <div class="input-box">
+          <input type="password"
+                 [ngClass]="{'error':loginForm.get('password').dirty && loginForm.hasError('required',['password'])}"
+                 formControlName="password">
+        </div>
+      </div>
+      <div class="row">
+        <button nz-button nzSize="default" nzType="primary" class="btn-login" type="submit"
+                [disabled]="loginForm.invalid">登录
+        </button>
       </div>
     </div>
-    <div class="row">
-      <label style="color: black">密码</label>
-      <div class="input-box">
-        <input type="password"
-               [ngClass]="{'error':loginForm.get('password').dirty && loginForm.hasError('required',['password'])}"
-               formControlName="password">
-      </div>
-    </div>
-    <div class="row">
-      <button nz-button nzSize="large" nzType="primary" class="btn-login" type="submit" [disabled]="loginForm.invalid">登录</button>
-    </div>
-  </div>
-</form>
+  </form>
+</ion-content>

@@ -8,6 +8,9 @@ import {BigDateComponent} from './big-date/big-date.component';
 import {BoardComponent} from './board/board.component';
 import {PipesModule} from '../../../pipes/pipes.module';
 import { EditBigDateComponent } from './big-date/edit-big-date/edit-big-date.component';
+import { WriteBoxComponent } from './board/write-box/write-box.component';
+import {PictureWallComponent} from './picture-wall/picture-wall.component';
+import {CountdownComponent} from './countdown/countdown.component';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { EditBigDateComponent } from './big-date/edit-big-date/edit-big-date.com
     LoveComponent,
     BigDateComponent,
     BoardComponent,
-    EditBigDateComponent
+    EditBigDateComponent,
+    WriteBoxComponent,
+    PictureWallComponent,
+    CountdownComponent
   ],
   imports: [
     CommonModule,

@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {RequestService} from '../../../../service/request.service';
 import {CommonParams} from '../../../../config/common-params';
-import {LoadingService} from '../../../../component/loading/loading.service';
 import {MyStorageService} from '../../../../service/my.storage.service';
 import {QueryPage} from '../../../../model/query-page';
 import {ConstantService} from '../../../../service/constant.service';
+import {WriteBoxComponent} from './write-box/write-box.component';
+import {ModalController} from '@ionic/angular';
 
 @Component({
   selector: 'app-board',
@@ -16,52 +17,11 @@ export class BoardComponent implements OnInit {
   init = false;
   queryPage = new QueryPage<any>(1, 20);
   refresherText = CommonParams.REFRESHER_TEXT;
-  isWrite = false;
   loading = false;
   me;
-  placeholder;
-  replyName;
-  message = {
-    content: '',
-    targetuserid: '',
-    replyid: '',
-  };
 
-  constructor(private request: RequestService, private storage: MyStorageService, private constantService: ConstantService) {
+  constructor(private request: RequestService, private storage: MyStorageService, private constantService: ConstantService, private modalController: ModalController) {
     this.me = this.storage.getUserId();
-  }
-
-  writeMessage(placeholder?, replyName?, replyid?, targetuserid?) {
-    if (placeholder) {
-      this.placeholder = placeholder;
-    } else {
-      this.placeholder = '';
-    }
-    this.message.replyid = replyid || '';
-    this.message.targetuserid = targetuserid || '';
-    this.replyName = replyName || '';
-    this.isWrite = true;
-  }
-
-  hideWrite() {
-    this.isWrite = false;
-  }
-
-  submit() {
-    if (!this.message.content) {
-      alert('请输入留言内容');
-      return;
-    }
-
-    this.request.post('/board/leaveMessage', this.message).subscribe((res) => {
-
-      if (res.isSuccess) {
-        this.message.content = '';
-        this.hideWrite();
-        this.ngOnInit();
-        alert(res.msg);
-      }
-    });
   }
 
   search(page?: number) {
@@ -86,21 +46,20 @@ export class BoardComponent implements OnInit {
     });
   }
 
-  replyMessage(replyid, replyName, targetuserid?) {
-    this.message.content = '';
-    this.writeMessage('', replyName, replyid, targetuserid);
-  }
-
   deleteMessage(id) {
-    const con = confirm('确定删除这条留言？');
-    if (con) {
-      this.request.get('/board/deleteMessage', {id: id}).subscribe((res) => {
-        if (res.isSuccess) {
-          alert(res.msg);
-          this.search(1).then();
-        }
-      });
-    }
+    this.constantService.confirm({
+      msg: '确定删除这条留言？', okHandler: async () => {
+        const loadingModal = await this.constantService.loading();
+        this.request.get('/board/deleteMessage', {id: id}).subscribe((res) => {
+          if (res.isSuccess) {
+            this.search(1).then();
+          }
+          loadingModal?.dismiss().then();
+        }, error => {
+          loadingModal?.dismiss().then();
+        });
+      }
+    });
   }
 
   ngOnInit() {
@@ -119,9 +78,24 @@ export class BoardComponent implements OnInit {
   }
 
   loadData(event): void {
-    console.log(1);
     this.search().then(() => {
       event.target.complete();
     });
+  }
+
+  async writeMessage(targetuserid?: number, replyid?: number, replyName?: string) {
+    const replay = {targetuserid, replyid, replyName};
+    const modal = await this.modalController.create({
+      component: WriteBoxComponent,
+      cssClass: 'modal-1of3-bottom',
+      componentProps: {replay},
+      swipeToClose: true
+    });
+    modal.onWillDismiss().then(data => {
+      if (data) {
+        this.search(1).then();
+      }
+    });
+    return await modal.present();
   }
 }

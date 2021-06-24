@@ -29,7 +29,6 @@ registerLocaleData(zh);
     BrowserAnimationsModule,
     BrowserModule,
     AngularWebStorageModule,
-    NgZorroAntdMobileModule,
     ShareModule,
     AppRouterModule,
     ComponentModule

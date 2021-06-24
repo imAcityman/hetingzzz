@@ -13,14 +13,13 @@
   <ion-item>
     <ion-label class="fs-imp-14">事情性质</ion-label>
     <ion-select formControlName="isGood" class="fs-14" slot="end" placeholder="好事还是坏事呢？" interface="popover">
-      <ion-select-option [value]="item.id"
-                         *ngFor="let item of commonParams.isGoodOptions">{{item.value}}</ion-select-option>
+      <ion-select-option [value]="item.id" *ngFor="let item of commonParams.isGoodOptions">{{item.value}}</ion-select-option>
     </ion-select>
   </ion-item>
   <div class="btn-group">
     <button nz-button nzSize="large" nzType="primary" nzShape="round" style="width:100%;display: block" *ngIf="!bigDate" (click)="submit(1)">保存</button>
     <button nz-button nzSize="large" nzType="primary" nzShape="round" style="width:100%;display: block" *ngIf="bigDate" (click)="submit(2)">修改</button>
+    <button nz-button nzSize="large" nzType="danger" nzShape="round" style="width:100%;display: block" *ngIf="bigDate" (click)="delete()">删除</button>
     <button nz-button nzSize="large" nzType="default" nzShape="round" style="width:100%;display: block" (click)="cancel()">取消</button>
-    <button nz-button nzSize="large" nzType="danger" nzShape="round" style="width:100%;display: block" (click)="delete()">取消</button>
   </div>
 </form>

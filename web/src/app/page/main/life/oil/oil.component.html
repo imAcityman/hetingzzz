@@ -1,0 +1,55 @@
+<ion-content>
+<!--  <Card [full]="true">-->
+<!--    <CardBody>-->
+
+<!--      <Flex>-->
+<!--        <FlexItem>城市</FlexItem>-->
+<!--        <FlexItem>92汽油</FlexItem>-->
+<!--        <FlexItem>95汽油</FlexItem>-->
+<!--        <FlexItem>98汽油</FlexItem>-->
+<!--        <FlexItem>89汽油</FlexItem>-->
+<!--        <FlexItem>0柴油</FlexItem>-->
+<!--      </Flex>-->
+<!--      <Flex class="line" *ngFor="let item of oilInfo.details;let i = index" [class.jiangsu]="item.city === '江苏'">-->
+<!--        <FlexItem>{{item.city}}</FlexItem>-->
+<!--        <FlexItem class="number">-->
+<!--          <app-oil-price [latest]="item.qy92" [last]="item.oldqy92"></app-oil-price>-->
+<!--        </FlexItem>-->
+<!--        <FlexItem class="number">-->
+<!--          <app-oil-price [latest]="item.qy95" [last]="item.oldqy95"></app-oil-price>-->
+<!--        </FlexItem>-->
+<!--        <FlexItem class="number">-->
+<!--          <app-oil-price [latest]="item.qy98" [last]="item.oldqy98"></app-oil-price>-->
+<!--        </FlexItem>-->
+<!--        <FlexItem class="number">-->
+<!--          <app-oil-price [latest]="item.qy89" [last]="item.oldqy89"></app-oil-price>-->
+<!--        </FlexItem>-->
+<!--        <FlexItem class="number">-->
+<!--          <app-oil-price [latest]="item.cy0" [last]="item.oldcy0"></app-oil-price>-->
+<!--        </FlexItem>-->
+<!--      </Flex>-->
+<!--    </CardBody>-->
+<!--  </Card>-->
+
+  <div class="date">
+    {{updateTime ? (updateTime|formatDate:'YYYY-MM-DD HH:mm') + '更新油价' : '暂无油价信息'}}
+  </div>
+  <ul class="list">
+    <li class="item th">
+      <div class="sq">城市</div>
+      <div class="sq">92汽油</div>
+      <div class="sq">95汽油</div>
+      <div class="sq">98汽油</div>
+      <div class="sq">89汽油</div>
+      <div class="sq">0柴油</div>
+    </li>
+    <li class="item" *ngFor="let item of oilInfo.details;let i = index" [class.jiangsu]="item.city === '江苏'">
+      <div class="sq">{{item.city}}</div>
+      <div class="sq"><app-oil-price [latest]="item.qy92" [last]="item.oldqy92"></app-oil-price></div>
+      <div class="sq"><app-oil-price [latest]="item.qy95" [last]="item.oldqy95"></app-oil-price></div>
+      <div class="sq"><app-oil-price [latest]="item.qy98" [last]="item.oldqy98"></app-oil-price></div>
+      <div class="sq"><app-oil-price [latest]="item.qy89" [last]="item.oldqy89"></app-oil-price></div>
+      <div class="sq"><app-oil-price [latest]="item.cy0" [last]="item.cy0"></app-oil-price></div>
+    </li>
+  </ul>
+</ion-content>

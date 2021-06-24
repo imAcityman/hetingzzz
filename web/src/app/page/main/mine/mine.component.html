@@ -1,7 +1,4 @@
 <div class="head">
-  <app-nav-bar>
-    我的
-  </app-nav-bar>
   <div class="info">
     <div class="avatar" [ngStyle]="{'background-image': 'url('+ personInfo.avatar +')'}"></div>
     <div class="name">
@@ -12,21 +9,31 @@
     </div>
   </div>
 </div>
-<List [renderHeader]="">
-  <ListItem
-    [thumb]="expectTem"
-    [arrow]="'horizontal'"
-  >
-    尽情期待
-  </ListItem>
-  <ListItem
-    [thumb]="logoutTem"
-    [arrow]="'horizontal'"
-    (onClick)="logout()"
-  >
-    注销登录
-  </ListItem>
-</List>
+<ul class="list">
+  <li class="item">
+    <i nz-icon [nzIconfont]="'icon-jingqingqidai'" class="icon"></i>
+    <div class="name">尽情期待</div>
+  </li>
+  <li class="item" (click)="logout()">
+    <i nz-icon [nzIconfont]="'icon-zhuxiao'" class="icon"></i>
+    <div class="name">注销登录</div>
+  </li>
+</ul>
+<!--<List [renderHeader]="">-->
+<!--  <ListItem-->
+<!--    [thumb]="expectTem"-->
+<!--    [arrow]="'horizontal'"-->
+<!--  >-->
+<!--    尽情期待-->
+<!--  </ListItem>-->
+<!--  <ListItem-->
+<!--    [thumb]="logoutTem"-->
+<!--    [arrow]="'horizontal'"-->
+<!--    (onClick)="logout()"-->
+<!--  >-->
+<!--    注销登录-->
+<!--  </ListItem>-->
+<!--</List>-->
 <ng-template #expectTem>
   <i nz-icon [nzIconfont]="'icon-jingqingqidai'" class="icon"></i>
 </ng-template>

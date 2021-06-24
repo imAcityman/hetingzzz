@@ -6,15 +6,18 @@
       refreshingSpinner="crescent">
     </ion-refresher-content>
   </ion-refresher>
-  <div class="add-new" (click)="addNew()" slot="fixed">
+  <div class="add-new" (click)="showUpdate()" slot="fixed">
     <i nz-icon nzType="plus" nzTheme="outline"></i>&nbsp;新日子
   </div>
   <div class="container">
-    <Steps [size]="'small'">
-      <Step (click)="showUpdate(item)" *ngFor="let item of dates" status="error" [icon]="item.isGood === 1 ? good : bad"
-            [title]="item.title"
-            [description]="item.datetime"></Step>
-    </Steps>
+    <nz-timeline>
+      <nz-timeline-item *ngFor="let item of dates" [nzDot]="item.isGood === 1 ? good : bad">
+        <div (click)="showUpdate(item)">
+          <div class="title">{{item.title}}</div>
+          <div class="description">{{item.datetime}}</div>
+        </div>
+      </nz-timeline-item>
+    </nz-timeline>
     <ng-template #good>
       <i nz-icon [nzIconfont]="'icon-Heart'" class="good"></i>
     </ng-template>

@@ -48,3 +48,29 @@
     color: #ff1818;
   }
 }
+
+.list {
+  background-color: white;
+  border-top: 0.5px solid #e4e4e4;
+  border-bottom: 0.5px solid #e4e4e4;
+
+  .item {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px 15px 0;
+    margin-left: 20px;
+
+    &:not(:last-child) {
+      border-bottom: 0.5px solid #e4e4e4;
+    }
+
+    .icon {
+      font-size: 18px;
+    }
+
+    .name {
+      font-size: 14px;
+      padding-left: 20px;
+    }
+  }
+}

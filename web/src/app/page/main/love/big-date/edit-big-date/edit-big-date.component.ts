@@ -23,6 +23,7 @@ export class EditBigDateComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
+      id: [],
       datetime: [null, [Validators.required]],
       title: [null, [Validators.required]],
       isGood: [null, [Validators.required]]
@@ -52,17 +53,24 @@ export class EditBigDateComponent implements OnInit {
     }
   }
 
-  create(param) {
+  async create(param) {
+    delete param.id;
+    const loadingModal = await this.constantService.loading('保存中');
     this.request.post('/bigdate/add', param).subscribe(res => {
+      loadingModal?.dismiss();
       this.ok();
     }, () => {
+      loadingModal?.dismiss();
     });
   }
 
-  update(param) {
+  async update(param) {
+    const loadingModal = await this.constantService.loading('修改中');
     this.request.post('/bigdate/update', param).subscribe(res => {
       this.ok();
+      loadingModal?.dismiss();
     }, () => {
+      loadingModal?.dismiss();
     });
   }
 
@@ -76,13 +84,15 @@ export class EditBigDateComponent implements OnInit {
 
   delete() {
     this.constantService.confirm({
-      msg: '确认删除这一条?', okHandler: () => {
+      msg: '确认删除这一条?', okHandler: async () => {
+        const loadingModal = await this.constantService.loading('删除中');
         this.request.post('/bigdate/delete', {dateId: this.bigDate.id}).subscribe(res => {
-          // this.toast.success('删除成功');
+          loadingModal?.dismiss();
           this.ok();
         }, () => {
+          loadingModal?.dismiss();
         });
       }
-    });
+    }).then();
   }
 }

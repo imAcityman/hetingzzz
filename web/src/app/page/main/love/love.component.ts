@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-love',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoveComponent implements OnInit {
 
-  constructor() { }
+  constructor(private navController: NavController) { }
 
   ngOnInit(): void {
+    this.navController.navigateForward('/main/love/big-date').then();
   }
 
 }

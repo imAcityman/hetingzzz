@@ -6,7 +6,7 @@
       refreshingSpinner="crescent">
     </ion-refresher-content>
   </ion-refresher>
-  <div class="write" slot="fixed" (click)="writeMessage('写点什么吧 ...')">留下印记</div>
+  <div class="write" slot="fixed" (click)="writeMessage()">留下印记</div>
   <div class="container">
 
     <ul class="list">
@@ -25,7 +25,7 @@
           <ul class="reply" *ngIf="item.replies.length > 0">
             <li *ngFor="let reply of item.replies">
               <p class="reply-body">
-              <span (click)="replyMessage(item.id,reply.user.name,reply.user.id)">
+              <span (click)="writeMessage(item.id,reply.user.id,reply.user.name)">
                 <a class="reply-name">{{reply.user.name}}:</a>
                 <a class="reply-name" *ngIf="reply.targetuser">@{{reply.targetuser.name}}</a>
                 <span class="reply-content">{{reply.content}}</span>
@@ -35,7 +35,7 @@
             </li>
           </ul>
           <div class="btn-group">
-            <a class="btn btn-pink" href="javascript:;" (click)="replyMessage(item.id,item.user.name)">
+            <a class="btn btn-pink" href="javascript:;" (click)="writeMessage(item.id,item.user.name)">
               <i class="ht-icon icon-message"></i>回复
             </a>
             <a class="btn btn-pink" href="javascript:;" *ngIf="me == item.user.id" (click)="deleteMessage(item.id)">
@@ -46,26 +46,11 @@
       </li>
     </ul>
 
-    <ul class="nomessage" *ngIf="!queryPage.loading  && !queryPage?.data?.length">
+    <ul class="nomessage" *ngIf="init && !queryPage.loading  && !queryPage?.data?.length">
       <li>
         您的留言板空空如也~
       </li>
     </ul>
-
-
-    <div class="box" [ngClass]="{'up':isWrite}">
-      <form (submit)="submit()">
-        <div class="pd">
-          <label class="reply-people grey" for="content" *ngIf="replyName">@{{replyName}}</label>
-          <textarea id="content" maxlength="200" name="content" [(ngModel)]="message.content"
-                    [placeholder]="placeholder"></textarea>
-          <div class="btn-write">
-            <span class="number">{{message.content.length || 0}} / 200</span>
-            <button type="submit">留言</button>
-          </div>
-        </div>
-      </form>
-    </div>
   </div>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" [disabled]="!queryPage.hasData">
     <ion-infinite-scroll-content

@@ -37,25 +37,18 @@ export class BigDateComponent implements OnInit {
     });
   }
 
-  async addNew() {
-    const modal = await this.modalController.create({
-      component: EditBigDateComponent,
-      cssClass: 'modal-half-bottom',
-      swipeToClose: true
-    });
-    return await modal.present();
-  }
-
-  async showUpdate(bigDate: ModelBigDate) {
+  async showUpdate(bigDate?: ModelBigDate) {
     const modal = await this.modalController.create({
       component: EditBigDateComponent,
       cssClass: 'modal-half-bottom',
       componentProps: {bigDate}
     });
     modal.onWillDismiss().then(data => {
-      console.log(data);
+      if (data) {
+        this.getBigDate().then();
+      }
     });
-    await modal.present();
+    return await modal.present();
   }
 
   doRefresh(event): void {
