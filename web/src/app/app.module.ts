@@ -9,7 +9,6 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {Interceptor} from './service/Interceptor.service';
 import {AngularWebStorageModule} from 'angular-web-storage';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgZorroAntdMobileModule} from 'ng-zorro-antd-mobile';
 import {NZ_I18N, zh_CN} from 'ng-zorro-antd/i18n';
 import {CommonModule, registerLocaleData} from '@angular/common';
 import zh from '@angular/common/locales/zh';
