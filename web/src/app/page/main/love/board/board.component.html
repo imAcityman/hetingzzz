@@ -19,13 +19,13 @@
             {{ item.user.name}}
           </div>
           <div class="time">
-            {{item.createtime|dateFromNow}}
+            {{item.createtime | dateFromNow}}
           </div>
           <p class="content">{{item.content}}</p>
           <ul class="reply" *ngIf="item.replies.length > 0">
             <li *ngFor="let reply of item.replies">
               <p class="reply-body">
-              <span (click)="writeMessage(item.id,reply.user.id,reply.user.name)">
+              <span (click)="writeMessage(reply.user.id,item.id,reply.user.name)">
                 <a class="reply-name">{{reply.user.name}}:</a>
                 <a class="reply-name" *ngIf="reply.targetuser">@{{reply.targetuser.name}}</a>
                 <span class="reply-content">{{reply.content}}</span>
@@ -35,7 +35,7 @@
             </li>
           </ul>
           <div class="btn-group">
-            <a class="btn btn-pink" href="javascript:;" (click)="writeMessage(item.id,item.user.name)">
+            <a class="btn btn-pink" href="javascript:;" (click)="writeMessage(null,item.id,item.user.name)">
               <i class="ht-icon icon-message"></i>回复
             </a>
             <a class="btn btn-pink" href="javascript:;" *ngIf="me == item.user.id" (click)="deleteMessage(item.id)">

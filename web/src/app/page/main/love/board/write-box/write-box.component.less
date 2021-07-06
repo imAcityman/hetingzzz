@@ -1,3 +1,5 @@
+@import '../../../../../../assets/styles/constant';
+
 :host {
   display: block;
 }
@@ -9,6 +11,7 @@
   width: 100%;
   display: flex;
   align-items: stretch;
+  border-top: 5px solid @primary-color-pink;
 
   .pd {
     padding: 3px;
@@ -28,7 +31,10 @@
 
     .reply-people {
       display: block;
-      padding: 4px 0;
+      padding: 2px 0;
+      border-bottom: 1px solid #f4f4f4;
+      margin-bottom: 2px;
+      font-size: 12px;
     }
 
   }

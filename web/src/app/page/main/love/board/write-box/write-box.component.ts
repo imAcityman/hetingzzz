@@ -14,7 +14,8 @@ export class WriteBoxComponent implements OnInit {
   placeholder = '写点什么吧...';
   validateForm!: FormGroup;
 
-  constructor(private request: RequestService, private fb: FormBuilder, private constantService: ConstantService, private modalController: ModalController) {
+  constructor(private request: RequestService, private fb: FormBuilder, private constantService: ConstantService,
+              private modalController: ModalController) {
     this.validateForm = this.fb.group({
       content: [null, [Validators.required]],
       targetuserid: [null, [Validators.required]],
@@ -23,7 +24,6 @@ export class WriteBoxComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.replay);
     this.validateForm.patchValue(this.replay);
   }
 

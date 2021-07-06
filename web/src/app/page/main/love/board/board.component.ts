@@ -6,6 +6,7 @@ import {QueryPage} from '../../../../model/query-page';
 import {ConstantService} from '../../../../service/constant.service';
 import {WriteBoxComponent} from './write-box/write-box.component';
 import {ModalController} from '@ionic/angular';
+import {ModelMessage} from '../../../../model/model-message';
 
 @Component({
   selector: 'app-board',
@@ -15,12 +16,13 @@ import {ModalController} from '@ionic/angular';
 export class BoardComponent implements OnInit {
 
   init = false;
-  queryPage = new QueryPage<any>(1, 20);
+  queryPage = new QueryPage<ModelMessage>(1, 20);
   refresherText = CommonParams.REFRESHER_TEXT;
   loading = false;
   me;
 
-  constructor(private request: RequestService, private storage: MyStorageService, private constantService: ConstantService, private modalController: ModalController) {
+  constructor(private request: RequestService, private storage: MyStorageService, private constantService: ConstantService,
+              private modalController: ModalController) {
     this.me = this.storage.getUserId();
   }
 
