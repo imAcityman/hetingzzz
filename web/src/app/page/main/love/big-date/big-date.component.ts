@@ -43,7 +43,7 @@ export class BigDateComponent implements OnInit {
       cssClass: 'modal-half-bottom',
       componentProps: {bigDate}
     });
-    modal.onWillDismiss().then(data => {
+    modal.onWillDismiss().then(({data}) => {
       if (data) {
         this.getBigDate().then();
       }

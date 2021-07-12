@@ -93,7 +93,7 @@ export class BoardComponent implements OnInit {
       componentProps: {replay},
       swipeToClose: true
     });
-    modal.onWillDismiss().then(data => {
+    modal.onWillDismiss().then(({data}) => {
       if (data) {
         this.search(1).then();
       }
