@@ -15,6 +15,8 @@ import zh from '@angular/common/locales/zh';
 import {ShareModule} from './module/share/share.module';
 import {IonicRouteStrategy} from '@ionic/angular';
 import {ComponentModule} from './component/component.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 registerLocaleData(zh);
 
@@ -30,7 +32,13 @@ registerLocaleData(zh);
     AngularWebStorageModule,
     ShareModule,
     AppRouterModule,
-    ComponentModule
+    ComponentModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, {
